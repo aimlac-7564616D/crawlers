@@ -1,0 +1,6 @@
+flows/.*
+flows/node_modules
+flows/lib
+*.grib2
+7465616d
+.vscode
