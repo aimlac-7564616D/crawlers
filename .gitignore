@@ -1,5 +1,6 @@
 flows/.*
 flows/node_modules
+flows/flows_cred.json
 flows/lib
 *.grib2
 7465616d
