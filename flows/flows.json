@@ -1,0 +1,283 @@
+[
+    {
+        "id": "0f058a7f547c3458",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "4c8a4750891f7844",
+        "type": "http request",
+        "z": "0f058a7f547c3458",
+        "name": "Llanwrtyd Power",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 530,
+        "y": 140,
+        "wires": [
+            [
+                "be9abe3da5580fa2"
+            ]
+        ]
+    },
+    {
+        "id": "b6c8d13a7ff9da14",
+        "type": "inject",
+        "z": "0f058a7f547c3458",
+        "name": "Run Fetch",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 40,
+        "wires": [
+            [
+                "6d438a7777ef90fa",
+                "307ab4e6f668b177"
+            ]
+        ]
+    },
+    {
+        "id": "6fa52c2549c15f6c",
+        "type": "http request",
+        "z": "0f058a7f547c3458",
+        "d": true,
+        "name": "Llanwrtyd 30m Average Power",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 810,
+        "y": 60,
+        "wires": [
+            [
+                "38e0c3e53e36792a"
+            ]
+        ]
+    },
+    {
+        "id": "38e0c3e53e36792a",
+        "type": "debug",
+        "z": "0f058a7f547c3458",
+        "name": "internal log",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "e1d07ecec1d5ae7a",
+        "type": "template",
+        "z": "0f058a7f547c3458",
+        "name": "make url",
+        "field": "url",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "http://{{AIMLAC_RSE_ADDR}}/sim/llanwrtyd-wells",
+        "output": "str",
+        "x": 340,
+        "y": 140,
+        "wires": [
+            [
+                "4c8a4750891f7844",
+                "f35df1df4852048f"
+            ]
+        ]
+    },
+    {
+        "id": "be9abe3da5580fa2",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "name": "strip all but payload",
+        "func": "let stripped_message = {\n    payload: msg.payload\n}\nreturn stripped_message;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 320,
+        "wires": [
+            [
+                "38e0c3e53e36792a"
+            ]
+        ]
+    },
+    {
+        "id": "f35df1df4852048f",
+        "type": "template",
+        "z": "0f058a7f547c3458",
+        "name": "append destination",
+        "field": "url",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{{url}}/30m-average-power",
+        "output": "str",
+        "x": 530,
+        "y": 100,
+        "wires": [
+            [
+                "6fa52c2549c15f6c"
+            ]
+        ]
+    },
+    {
+        "id": "12e7d34356a8a186",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "name": "assemble met request",
+        "func": "let headers = {\n    \"X-IBM-Client-Id\": msg.api_key,\n    \"X-IBM-Client-Secret\": msg.secret_key,\n    \"accept\": \"application/json\"\n};\n\nlet url = \"https://rgw.5878-e94b1c46.eu-gb.apiconnect.appdomain.cloud\"\n+ \"/metoffice/production/v0/forecasts/point/hourly\"\n+ \"?excludeParameterMetadata=\"+msg.noParamNames\n+ \"&includeLocationName=true\"\n+ \"&latitude=\"+msg.latitude+\"&longitude=\"+msg.longitude;\n\nmsg.url = url;\nmsg.headers = headers;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 180,
+        "wires": [
+            [
+                "67b87407f16763d3"
+            ]
+        ]
+    },
+    {
+        "id": "67b87407f16763d3",
+        "type": "http request",
+        "z": "0f058a7f547c3458",
+        "name": "MetOffice Spot",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 540,
+        "y": 240,
+        "wires": [
+            [
+                "be9abe3da5580fa2"
+            ]
+        ]
+    },
+    {
+        "id": "6d438a7777ef90fa",
+        "type": "change",
+        "z": "0f058a7f547c3458",
+        "name": "add ENV [MET]",
+        "rules": [
+            {
+                "t": "set",
+                "p": "api_key",
+                "pt": "msg",
+                "to": "MET_API_KEY",
+                "tot": "env"
+            },
+            {
+                "t": "set",
+                "p": "secret_key",
+                "pt": "msg",
+                "to": "MET_SECRET_KEY",
+                "tot": "env"
+            },
+            {
+                "t": "set",
+                "p": "latitude",
+                "pt": "msg",
+                "to": "52.1051",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "longitude",
+                "pt": "msg",
+                "to": "-3.6680",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "noParamNames",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "12e7d34356a8a186"
+            ]
+        ]
+    },
+    {
+        "id": "307ab4e6f668b177",
+        "type": "change",
+        "z": "0f058a7f547c3458",
+        "name": "add ENV [RSE]",
+        "rules": [
+            {
+                "t": "set",
+                "p": "AIMLAC_RSE_ADDR",
+                "pt": "msg",
+                "to": "AIMLAC_RSE_ADDR",
+                "tot": "env"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 160,
+        "y": 140,
+        "wires": [
+            [
+                "e1d07ecec1d5ae7a"
+            ]
+        ]
+    },
+    {
+        "id": "0d66c11f180e1295",
+        "type": "comment",
+        "z": "0f058a7f547c3458",
+        "name": "needs timestamp",
+        "info": "",
+        "x": 580,
+        "y": 60,
+        "wires": []
+    }
+]
