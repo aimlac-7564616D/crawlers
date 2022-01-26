@@ -8,6 +8,16 @@
         "env": []
     },
     {
+        "id": "a1c86bd095899ec8",
+        "type": "MySQLdatabase",
+        "name": "llanwrytd",
+        "host": "172.18.5.1",
+        "port": "3306",
+        "db": "llanwrytd",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
         "id": "4c8a4750891f7844",
         "type": "http request",
         "z": "0f058a7f547c3458",
@@ -21,11 +31,11 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 530,
-        "y": 140,
+        "x": 550,
+        "y": 220,
         "wires": [
             [
-                "be9abe3da5580fa2"
+                "f832e3d01d480950"
             ]
         ]
     },
@@ -35,12 +45,12 @@
         "z": "0f058a7f547c3458",
         "name": "Run Fetch",
         "props": [],
-        "repeat": "",
+        "repeat": "60",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 120,
+        "x": 130,
         "y": 40,
         "wires": [
             [
@@ -68,7 +78,7 @@
         "y": 60,
         "wires": [
             [
-                "38e0c3e53e36792a"
+                "be9abe3da5580fa2"
             ]
         ]
     },
@@ -85,8 +95,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 890,
-        "y": 320,
+        "x": 970,
+        "y": 120,
         "wires": []
     },
     {
@@ -120,8 +130,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 590,
-        "y": 320,
+        "x": 790,
+        "y": 120,
         "wires": [
             [
                 "38e0c3e53e36792a"
@@ -170,6 +180,7 @@
         "id": "67b87407f16763d3",
         "type": "http request",
         "z": "0f058a7f547c3458",
+        "d": true,
         "name": "MetOffice Spot",
         "method": "GET",
         "ret": "obj",
@@ -180,8 +191,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 540,
-        "y": 240,
+        "x": 780,
+        "y": 160,
         "wires": [
             [
                 "be9abe3da5580fa2"
@@ -192,6 +203,7 @@
         "id": "6d438a7777ef90fa",
         "type": "change",
         "z": "0f058a7f547c3458",
+        "d": true,
         "name": "add ENV [MET]",
         "rules": [
             {
@@ -278,6 +290,125 @@
         "info": "",
         "x": 580,
         "y": 60,
+        "wires": []
+    },
+    {
+        "id": "522fe73aeb87ccf7",
+        "type": "mysql",
+        "z": "0f058a7f547c3458",
+        "mydb": "a1c86bd095899ec8",
+        "name": "LLanwrytd DB",
+        "x": 760,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f832e3d01d480950",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "name": "assemble insert",
+        "func": "\nmsg.topic = \"INSERT INTO energy_onsite (\"\n        + \"`time`, `hq_power`, `hq_temperature`, `computing_center`, `solar`, `wind1`, `wind2`, `wind3`, `wind4`, `windA`, `windB`\"\n    + \") VALUES (\"\n        + \":timedate, :hq_power, :hq_temperature, :computing_center, :solar, :wind1, :wind2, :wind3, :wind4, :windA, :windB\"\n    + \");\";\n\nvar data = msg.payload.elements;\nvar payload = {};\n\npayload.solar = data[\"Llanwrtyd Wells - Solar Generator\"].power;\npayload.wind1 = data[\"Llanwrtyd Wells - Wind Generator 1\"].power;\npayload.wind2 = data[\"Llanwrtyd Wells - Wind Generator 2\"].power;\npayload.wind3 = data[\"Llanwrtyd Wells - Wind Generator 3\"].power;\npayload.wind4 = data[\"Llanwrtyd Wells - Wind Generator 4\"].power;\npayload.windA = data[\"Llanwrtyd Wells - Wind Generator A\"].power;\npayload.windB = data[\"Llanwrtyd Wells - Wind Generator B\"].power;\n\npayload.hq_power = data[\"AIMLAC HQ Llanwrtyd Wells\"].power;\npayload.hq_temperature = data[\"AIMLAC HQ Llanwrtyd Wells\"].temperature;\npayload.computing_center = data[\"Llanwrtyd Wells - Computing Centre\"].power;\n\npayload.timedate = msg.payload.timedate;\n\n// overwrite payload\nmsg.payload = payload;\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 260,
+        "wires": [
+            [
+                "253efed962ce7d93"
+            ]
+        ]
+    },
+    {
+        "id": "253efed962ce7d93",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "name": "add unsafe (sanitize)",
+        "func": "// only expecting numbers\nmsg.unsafe = false;\n\nObject.keys(msg.payload)\n    .filter(k => k != \"timedate\" )\n    .forEach((k, i) => {\n        var val = msg.payload[k];\n        if ( Number.isFinite(val) ) {\n           // all good \n        } else {\n            msg.unsafe = true;\n        }\n    });\n    \nvar parsed_date = new Date(msg.payload.timedate);\nif ( isNaN(parsed_date.valueOf()) ) {\n    msg.unsafe = true;\n} else {\n    msg.payload.timedate = parsed_date.toLocaleString();\n}\n\nmsg.payload.timedate = parsed_date;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 260,
+        "wires": [
+            [
+                "acfb26db2c06a05d"
+            ]
+        ]
+    },
+    {
+        "id": "acfb26db2c06a05d",
+        "type": "switch",
+        "z": "0f058a7f547c3458",
+        "name": "filter unsafe",
+        "property": "unsafe",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 530,
+        "y": 300,
+        "wires": [
+            [
+                "522fe73aeb87ccf7"
+            ],
+            [
+                "906f29511fb2fd42"
+            ]
+        ]
+    },
+    {
+        "id": "906f29511fb2fd42",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "name": "strip  and add debug",
+        "func": "let stripped_message = {\n    payload: msg.payload\n}\n\nstripped_message.payload.debug = \"PARSING_ERROR\";\n\nreturn stripped_message;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 760,
+        "y": 360,
+        "wires": [
+            [
+                "7f1845d3f45f7bdb"
+            ]
+        ]
+    },
+    {
+        "id": "7f1845d3f45f7bdb",
+        "type": "debug",
+        "z": "0f058a7f547c3458",
+        "name": "log",
+        "active": true,
+        "tosidebar": false,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 950,
+        "y": 360,
         "wires": []
     }
 ]
