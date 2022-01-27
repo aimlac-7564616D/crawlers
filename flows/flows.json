@@ -8,6 +8,16 @@
         "env": []
     },
     {
+        "id": "a1c86bd095899ec8",
+        "type": "MySQLdatabase",
+        "name": "llanwrytd",
+        "host": "172.18.5.1",
+        "port": "3306",
+        "db": "llanwrytd",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
         "id": "4c8a4750891f7844",
         "type": "http request",
         "z": "0f058a7f547c3458",
@@ -25,7 +35,7 @@
         "y": 140,
         "wires": [
             [
-                "be9abe3da5580fa2"
+                "f832e3d01d480950"
             ]
         ]
     },
@@ -33,18 +43,17 @@
         "id": "b6c8d13a7ff9da14",
         "type": "inject",
         "z": "0f058a7f547c3458",
-        "name": "Run Fetch",
+        "name": "fetch RSE",
         "props": [],
-        "repeat": "",
+        "repeat": "60",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 120,
-        "y": 40,
+        "x": 170,
+        "y": 60,
         "wires": [
             [
-                "6d438a7777ef90fa",
                 "307ab4e6f668b177"
             ]
         ]
@@ -67,9 +76,7 @@
         "x": 810,
         "y": 60,
         "wires": [
-            [
-                "38e0c3e53e36792a"
-            ]
+            []
         ]
     },
     {
@@ -85,8 +92,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 890,
-        "y": 320,
+        "x": 870,
+        "y": 280,
         "wires": []
     },
     {
@@ -120,11 +127,11 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 590,
-        "y": 320,
+        "x": 350,
+        "y": 300,
         "wires": [
             [
-                "38e0c3e53e36792a"
+                "9ca09eb79f9ea5cc"
             ]
         ]
     },
@@ -158,8 +165,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 380,
-        "y": 180,
+        "x": 220,
+        "y": 220,
         "wires": [
             [
                 "67b87407f16763d3"
@@ -180,8 +187,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 540,
-        "y": 240,
+        "x": 280,
+        "y": 260,
         "wires": [
             [
                 "be9abe3da5580fa2"
@@ -279,5 +286,91 @@
         "x": 580,
         "y": 60,
         "wires": []
+    },
+    {
+        "id": "522fe73aeb87ccf7",
+        "type": "mysql",
+        "z": "0f058a7f547c3458",
+        "mydb": "a1c86bd095899ec8",
+        "name": "LLanwrytd DB",
+        "x": 860,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f832e3d01d480950",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "name": "assemble onsite insert (sanitized)",
+        "func": "\nmsg.topic = \"INSERT INTO energy_onsite (\"\n        + \"`time`, `hq_power`, `hq_temperature`, `computing_center`, `solar`, `wind1`, `wind2`, `wind3`, `wind4`, `windA`, `windB`\"\n    + \") VALUES (\"\n        + \":timedate, :hq_power, :hq_temperature, :computing_center, :solar, :wind1, :wind2, :wind3, :wind4, :windA, :windB\"\n    + \");\";\n\nvar data = msg.payload.elements;\nvar payload = {};\n\npayload.solar = data[\"Llanwrtyd Wells - Solar Generator\"].power;\npayload.wind1 = data[\"Llanwrtyd Wells - Wind Generator 1\"].power;\npayload.wind2 = data[\"Llanwrtyd Wells - Wind Generator 2\"].power;\npayload.wind3 = data[\"Llanwrtyd Wells - Wind Generator 3\"].power;\npayload.wind4 = data[\"Llanwrtyd Wells - Wind Generator 4\"].power;\npayload.windA = data[\"Llanwrtyd Wells - Wind Generator A\"].power;\npayload.windB = data[\"Llanwrtyd Wells - Wind Generator B\"].power;\n\npayload.hq_power = data[\"AIMLAC HQ Llanwrtyd Wells\"].power;\npayload.hq_temperature = data[\"AIMLAC HQ Llanwrtyd Wells\"].temperature;\npayload.computing_center = data[\"Llanwrtyd Wells - Computing Centre\"].power;\n\npayload.timedate = msg.payload.timedate;\n\n// do sanitization\nObject.keys(payload)\n    .filter(k => k != \"timedate\" )\n    .forEach((k, i) => {\n        var val = payload[k];\n        if ( !Number.isFinite(val) ) {\n            throw Error(k + \" is not a number (\" + val + \")\");\n        }\n    });\n\nvar parsed_date = new Date(payload.timedate);\nif ( isNaN(parsed_date.valueOf()) ) {\n    throw Error(\"Invalid date \", msg.payload.timedate);\n}\n\npayload.timedate = parsed_date;\n\n// overwrite payload\nmsg.payload = payload;\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 180,
+        "wires": [
+            [
+                "522fe73aeb87ccf7"
+            ]
+        ]
+    },
+    {
+        "id": "7f1845d3f45f7bdb",
+        "type": "debug",
+        "z": "0f058a7f547c3458",
+        "name": "log",
+        "active": true,
+        "tosidebar": false,
+        "console": true,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "9ca09eb79f9ea5cc",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "name": "make metoffice_spot insert (sanitized)",
+        "func": "let keys = [\n    \"time\",\n    \"screenTemperature\",\n    \"maxScreenAirTemp\",\n    \"minScreenAirTemp\",\n    \"screenDewPointTemperature\",\n    \"feelsLikeTemperature\",\n    \"windSpeed10m\",\n    \"windDirectionFrom10m\",\n    \"windGustSpeed10m\",\n    \"max10mWindGust\",\n    \"visibility\",\n    \"screenRelativeHumidity\",\n    \"mslp\",\n    \"uvIndex\",\n    \"significantWeatherCode\",\n    \"precipitationRate\",\n    \"totalPrecipAmount\",\n    \"totalSnowAmount\",\n    \"probOfPrecipitation\"\n];\n\ndata = msg.payload.features[0].properties.timeSeries;\n\n// do sanitization\nfunction formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nfunction buildPayload(item) {\n    let payload = [formatTime(item.time)];\n    keys.filter(k => k != \"time\")\n        .forEach((k, i) => {\n            let val = item[k];\n            if (!Number.isFinite(val)) {\n                //throw Error(k + \" is not a number (\" + val + \")\");\n                val = -1; // dump an unphysical(ish) number\n            }\n            payload.push(val);\n        }\n    );\n    \n    return payload;\n}\n\nmsg.payload = data.map(item => buildPayload(item));\n\nmsg.topic = \"INSERT INTO metoffice_spot (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES \" + msg.payload.map(k=>\"(?)\").join(\", \") + \" ;\"\n ;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 220,
+        "wires": [
+            [
+                "522fe73aeb87ccf7"
+            ]
+        ]
+    },
+    {
+        "id": "725fb307c65c8a17",
+        "type": "inject",
+        "z": "0f058a7f547c3458",
+        "name": "fetch MetOffice",
+        "props": [],
+        "repeat": "43200",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "6d438a7777ef90fa"
+            ]
+        ]
     }
 ]
