@@ -31,8 +31,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 550,
-        "y": 220,
+        "x": 530,
+        "y": 140,
         "wires": [
             [
                 "f832e3d01d480950"
@@ -43,18 +43,17 @@
         "id": "b6c8d13a7ff9da14",
         "type": "inject",
         "z": "0f058a7f547c3458",
-        "name": "Run Fetch",
+        "name": "fetch RSE",
         "props": [],
         "repeat": "60",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 130,
-        "y": 40,
+        "x": 170,
+        "y": 60,
         "wires": [
             [
-                "6d438a7777ef90fa",
                 "307ab4e6f668b177"
             ]
         ]
@@ -77,9 +76,7 @@
         "x": 810,
         "y": 60,
         "wires": [
-            [
-                "be9abe3da5580fa2"
-            ]
+            []
         ]
     },
     {
@@ -95,8 +92,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 970,
-        "y": 120,
+        "x": 870,
+        "y": 280,
         "wires": []
     },
     {
@@ -130,11 +127,11 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 790,
-        "y": 120,
+        "x": 350,
+        "y": 300,
         "wires": [
             [
-                "38e0c3e53e36792a"
+                "9ca09eb79f9ea5cc"
             ]
         ]
     },
@@ -168,8 +165,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 380,
-        "y": 180,
+        "x": 220,
+        "y": 220,
         "wires": [
             [
                 "67b87407f16763d3"
@@ -180,7 +177,6 @@
         "id": "67b87407f16763d3",
         "type": "http request",
         "z": "0f058a7f547c3458",
-        "d": true,
         "name": "MetOffice Spot",
         "method": "GET",
         "ret": "obj",
@@ -191,8 +187,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 780,
-        "y": 160,
+        "x": 280,
+        "y": 260,
         "wires": [
             [
                 "be9abe3da5580fa2"
@@ -203,7 +199,6 @@
         "id": "6d438a7777ef90fa",
         "type": "change",
         "z": "0f058a7f547c3458",
-        "d": true,
         "name": "add ENV [MET]",
         "rules": [
             {
@@ -298,8 +293,8 @@
         "z": "0f058a7f547c3458",
         "mydb": "a1c86bd095899ec8",
         "name": "LLanwrytd DB",
-        "x": 760,
-        "y": 300,
+        "x": 860,
+        "y": 200,
         "wires": [
             []
         ]
@@ -308,89 +303,18 @@
         "id": "f832e3d01d480950",
         "type": "function",
         "z": "0f058a7f547c3458",
-        "name": "assemble insert",
-        "func": "\nmsg.topic = \"INSERT INTO energy_onsite (\"\n        + \"`time`, `hq_power`, `hq_temperature`, `computing_center`, `solar`, `wind1`, `wind2`, `wind3`, `wind4`, `windA`, `windB`\"\n    + \") VALUES (\"\n        + \":timedate, :hq_power, :hq_temperature, :computing_center, :solar, :wind1, :wind2, :wind3, :wind4, :windA, :windB\"\n    + \");\";\n\nvar data = msg.payload.elements;\nvar payload = {};\n\npayload.solar = data[\"Llanwrtyd Wells - Solar Generator\"].power;\npayload.wind1 = data[\"Llanwrtyd Wells - Wind Generator 1\"].power;\npayload.wind2 = data[\"Llanwrtyd Wells - Wind Generator 2\"].power;\npayload.wind3 = data[\"Llanwrtyd Wells - Wind Generator 3\"].power;\npayload.wind4 = data[\"Llanwrtyd Wells - Wind Generator 4\"].power;\npayload.windA = data[\"Llanwrtyd Wells - Wind Generator A\"].power;\npayload.windB = data[\"Llanwrtyd Wells - Wind Generator B\"].power;\n\npayload.hq_power = data[\"AIMLAC HQ Llanwrtyd Wells\"].power;\npayload.hq_temperature = data[\"AIMLAC HQ Llanwrtyd Wells\"].temperature;\npayload.computing_center = data[\"Llanwrtyd Wells - Computing Centre\"].power;\n\npayload.timedate = msg.payload.timedate;\n\n// overwrite payload\nmsg.payload = payload;\n\nreturn msg;\n",
+        "name": "assemble onsite insert (sanitized)",
+        "func": "\nmsg.topic = \"INSERT INTO energy_onsite (\"\n        + \"`time`, `hq_power`, `hq_temperature`, `computing_center`, `solar`, `wind1`, `wind2`, `wind3`, `wind4`, `windA`, `windB`\"\n    + \") VALUES (\"\n        + \":timedate, :hq_power, :hq_temperature, :computing_center, :solar, :wind1, :wind2, :wind3, :wind4, :windA, :windB\"\n    + \");\";\n\nvar data = msg.payload.elements;\nvar payload = {};\n\npayload.solar = data[\"Llanwrtyd Wells - Solar Generator\"].power;\npayload.wind1 = data[\"Llanwrtyd Wells - Wind Generator 1\"].power;\npayload.wind2 = data[\"Llanwrtyd Wells - Wind Generator 2\"].power;\npayload.wind3 = data[\"Llanwrtyd Wells - Wind Generator 3\"].power;\npayload.wind4 = data[\"Llanwrtyd Wells - Wind Generator 4\"].power;\npayload.windA = data[\"Llanwrtyd Wells - Wind Generator A\"].power;\npayload.windB = data[\"Llanwrtyd Wells - Wind Generator B\"].power;\n\npayload.hq_power = data[\"AIMLAC HQ Llanwrtyd Wells\"].power;\npayload.hq_temperature = data[\"AIMLAC HQ Llanwrtyd Wells\"].temperature;\npayload.computing_center = data[\"Llanwrtyd Wells - Computing Centre\"].power;\n\npayload.timedate = msg.payload.timedate;\n\n// do sanitization\nObject.keys(payload)\n    .filter(k => k != \"timedate\" )\n    .forEach((k, i) => {\n        var val = payload[k];\n        if ( !Number.isFinite(val) ) {\n            throw Error(k + \" is not a number (\" + val + \")\");\n        }\n    });\n\nvar parsed_date = new Date(payload.timedate);\nif ( isNaN(parsed_date.valueOf()) ) {\n    throw Error(\"Invalid date \", msg.payload.timedate);\n}\n\npayload.timedate = parsed_date;\n\n// overwrite payload\nmsg.payload = payload;\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 540,
-        "y": 260,
-        "wires": [
-            [
-                "253efed962ce7d93"
-            ]
-        ]
-    },
-    {
-        "id": "253efed962ce7d93",
-        "type": "function",
-        "z": "0f058a7f547c3458",
-        "name": "add unsafe (sanitize)",
-        "func": "// only expecting numbers\nmsg.unsafe = false;\n\nObject.keys(msg.payload)\n    .filter(k => k != \"timedate\" )\n    .forEach((k, i) => {\n        var val = msg.payload[k];\n        if ( Number.isFinite(val) ) {\n           // all good \n        } else {\n            msg.unsafe = true;\n        }\n    });\n    \nvar parsed_date = new Date(msg.payload.timedate);\nif ( isNaN(parsed_date.valueOf()) ) {\n    msg.unsafe = true;\n} else {\n    msg.payload.timedate = parsed_date.toLocaleString();\n}\n\nmsg.payload.timedate = parsed_date;\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 740,
-        "y": 260,
-        "wires": [
-            [
-                "acfb26db2c06a05d"
-            ]
-        ]
-    },
-    {
-        "id": "acfb26db2c06a05d",
-        "type": "switch",
-        "z": "0f058a7f547c3458",
-        "name": "filter unsafe",
-        "property": "unsafe",
-        "propertyType": "msg",
-        "rules": [
-            {
-                "t": "eq",
-                "v": "0",
-                "vt": "num"
-            },
-            {
-                "t": "eq",
-                "v": "1",
-                "vt": "num"
-            }
-        ],
-        "checkall": "true",
-        "repair": false,
-        "outputs": 2,
-        "x": 530,
-        "y": 300,
+        "x": 600,
+        "y": 180,
         "wires": [
             [
                 "522fe73aeb87ccf7"
-            ],
-            [
-                "906f29511fb2fd42"
-            ]
-        ]
-    },
-    {
-        "id": "906f29511fb2fd42",
-        "type": "function",
-        "z": "0f058a7f547c3458",
-        "name": "strip  and add debug",
-        "func": "let stripped_message = {\n    payload: msg.payload\n}\n\nstripped_message.payload.debug = \"PARSING_ERROR\";\n\nreturn stripped_message;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 760,
-        "y": 360,
-        "wires": [
-            [
-                "7f1845d3f45f7bdb"
             ]
         ]
     },
@@ -407,8 +331,46 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 950,
-        "y": 360,
+        "x": 850,
+        "y": 320,
         "wires": []
+    },
+    {
+        "id": "9ca09eb79f9ea5cc",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "name": "make metoffice_spot insert (sanitized)",
+        "func": "let keys = [\n    \"time\",\n    \"screenTemperature\",\n    \"maxScreenAirTemp\",\n    \"minScreenAirTemp\",\n    \"screenDewPointTemperature\",\n    \"feelsLikeTemperature\",\n    \"windSpeed10m\",\n    \"windDirectionFrom10m\",\n    \"windGustSpeed10m\",\n    \"max10mWindGust\",\n    \"visibility\",\n    \"screenRelativeHumidity\",\n    \"mslp\",\n    \"uvIndex\",\n    \"significantWeatherCode\",\n    \"precipitationRate\",\n    \"totalPrecipAmount\",\n    \"totalSnowAmount\",\n    \"probOfPrecipitation\"\n];\n\ndata = msg.payload.features[0].properties.timeSeries;\n\n// do sanitization\nfunction formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nfunction buildPayload(item) {\n    let payload = [formatTime(item.time)];\n    keys.filter(k => k != \"time\")\n        .forEach((k, i) => {\n            let val = item[k];\n            if (!Number.isFinite(val)) {\n                //throw Error(k + \" is not a number (\" + val + \")\");\n                val = -1; // dump an unphysical(ish) number\n            }\n            payload.push(val);\n        }\n    );\n    \n    return payload;\n}\n\nmsg.payload = data.map(item => buildPayload(item));\n\nmsg.topic = \"INSERT INTO metoffice_spot (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES \" + msg.payload.map(k=>\"(?)\").join(\", \") + \" ;\"\n ;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 220,
+        "wires": [
+            [
+                "522fe73aeb87ccf7"
+            ]
+        ]
+    },
+    {
+        "id": "725fb307c65c8a17",
+        "type": "inject",
+        "z": "0f058a7f547c3458",
+        "name": "fetch MetOffice",
+        "props": [],
+        "repeat": "43200",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "6d438a7777ef90fa"
+            ]
+        ]
     }
 ]
