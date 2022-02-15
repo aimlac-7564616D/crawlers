@@ -31,7 +31,7 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 530,
+        "x": 610,
         "y": 140,
         "wires": [
             [
@@ -45,7 +45,7 @@
         "z": "0f058a7f547c3458",
         "name": "fetch RSE",
         "props": [],
-        "repeat": "60",
+        "repeat": "1800",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
@@ -92,8 +92,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 870,
-        "y": 280,
+        "x": 1050,
+        "y": 420,
         "wires": []
     },
     {
@@ -107,8 +107,8 @@
         "syntax": "mustache",
         "template": "http://{{AIMLAC_RSE_ADDR}}/sim/llanwrtyd-wells",
         "output": "str",
-        "x": 340,
-        "y": 140,
+        "x": 560,
+        "y": 100,
         "wires": [
             [
                 "4c8a4750891f7844",
@@ -127,8 +127,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 350,
-        "y": 300,
+        "x": 610,
+        "y": 220,
         "wires": [
             [
                 "9ca09eb79f9ea5cc"
@@ -146,7 +146,7 @@
         "syntax": "mustache",
         "template": "{{url}}/30m-average-power",
         "output": "str",
-        "x": 530,
+        "x": 790,
         "y": 100,
         "wires": [
             [
@@ -165,8 +165,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 220,
-        "y": 220,
+        "x": 360,
+        "y": 260,
         "wires": [
             [
                 "67b87407f16763d3"
@@ -187,8 +187,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 280,
-        "y": 260,
+        "x": 480,
+        "y": 300,
         "wires": [
             [
                 "be9abe3da5580fa2"
@@ -219,15 +219,15 @@
                 "t": "set",
                 "p": "latitude",
                 "pt": "msg",
-                "to": "52.1051",
-                "tot": "str"
+                "to": "LOCATION_LAT",
+                "tot": "env"
             },
             {
                 "t": "set",
                 "p": "longitude",
                 "pt": "msg",
-                "to": "-3.6680",
-                "tot": "str"
+                "to": "LOCATION_LON",
+                "tot": "env"
             },
             {
                 "t": "set",
@@ -242,8 +242,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 160,
-        "y": 180,
+        "x": 340,
+        "y": 100,
         "wires": [
             [
                 "12e7d34356a8a186"
@@ -269,8 +269,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 160,
-        "y": 140,
+        "x": 340,
+        "y": 60,
         "wires": [
             [
                 "e1d07ecec1d5ae7a"
@@ -293,8 +293,8 @@
         "z": "0f058a7f547c3458",
         "mydb": "a1c86bd095899ec8",
         "name": "LLanwrytd DB",
-        "x": 860,
-        "y": 200,
+        "x": 1120,
+        "y": 320,
         "wires": [
             []
         ]
@@ -310,7 +310,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 600,
+        "x": 840,
         "y": 180,
         "wires": [
             [
@@ -331,8 +331,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 850,
-        "y": 320,
+        "x": 1030,
+        "y": 460,
         "wires": []
     },
     {
@@ -340,13 +340,13 @@
         "type": "function",
         "z": "0f058a7f547c3458",
         "name": "make metoffice_spot insert (sanitized)",
-        "func": "let keys = [\n    \"time\",\n    \"screenTemperature\",\n    \"maxScreenAirTemp\",\n    \"minScreenAirTemp\",\n    \"screenDewPointTemperature\",\n    \"feelsLikeTemperature\",\n    \"windSpeed10m\",\n    \"windDirectionFrom10m\",\n    \"windGustSpeed10m\",\n    \"max10mWindGust\",\n    \"visibility\",\n    \"screenRelativeHumidity\",\n    \"mslp\",\n    \"uvIndex\",\n    \"significantWeatherCode\",\n    \"precipitationRate\",\n    \"totalPrecipAmount\",\n    \"totalSnowAmount\",\n    \"probOfPrecipitation\"\n];\n\ndata = msg.payload.features[0].properties.timeSeries;\n\n// do sanitization\nfunction formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nfunction buildPayload(item) {\n    let payload = [formatTime(item.time)];\n    keys.filter(k => k != \"time\")\n        .forEach((k, i) => {\n            let val = item[k];\n            if (!Number.isFinite(val)) {\n                //throw Error(k + \" is not a number (\" + val + \")\");\n                val = -1; // dump an unphysical(ish) number\n            }\n            payload.push(val);\n        }\n    );\n    \n    return payload;\n}\n\nmsg.payload = data.map(item => buildPayload(item));\n\nmsg.topic = \"INSERT INTO metoffice_spot (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES \" + msg.payload.map(k=>\"(?)\").join(\", \") + \" ;\"\n ;\n\nreturn msg;",
+        "func": "let keys = [\n    \"time\",\n    \"screenTemperature\",\n    \"maxScreenAirTemp\",\n    \"minScreenAirTemp\",\n    \"screenDewPointTemperature\",\n    \"feelsLikeTemperature\",\n    \"windSpeed10m\",\n    \"windDirectionFrom10m\",\n    \"windGustSpeed10m\",\n    \"max10mWindGust\",\n    \"visibility\",\n    \"screenRelativeHumidity\",\n    \"mslp\",\n    \"uvIndex\",\n    \"significantWeatherCode\",\n    \"precipitationRate\",\n    \"totalPrecipAmount\",\n    \"totalSnowAmount\",\n    \"probOfPrecipitation\"\n];\n\ndata = msg.payload.features[0].properties.timeSeries;\n\n// do sanitization\nfunction formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nfunction buildPayload(item) {\n    let payload = [formatTime(item.time)];\n    keys.filter(k => k != \"time\")\n        .forEach((k, i) => {\n            let val = item[k];\n            if (!Number.isFinite(val)) {\n                //throw Error(k + \" is not a number (\" + val + \")\");\n                val = null;\n            }\n            payload.push(val);\n        }\n    );\n    \n    return payload;\n}\n\nmsg.payload = data.map(item => buildPayload(item));\n\nmsg.topic = \"INSERT INTO metoffice_spot (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES \" + msg.payload.map(k=>\"(?)\").join(\", \") + \" ;\"\n ;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 590,
+        "x": 890,
         "y": 220,
         "wires": [
             [
@@ -370,6 +370,153 @@
         "wires": [
             [
                 "6d438a7777ef90fa"
+            ]
+        ]
+    },
+    {
+        "id": "f4f4a5afa8d10c57",
+        "type": "http request",
+        "z": "0f058a7f547c3458",
+        "name": "OWM Weather",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 480,
+        "y": 340,
+        "wires": [
+            [
+                "fc28542c2b7cc484"
+            ]
+        ]
+    },
+    {
+        "id": "af6098234b0d4bd8",
+        "type": "change",
+        "z": "0f058a7f547c3458",
+        "name": "add ENV [OWM]",
+        "rules": [
+            {
+                "t": "set",
+                "p": "api_key",
+                "pt": "msg",
+                "to": "OPEN_WEATHER_API",
+                "tot": "env"
+            },
+            {
+                "t": "set",
+                "p": "latitude",
+                "pt": "msg",
+                "to": "LOCATION_LAT",
+                "tot": "env"
+            },
+            {
+                "t": "set",
+                "p": "longitude",
+                "pt": "msg",
+                "to": "LOCATION_LON",
+                "tot": "env"
+            },
+            {
+                "t": "set",
+                "p": "noParamNames",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 160,
+        "y": 320,
+        "wires": [
+            [
+                "affbb4ebfeab8fed"
+            ]
+        ]
+    },
+    {
+        "id": "41a2ad85c2f644d4",
+        "type": "inject",
+        "z": "0f058a7f547c3458",
+        "name": "fetch openWeather",
+        "props": [],
+        "repeat": "1800",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 140,
+        "y": 140,
+        "wires": [
+            [
+                "af6098234b0d4bd8"
+            ]
+        ]
+    },
+    {
+        "id": "affbb4ebfeab8fed",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "name": "assemble owm request",
+        "func": "\nlet url = \"api.openweathermap.org/data/2.5/weather\"\n    + \"?lat=\" + msg.latitude\n    + \"&lon=\" + msg.longitude\n    + \"&appid=\" + msg.api_key;\n\nmsg.url = url;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 360,
+        "wires": [
+            [
+                "f4f4a5afa8d10c57"
+            ]
+        ]
+    },
+    {
+        "id": "fc28542c2b7cc484",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "name": "strip all but payload",
+        "func": "let stripped_message = {\n    payload: msg.payload\n}\nreturn stripped_message;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 340,
+        "wires": [
+            [
+                "5c78d1c35893caaf"
+            ]
+        ]
+    },
+    {
+        "id": "5c78d1c35893caaf",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "name": "make openweather insert (sanitized)",
+        "func": "let keys = [\n    \"time\",\n    \"temperature\",\n    \"temperature_min\",\n    \"temperature_max\",\n    \"pressure\",\n    \"humidity\",\n    \"visibility\",\n    \"wind_speed\",\n    \"wind_deg\",\n    \"wind_gust\",\n    \"clouds\"\n];\n\ndata = msg.payload;\n\n// do sanitization\nfunction formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nfunction sanitize(v) {\n    if (!Number.isFinite(v)) {\n        return null;\n    }\n    return v;\n}\n\nfunction buildPayload(data) {\n    let payload = [formatTime(data.dt)];\n    \n    payload.push(sanitize(data.main.temp));\n    payload.push(sanitize(data.main.temp_min));\n    payload.push(sanitize(data.main.temp_max));\n    payload.push(sanitize(data.main.pressure));\n    payload.push(sanitize(data.main.humidity));\n    payload.push(sanitize(data[\"visibility\"]));\n    payload.push(sanitize(data.wind.speed));\n    payload.push(sanitize(data.wind.deg));\n    payload.push(sanitize(data.wind.gust));\n    payload.push(sanitize(data.clouds[\"all\"]));\n    \n    return payload;\n}\n\nmsg.payload = buildPayload(data);\n\nmsg.topic = \"INSERT INTO openweather_data (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES(\" + msg.payload.map(k=>\"?\").join(\", \") + \") ;\"\n ;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 260,
+        "wires": [
+            [
+                "38e0c3e53e36792a",
+                "522fe73aeb87ccf7"
             ]
         ]
     }
