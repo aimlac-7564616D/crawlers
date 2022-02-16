@@ -50,7 +50,7 @@
         "id": "a1c86bd095899ec8",
         "type": "MySQLdatabase",
         "name": "llanwrytd",
-        "host": "172.18.5.1",
+        "host": "aimlac-database",
         "port": "3306",
         "db": "llanwrytd",
         "tz": "",
