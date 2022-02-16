@@ -340,7 +340,7 @@
         "type": "function",
         "z": "0f058a7f547c3458",
         "name": "make metoffice_spot insert (sanitized)",
-        "func": "let keys = [\n    \"time\",\n    \"screenTemperature\",\n    \"maxScreenAirTemp\",\n    \"minScreenAirTemp\",\n    \"screenDewPointTemperature\",\n    \"feelsLikeTemperature\",\n    \"windSpeed10m\",\n    \"windDirectionFrom10m\",\n    \"windGustSpeed10m\",\n    \"max10mWindGust\",\n    \"visibility\",\n    \"screenRelativeHumidity\",\n    \"mslp\",\n    \"uvIndex\",\n    \"significantWeatherCode\",\n    \"precipitationRate\",\n    \"totalPrecipAmount\",\n    \"totalSnowAmount\",\n    \"probOfPrecipitation\"\n];\n\ndata = msg.payload.features[0].properties.timeSeries;\n\n// do sanitization\nfunction formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nfunction buildPayload(item) {\n    let payload = [formatTime(item.time)];\n    keys.filter(k => k != \"time\")\n        .forEach((k, i) => {\n            let val = item[k];\n            if (!Number.isFinite(val)) {\n                //throw Error(k + \" is not a number (\" + val + \")\");\n                val = null;\n            }\n            payload.push(val);\n        }\n    );\n    \n    return payload;\n}\n\nmsg.payload = data.map(item => buildPayload(item));\n\nmsg.topic = \"INSERT INTO metoffice_spot (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES \" + msg.payload.map(k=>\"(?)\").join(\", \") + \" ;\"\n ;\n\nreturn msg;",
+        "func": "let keys = [\n    \"time\",\n    \"screenTemperature\",\n    \"maxScreenAirTemp\",\n    \"minScreenAirTemp\",\n    \"screenDewPointTemperature\",\n    \"feelsLikeTemperature\",\n    \"windSpeed10m\",\n    \"windDirectionFrom10m\",\n    \"windGustSpeed10m\",\n    \"max10mWindGust\",\n    \"visibility\",\n    \"screenRelativeHumidity\",\n    \"mslp\",\n    \"uvIndex\",\n    \"significantWeatherCode\",\n    \"precipitationRate\",\n    \"totalPrecipAmount\",\n    \"totalSnowAmount\",\n    \"probOfPrecipitation\"\n];\n\ndata = msg.payload.features[0].properties.timeSeries;\n\n// do sanitization\nfunction formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nfunction buildPayload(item) {\n    let payload = [formatTime(item.time)];\n    keys.filter(k => k != \"time\")\n        .forEach((k, i) => {\n            let val = item[k];\n            if (!Number.isFinite(val)) {\n                //throw Error(k + \" is not a number (\" + val + \")\");\n                val = null;\n            }\n            payload.push(val);\n        }\n    );\n    \n    return payload;\n}\n\nmsg.payload = data.map(item => buildPayload(item));\n\nmsg.topic = \"INSERT INTO metoffice_spot (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES \" + msg.payload.map(k=>\"(?)\").join(\", \")\n + \"ON DUPLICATE KEY UPDATE \"\n + keys\n    .filter(k=>k != \"time\")\n    .map(k=>k + \"=VALUES(\"+ k + \")\").join(\", \")\n + \";\";\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -360,7 +360,7 @@
         "z": "0f058a7f547c3458",
         "name": "fetch MetOffice",
         "props": [],
-        "repeat": "43200",
+        "repeat": "21600",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
@@ -449,7 +449,7 @@
         "z": "0f058a7f547c3458",
         "name": "fetch openWeather",
         "props": [],
-        "repeat": "1800",
+        "repeat": "3600",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
@@ -505,7 +505,7 @@
         "type": "function",
         "z": "0f058a7f547c3458",
         "name": "make openweather insert (sanitized)",
-        "func": "let keys = [\n    \"time\",\n    \"temperature\",\n    \"temperature_min\",\n    \"temperature_max\",\n    \"pressure\",\n    \"humidity\",\n    \"visibility\",\n    \"wind_speed\",\n    \"wind_deg\",\n    \"wind_gust\",\n    \"clouds\"\n];\n\ndata = msg.payload;\n\n// do sanitization\nfunction formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nfunction sanitize(v) {\n    if (!Number.isFinite(v)) {\n        return null;\n    }\n    return v;\n}\n\nfunction buildPayload(data) {\n    let payload = [formatTime(data.dt)];\n    \n    payload.push(sanitize(data.main.temp));\n    payload.push(sanitize(data.main.temp_min));\n    payload.push(sanitize(data.main.temp_max));\n    payload.push(sanitize(data.main.pressure));\n    payload.push(sanitize(data.main.humidity));\n    payload.push(sanitize(data[\"visibility\"]));\n    payload.push(sanitize(data.wind.speed));\n    payload.push(sanitize(data.wind.deg));\n    payload.push(sanitize(data.wind.gust));\n    payload.push(sanitize(data.clouds[\"all\"]));\n    \n    return payload;\n}\n\nmsg.payload = buildPayload(data);\n\nmsg.topic = \"INSERT INTO openweather_data (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES(\" + msg.payload.map(k=>\"?\").join(\", \") + \") ;\"\n ;\n\nreturn msg;",
+        "func": "let keys = [\n    \"time\",\n    \"temperature\",\n    \"temperature_min\",\n    \"temperature_max\",\n    \"pressure\",\n    \"humidity\",\n    \"visibility\",\n    \"wind_speed\",\n    \"wind_deg\",\n    \"wind_gust\",\n    \"clouds\"\n];\n\ndata = msg.payload;\n\n// do sanitization\nfunction formatTime(t) {\n    // convert unix seconds to milis\n    var parsed_date = new Date(t * 1000);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nfunction sanitize(v) {\n    if (!Number.isFinite(v)) {\n        return null;\n    }\n    return v;\n}\n\nfunction buildPayload(data) {\n    let payload = [formatTime(data.dt)];\n    \n    payload.push(sanitize(data.main.temp));\n    payload.push(sanitize(data.main.temp_min));\n    payload.push(sanitize(data.main.temp_max));\n    payload.push(sanitize(data.main.pressure));\n    payload.push(sanitize(data.main.humidity));\n    payload.push(sanitize(data[\"visibility\"]));\n    payload.push(sanitize(data.wind.speed));\n    payload.push(sanitize(data.wind.deg));\n    payload.push(sanitize(data.wind.gust));\n    payload.push(sanitize(data.clouds[\"all\"]));\n    \n    return payload;\n}\n\nmsg.payload = buildPayload(data);\n\nmsg.topic = \"INSERT INTO openweather_data (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES(\" + msg.payload.map(k=>\"?\").join(\", \") + \") ;\"\n ;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -515,7 +515,6 @@
         "y": 260,
         "wires": [
             [
-                "38e0c3e53e36792a",
                 "522fe73aeb87ccf7"
             ]
         ]
