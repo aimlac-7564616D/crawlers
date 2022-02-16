@@ -8,6 +8,45 @@
         "env": []
     },
     {
+        "id": "4e86ad10d01e7a69",
+        "type": "group",
+        "z": "0f058a7f547c3458",
+        "name": "get postcode",
+        "style": {
+            "stroke": "#d1d1d1",
+            "label": true
+        },
+        "nodes": [
+            "6c4546f3e5619681",
+            "0f0a67995d4466cb",
+            "5d8439e5cea7949c"
+        ],
+        "x": 234,
+        "y": 499,
+        "w": 252,
+        "h": 162
+    },
+    {
+        "id": "a8dd6a9bd1b5b7e7",
+        "type": "group",
+        "z": "0f058a7f547c3458",
+        "name": "query co2 data",
+        "style": {
+            "label": true,
+            "stroke": "#d1d1d1"
+        },
+        "nodes": [
+            "7c4a746feef7e395",
+            "5b2f17b252887589",
+            "c740d05d4981138d",
+            "20b610e49e95e971"
+        ],
+        "x": 514,
+        "y": 459,
+        "w": 352,
+        "h": 202
+    },
+    {
         "id": "a1c86bd095899ec8",
         "type": "MySQLdatabase",
         "name": "llanwrytd",
@@ -513,6 +552,205 @@
         "libs": [],
         "x": 790,
         "y": 260,
+        "wires": [
+            [
+                "522fe73aeb87ccf7"
+            ]
+        ]
+    },
+    {
+        "id": "87f5753b77cb5821",
+        "type": "inject",
+        "z": "0f058a7f547c3458",
+        "name": "fetch CO2",
+        "props": [],
+        "repeat": "1800",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 110,
+        "y": 460,
+        "wires": [
+            [
+                "c0a79f25a32d9fba"
+            ]
+        ]
+    },
+    {
+        "id": "c0a79f25a32d9fba",
+        "type": "change",
+        "z": "0f058a7f547c3458",
+        "name": "add ENV [CO2]",
+        "rules": [
+            {
+                "t": "set",
+                "p": "latitude",
+                "pt": "msg",
+                "to": "LOCATION_LAT",
+                "tot": "env"
+            },
+            {
+                "t": "set",
+                "p": "longitude",
+                "pt": "msg",
+                "to": "LOCATION_LON",
+                "tot": "env"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 460,
+        "wires": [
+            [
+                "0f0a67995d4466cb"
+            ]
+        ]
+    },
+    {
+        "id": "6c4546f3e5619681",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "g": "4e86ad10d01e7a69",
+        "name": "extract postcode",
+        "func": "let postcode = msg.payload\n.data\n.relationships\n.nearest_postcode\n.data\n.id\n.split(\" \")[0];\n\n// clean-up\nreturn {\n    postcode: postcode\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 620,
+        "wires": [
+            [
+                "7c4a746feef7e395"
+            ]
+        ]
+    },
+    {
+        "id": "0f0a67995d4466cb",
+        "type": "template",
+        "z": "0f058a7f547c3458",
+        "g": "4e86ad10d01e7a69",
+        "name": "postcode API",
+        "field": "url",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "https://findthatpostcode.uk/points/{{latitude}},{{longitude}}.json",
+        "output": "str",
+        "x": 360,
+        "y": 540,
+        "wires": [
+            [
+                "5d8439e5cea7949c"
+            ]
+        ]
+    },
+    {
+        "id": "5d8439e5cea7949c",
+        "type": "http request",
+        "z": "0f058a7f547c3458",
+        "g": "4e86ad10d01e7a69",
+        "name": "findthatpostcode.uk",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 360,
+        "y": 580,
+        "wires": [
+            [
+                "6c4546f3e5619681"
+            ]
+        ]
+    },
+    {
+        "id": "7c4a746feef7e395",
+        "type": "template",
+        "z": "0f058a7f547c3458",
+        "g": "a8dd6a9bd1b5b7e7",
+        "name": "carbonintensity API",
+        "field": "url",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "https://api.carbonintensity.org.uk/regional/postcode/{{postcode}}",
+        "output": "str",
+        "x": 670,
+        "y": 500,
+        "wires": [
+            [
+                "5b2f17b252887589"
+            ]
+        ]
+    },
+    {
+        "id": "5b2f17b252887589",
+        "type": "http request",
+        "z": "0f058a7f547c3458",
+        "g": "a8dd6a9bd1b5b7e7",
+        "name": "CO2 API",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 680,
+        "y": 540,
+        "wires": [
+            [
+                "c740d05d4981138d"
+            ]
+        ]
+    },
+    {
+        "id": "c740d05d4981138d",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "g": "a8dd6a9bd1b5b7e7",
+        "name": "strip all but payload",
+        "func": "let stripped_message = {\n    payload: msg.payload\n}\nreturn stripped_message;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 580,
+        "wires": [
+            [
+                "20b610e49e95e971"
+            ]
+        ]
+    },
+    {
+        "id": "20b610e49e95e971",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "g": "a8dd6a9bd1b5b7e7",
+        "name": "make carbon_dioxide insert (sanitized)",
+        "func": "// do sanitization\nfunction formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nlet data = msg.payload.data[0];\n\nmsg.payload = [\n    formatTime(data.data[0].to),\n    data.data[0].intensity.forecast,\n    data.data[0].intensity.index,\n    data.shortname,\n];\n\nlet keys = [\n    \"time\",\n    \"intensity\",\n    \"index\",\n    \"location\",\n];\ndata.data[0].generationmix.forEach((v, i) => {\n   keys.push(`fuel_${v.fuel}`);\n   msg.payload.push(v.perc);\n});\n\nmsg.topic = `INSERT INTO carbon_dioxide\n(\\`${keys.join(\"\\`, \\`\")}\\`)\nVALUES (${keys.map(() => \"?\").join(\", \")})`;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 620,
         "wires": [
             [
                 "522fe73aeb87ccf7"
