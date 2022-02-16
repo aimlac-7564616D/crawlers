@@ -743,7 +743,7 @@
         "z": "0f058a7f547c3458",
         "g": "a8dd6a9bd1b5b7e7",
         "name": "make carbon_dioxide insert (sanitized)",
-        "func": "// do sanitization\nfunction formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nlet data = msg.payload.data[0];\n\nmsg.payload = [\n    formatTime(data.data[0].to),\n    data.data[0].intensity.forecast,\n    data.data[0].intensity.index,\n    data.shortname,\n];\n\nlet keys = [\n    \"time\",\n    \"intensity\",\n    \"index\",\n    \"location\",\n];\ndata.data[0].generationmix.forEach((v, i) => {\n   keys.push(`fuel_${v.fuel}`);\n   msg.payload.push(v.perc);\n});\n\nmsg.topic = `INSERT INTO carbon_dioxide\n(\\`${keys.join(\"\\`, \\`\")}\\`)\nVALUES (${keys.map(() => \"?\").join(\", \")})`;\n\nreturn msg;",
+        "func": "// do sanitization\nfunction formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nlet data = msg.payload.data[0];\n\nmsg.payload = [\n    formatTime(data.data[0].to),\n    data.data[0].intensity.forecast,\n    data.data[0].intensity.index,\n    data.shortname,\n];\n\nlet keys = [\n    \"time\",\n    \"intensity\",\n    \"indicator\",\n    \"location\",\n];\ndata.data[0].generationmix.forEach((v, i) => {\n   keys.push(`fuel_${v.fuel}`);\n   msg.payload.push(v.perc);\n});\n\nmsg.topic = `INSERT INTO carbon_dioxide\n(\\`${keys.join(\"\\`, \\`\")}\\`)\nVALUES (${keys.map(() => \"?\").join(\", \")})`;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
