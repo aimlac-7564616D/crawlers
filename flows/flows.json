@@ -111,7 +111,7 @@
         "authType": "",
         "senderr": false,
         "x": 510,
-        "y": 100,
+        "y": 120,
         "wires": [
             [
                 "f832e3d01d480950"
@@ -130,7 +130,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 170,
-        "y": 140,
+        "y": 120,
         "wires": [
             [
                 "307ab4e6f668b177"
@@ -153,7 +153,7 @@
         "authType": "",
         "senderr": false,
         "x": 810,
-        "y": 20,
+        "y": 40,
         "wires": [
             []
         ]
@@ -187,7 +187,7 @@
         "template": "http://{{AIMLAC_RSE_ADDR}}/sim/llanwrtyd-wells",
         "output": "str",
         "x": 560,
-        "y": 60,
+        "y": 80,
         "wires": [
             [
                 "4c8a4750891f7844",
@@ -207,7 +207,7 @@
         "template": "{{url}}/30m-average-power",
         "output": "str",
         "x": 790,
-        "y": 60,
+        "y": 80,
         "wires": [
             [
                 "6fa52c2549c15f6c"
@@ -290,7 +290,7 @@
         "to": "",
         "reg": false,
         "x": 340,
-        "y": 60,
+        "y": 80,
         "wires": [
             [
                 "e1d07ecec1d5ae7a"
@@ -304,7 +304,7 @@
         "name": "needs timestamp",
         "info": "",
         "x": 580,
-        "y": 20,
+        "y": 40,
         "wires": []
     },
     {
@@ -331,7 +331,7 @@
         "finalize": "",
         "libs": [],
         "x": 760,
-        "y": 100,
+        "y": 120,
         "wires": [
             [
                 "522fe73aeb87ccf7"
@@ -366,8 +366,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 150,
-        "y": 240,
+        "x": 190,
+        "y": 220,
         "wires": [
             [
                 "6d438a7777ef90fa"
@@ -458,7 +458,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 140,
-        "y": 300,
+        "y": 380,
         "wires": [
             [
                 "af6098234b0d4bd8"
