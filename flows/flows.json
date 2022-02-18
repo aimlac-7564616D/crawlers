@@ -21,8 +21,8 @@
             "0f0a67995d4466cb",
             "5d8439e5cea7949c"
         ],
-        "x": 234,
-        "y": 499,
+        "x": 114,
+        "y": 659,
         "w": 252,
         "h": 162
     },
@@ -41,10 +41,50 @@
             "c740d05d4981138d",
             "20b610e49e95e971"
         ],
-        "x": 514,
-        "y": 459,
+        "x": 394,
+        "y": 599,
         "w": 352,
         "h": 202
+    },
+    {
+        "id": "7ea522c95e2a8526",
+        "type": "group",
+        "z": "0f058a7f547c3458",
+        "name": "Open Weather Map",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "af6098234b0d4bd8",
+            "affbb4ebfeab8fed",
+            "f4f4a5afa8d10c57",
+            "fc28542c2b7cc484",
+            "5c78d1c35893caaf"
+        ],
+        "x": 254,
+        "y": 359,
+        "w": 452,
+        "h": 222
+    },
+    {
+        "id": "fa442aa2167cc59e",
+        "type": "group",
+        "z": "0f058a7f547c3458",
+        "name": "Met Office",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "6d438a7777ef90fa",
+            "12e7d34356a8a186",
+            "67b87407f16763d3",
+            "be9abe3da5580fa2",
+            "9ca09eb79f9ea5cc"
+        ],
+        "x": 314,
+        "y": 159,
+        "w": 432,
+        "h": 182
     },
     {
         "id": "a1c86bd095899ec8",
@@ -70,8 +110,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 610,
-        "y": 140,
+        "x": 510,
+        "y": 100,
         "wires": [
             [
                 "f832e3d01d480950"
@@ -90,7 +130,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 170,
-        "y": 60,
+        "y": 140,
         "wires": [
             [
                 "307ab4e6f668b177"
@@ -113,7 +153,7 @@
         "authType": "",
         "senderr": false,
         "x": 810,
-        "y": 60,
+        "y": 20,
         "wires": [
             []
         ]
@@ -147,30 +187,11 @@
         "template": "http://{{AIMLAC_RSE_ADDR}}/sim/llanwrtyd-wells",
         "output": "str",
         "x": 560,
-        "y": 100,
+        "y": 60,
         "wires": [
             [
                 "4c8a4750891f7844",
                 "f35df1df4852048f"
-            ]
-        ]
-    },
-    {
-        "id": "be9abe3da5580fa2",
-        "type": "function",
-        "z": "0f058a7f547c3458",
-        "name": "strip all but payload",
-        "func": "let stripped_message = {\n    payload: msg.payload\n}\nreturn stripped_message;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 610,
-        "y": 220,
-        "wires": [
-            [
-                "9ca09eb79f9ea5cc"
             ]
         ]
     },
@@ -186,7 +207,7 @@
         "template": "{{url}}/30m-average-power",
         "output": "str",
         "x": 790,
-        "y": 100,
+        "y": 60,
         "wires": [
             [
                 "6fa52c2549c15f6c"
@@ -194,50 +215,10 @@
         ]
     },
     {
-        "id": "12e7d34356a8a186",
-        "type": "function",
-        "z": "0f058a7f547c3458",
-        "name": "assemble met request",
-        "func": "let headers = {\n    \"X-IBM-Client-Id\": msg.api_key,\n    \"X-IBM-Client-Secret\": msg.secret_key,\n    \"accept\": \"application/json\"\n};\n\nlet url = \"https://rgw.5878-e94b1c46.eu-gb.apiconnect.appdomain.cloud\"\n+ \"/metoffice/production/v0/forecasts/point/hourly\"\n+ \"?excludeParameterMetadata=\"+msg.noParamNames\n+ \"&includeLocationName=true\"\n+ \"&latitude=\"+msg.latitude+\"&longitude=\"+msg.longitude;\n\nmsg.url = url;\nmsg.headers = headers;\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 360,
-        "y": 260,
-        "wires": [
-            [
-                "67b87407f16763d3"
-            ]
-        ]
-    },
-    {
-        "id": "67b87407f16763d3",
-        "type": "http request",
-        "z": "0f058a7f547c3458",
-        "name": "MetOffice Spot",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "authType": "",
-        "senderr": false,
-        "x": 480,
-        "y": 300,
-        "wires": [
-            [
-                "be9abe3da5580fa2"
-            ]
-        ]
-    },
-    {
         "id": "6d438a7777ef90fa",
         "type": "change",
         "z": "0f058a7f547c3458",
+        "g": "fa442aa2167cc59e",
         "name": "add ENV [MET]",
         "rules": [
             {
@@ -281,8 +262,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 340,
-        "y": 100,
+        "x": 420,
+        "y": 200,
         "wires": [
             [
                 "12e7d34356a8a186"
@@ -323,7 +304,7 @@
         "name": "needs timestamp",
         "info": "",
         "x": 580,
-        "y": 60,
+        "y": 20,
         "wires": []
     },
     {
@@ -332,8 +313,8 @@
         "z": "0f058a7f547c3458",
         "mydb": "a1c86bd095899ec8",
         "name": "LLanwrytd DB",
-        "x": 1120,
-        "y": 320,
+        "x": 1060,
+        "y": 220,
         "wires": [
             []
         ]
@@ -349,8 +330,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 840,
-        "y": 180,
+        "x": 760,
+        "y": 100,
         "wires": [
             [
                 "522fe73aeb87ccf7"
@@ -375,25 +356,6 @@
         "wires": []
     },
     {
-        "id": "9ca09eb79f9ea5cc",
-        "type": "function",
-        "z": "0f058a7f547c3458",
-        "name": "make metoffice_spot insert (sanitized)",
-        "func": "let keys = [\n    \"time\",\n    \"screenTemperature\",\n    \"maxScreenAirTemp\",\n    \"minScreenAirTemp\",\n    \"screenDewPointTemperature\",\n    \"feelsLikeTemperature\",\n    \"windSpeed10m\",\n    \"windDirectionFrom10m\",\n    \"windGustSpeed10m\",\n    \"max10mWindGust\",\n    \"visibility\",\n    \"screenRelativeHumidity\",\n    \"mslp\",\n    \"uvIndex\",\n    \"significantWeatherCode\",\n    \"precipitationRate\",\n    \"totalPrecipAmount\",\n    \"totalSnowAmount\",\n    \"probOfPrecipitation\"\n];\n\ndata = msg.payload.features[0].properties.timeSeries;\n\n// do sanitization\nfunction formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nfunction buildPayload(item) {\n    let payload = [formatTime(item.time)];\n    keys.filter(k => k != \"time\")\n        .forEach((k, i) => {\n            let val = item[k];\n            if (!Number.isFinite(val)) {\n                //throw Error(k + \" is not a number (\" + val + \")\");\n                val = null;\n            }\n            payload.push(val);\n        }\n    );\n    \n    return payload;\n}\n\nmsg.payload = data.map(item => buildPayload(item));\n\nmsg.topic = \"INSERT INTO metoffice_spot (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES \" + msg.payload.map(k=>\"(?)\").join(\", \")\n + \"ON DUPLICATE KEY UPDATE \"\n + keys\n    .filter(k=>k != \"time\")\n    .map(k=>k + \"=VALUES(\"+ k + \")\").join(\", \")\n + \";\";\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 890,
-        "y": 220,
-        "wires": [
-            [
-                "522fe73aeb87ccf7"
-            ]
-        ]
-    },
-    {
         "id": "725fb307c65c8a17",
         "type": "inject",
         "z": "0f058a7f547c3458",
@@ -405,7 +367,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 150,
-        "y": 100,
+        "y": 240,
         "wires": [
             [
                 "6d438a7777ef90fa"
@@ -416,6 +378,7 @@
         "id": "f4f4a5afa8d10c57",
         "type": "http request",
         "z": "0f058a7f547c3458",
+        "g": "7ea522c95e2a8526",
         "name": "OWM Weather",
         "method": "GET",
         "ret": "obj",
@@ -426,8 +389,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 480,
-        "y": 340,
+        "x": 360,
+        "y": 480,
         "wires": [
             [
                 "fc28542c2b7cc484"
@@ -438,6 +401,7 @@
         "id": "af6098234b0d4bd8",
         "type": "change",
         "z": "0f058a7f547c3458",
+        "g": "7ea522c95e2a8526",
         "name": "add ENV [OWM]",
         "rules": [
             {
@@ -474,8 +438,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 160,
-        "y": 320,
+        "x": 360,
+        "y": 400,
         "wires": [
             [
                 "affbb4ebfeab8fed"
@@ -494,7 +458,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 140,
-        "y": 140,
+        "y": 300,
         "wires": [
             [
                 "af6098234b0d4bd8"
@@ -505,6 +469,7 @@
         "id": "affbb4ebfeab8fed",
         "type": "function",
         "z": "0f058a7f547c3458",
+        "g": "7ea522c95e2a8526",
         "name": "assemble owm request",
         "func": "\nlet url = \"api.openweathermap.org/data/2.5/weather\"\n    + \"?lat=\" + msg.latitude\n    + \"&lon=\" + msg.longitude\n    + \"&appid=\" + msg.api_key;\n\nmsg.url = url;\n\nreturn msg;",
         "outputs": 1,
@@ -512,8 +477,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 250,
-        "y": 360,
+        "x": 390,
+        "y": 440,
         "wires": [
             [
                 "f4f4a5afa8d10c57"
@@ -524,6 +489,7 @@
         "id": "fc28542c2b7cc484",
         "type": "function",
         "z": "0f058a7f547c3458",
+        "g": "7ea522c95e2a8526",
         "name": "strip all but payload",
         "func": "let stripped_message = {\n    payload: msg.payload\n}\nreturn stripped_message;",
         "outputs": 1,
@@ -531,8 +497,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 670,
-        "y": 340,
+        "x": 570,
+        "y": 480,
         "wires": [
             [
                 "5c78d1c35893caaf"
@@ -543,6 +509,7 @@
         "id": "5c78d1c35893caaf",
         "type": "function",
         "z": "0f058a7f547c3458",
+        "g": "7ea522c95e2a8526",
         "name": "make openweather insert (sanitized)",
         "func": "let keys = [\n    \"time\",\n    \"temperature\",\n    \"temperature_min\",\n    \"temperature_max\",\n    \"pressure\",\n    \"humidity\",\n    \"visibility\",\n    \"wind_speed\",\n    \"wind_deg\",\n    \"wind_gust\",\n    \"clouds\"\n];\n\ndata = msg.payload;\n\n// do sanitization\nfunction formatTime(t) {\n    // convert unix seconds to milis\n    var parsed_date = new Date(t * 1000);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nfunction sanitize(v) {\n    if (!Number.isFinite(v)) {\n        return null;\n    }\n    return v;\n}\n\nfunction buildPayload(data) {\n    let payload = [formatTime(data.dt)];\n    \n    payload.push(sanitize(data.main.temp));\n    payload.push(sanitize(data.main.temp_min));\n    payload.push(sanitize(data.main.temp_max));\n    payload.push(sanitize(data.main.pressure));\n    payload.push(sanitize(data.main.humidity));\n    payload.push(sanitize(data[\"visibility\"]));\n    payload.push(sanitize(data.wind.speed));\n    payload.push(sanitize(data.wind.deg));\n    payload.push(sanitize(data.wind.gust));\n    payload.push(sanitize(data.clouds[\"all\"]));\n    \n    return payload;\n}\n\nmsg.payload = buildPayload(data);\n\nmsg.topic = \"INSERT INTO openweather_data (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES(\" + msg.payload.map(k=>\"?\").join(\", \") + \") ;\"\n ;\n\nreturn msg;",
         "outputs": 1,
@@ -550,8 +517,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 790,
-        "y": 260,
+        "x": 530,
+        "y": 540,
         "wires": [
             [
                 "522fe73aeb87ccf7"
@@ -603,8 +570,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 320,
-        "y": 460,
+        "x": 240,
+        "y": 620,
         "wires": [
             [
                 "0f0a67995d4466cb"
@@ -623,8 +590,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 370,
-        "y": 620,
+        "x": 250,
+        "y": 780,
         "wires": [
             [
                 "7c4a746feef7e395"
@@ -643,8 +610,8 @@
         "syntax": "mustache",
         "template": "https://findthatpostcode.uk/points/{{latitude}},{{longitude}}.json",
         "output": "str",
-        "x": 360,
-        "y": 540,
+        "x": 240,
+        "y": 700,
         "wires": [
             [
                 "5d8439e5cea7949c"
@@ -666,8 +633,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 360,
-        "y": 580,
+        "x": 240,
+        "y": 740,
         "wires": [
             [
                 "6c4546f3e5619681"
@@ -686,8 +653,8 @@
         "syntax": "mustache",
         "template": "https://api.carbonintensity.org.uk/regional/postcode/{{postcode}}",
         "output": "str",
-        "x": 670,
-        "y": 500,
+        "x": 550,
+        "y": 640,
         "wires": [
             [
                 "5b2f17b252887589"
@@ -709,8 +676,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 680,
-        "y": 540,
+        "x": 560,
+        "y": 680,
         "wires": [
             [
                 "c740d05d4981138d"
@@ -729,8 +696,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 690,
-        "y": 580,
+        "x": 570,
+        "y": 720,
         "wires": [
             [
                 "20b610e49e95e971"
@@ -749,8 +716,91 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 690,
-        "y": 620,
+        "x": 570,
+        "y": 760,
+        "wires": [
+            [
+                "522fe73aeb87ccf7"
+            ]
+        ]
+    },
+    {
+        "id": "12e7d34356a8a186",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "g": "fa442aa2167cc59e",
+        "name": "assemble met request",
+        "func": "let headers = {\n    \"X-IBM-Client-Id\": msg.api_key,\n    \"X-IBM-Client-Secret\": msg.secret_key,\n    \"accept\": \"application/json\"\n};\n\nlet url = \"https://rgw.5878-e94b1c46.eu-gb.apiconnect.appdomain.cloud\"\n+ \"/metoffice/production/v0/forecasts/point/hourly\"\n+ \"?excludeParameterMetadata=\"+msg.noParamNames\n+ \"&includeLocationName=true\"\n+ \"&latitude=\"+msg.latitude+\"&longitude=\"+msg.longitude;\n\nmsg.url = url;\nmsg.headers = headers;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 200,
+        "wires": [
+            [
+                "67b87407f16763d3"
+            ]
+        ]
+    },
+    {
+        "id": "67b87407f16763d3",
+        "type": "http request",
+        "z": "0f058a7f547c3458",
+        "g": "fa442aa2167cc59e",
+        "name": "MetOffice Spot",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 420,
+        "y": 240,
+        "wires": [
+            [
+                "be9abe3da5580fa2"
+            ]
+        ]
+    },
+    {
+        "id": "be9abe3da5580fa2",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "g": "fa442aa2167cc59e",
+        "name": "strip all but payload",
+        "func": "let stripped_message = {\n    payload: msg.payload\n}\nreturn stripped_message;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 240,
+        "wires": [
+            [
+                "9ca09eb79f9ea5cc"
+            ]
+        ]
+    },
+    {
+        "id": "9ca09eb79f9ea5cc",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "g": "fa442aa2167cc59e",
+        "name": "make metoffice_spot insert (sanitized)",
+        "func": "let keys = [\n    \"time\",\n    \"screenTemperature\",\n    \"maxScreenAirTemp\",\n    \"minScreenAirTemp\",\n    \"screenDewPointTemperature\",\n    \"feelsLikeTemperature\",\n    \"windSpeed10m\",\n    \"windDirectionFrom10m\",\n    \"windGustSpeed10m\",\n    \"max10mWindGust\",\n    \"visibility\",\n    \"screenRelativeHumidity\",\n    \"mslp\",\n    \"uvIndex\",\n    \"significantWeatherCode\",\n    \"precipitationRate\",\n    \"totalPrecipAmount\",\n    \"totalSnowAmount\",\n    \"probOfPrecipitation\"\n];\n\ndata = msg.payload.features[0].properties.timeSeries;\n\n// do sanitization\nfunction formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nfunction buildPayload(item) {\n    let payload = [formatTime(item.time)];\n    keys.filter(k => k != \"time\")\n        .forEach((k, i) => {\n            let val = item[k];\n            if (!Number.isFinite(val)) {\n                //throw Error(k + \" is not a number (\" + val + \")\");\n                val = null;\n            }\n            payload.push(val);\n        }\n    );\n    \n    return payload;\n}\n\nmsg.payload = data.map(item => buildPayload(item));\n\nmsg.topic = \"INSERT INTO metoffice_spot (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES \" + msg.payload.map(k=>\"(?)\").join(\", \")\n + \"ON DUPLICATE KEY UPDATE \"\n + keys\n    .filter(k=>k != \"time\")\n    .map(k=>k + \"=VALUES(\"+ k + \")\").join(\", \")\n + \";\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 300,
         "wires": [
             [
                 "522fe73aeb87ccf7"
