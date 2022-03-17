@@ -19,12 +19,13 @@
         "nodes": [
             "6c4546f3e5619681",
             "0f0a67995d4466cb",
-            "5d8439e5cea7949c"
+            "5d8439e5cea7949c",
+            "c0a79f25a32d9fba"
         ],
-        "x": 114,
-        "y": 659,
+        "x": 314,
+        "y": 779,
         "w": 252,
-        "h": 162
+        "h": 202
     },
     {
         "id": "a8dd6a9bd1b5b7e7",
@@ -41,8 +42,8 @@
             "c740d05d4981138d",
             "20b610e49e95e971"
         ],
-        "x": 394,
-        "y": 599,
+        "x": 574,
+        "y": 779,
         "w": 352,
         "h": 202
     },
@@ -61,8 +62,8 @@
             "fc28542c2b7cc484",
             "5c78d1c35893caaf"
         ],
-        "x": 254,
-        "y": 359,
+        "x": 314,
+        "y": 539,
         "w": 452,
         "h": 222
     },
@@ -82,8 +83,49 @@
             "9ca09eb79f9ea5cc"
         ],
         "x": 314,
-        "y": 159,
+        "y": 319,
         "w": 432,
+        "h": 182
+    },
+    {
+        "id": "69a3c6c3661dff85",
+        "type": "group",
+        "z": "0f058a7f547c3458",
+        "name": "RSE",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "4c8a4750891f7844",
+            "6fa52c2549c15f6c",
+            "e1d07ecec1d5ae7a",
+            "f35df1df4852048f",
+            "307ab4e6f668b177",
+            "0d66c11f180e1295",
+            "f832e3d01d480950"
+        ],
+        "x": 454,
+        "y": 39,
+        "w": 732,
+        "h": 162
+    },
+    {
+        "id": "d98ee0125271d322",
+        "type": "group",
+        "z": "0f058a7f547c3458",
+        "name": "SLIMJAB Solar & Wind Power Predictions",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "774949dcd02f25c9",
+            "ee669a19c9f4527a",
+            "3d92c97f493bb373",
+            "36c1a732c8c8b7a4"
+        ],
+        "x": 814,
+        "y": 239,
+        "w": 392,
         "h": 182
     },
     {
@@ -100,6 +142,7 @@
         "id": "4c8a4750891f7844",
         "type": "http request",
         "z": "0f058a7f547c3458",
+        "g": "69a3c6c3661dff85",
         "name": "Llanwrtyd Power",
         "method": "GET",
         "ret": "obj",
@@ -110,8 +153,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 510,
-        "y": 120,
+        "x": 730,
+        "y": 160,
         "wires": [
             [
                 "f832e3d01d480950"
@@ -124,12 +167,12 @@
         "z": "0f058a7f547c3458",
         "name": "fetch RSE",
         "props": [],
-        "repeat": "1800",
+        "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 170,
+        "x": 160,
         "y": 120,
         "wires": [
             [
@@ -142,6 +185,7 @@
         "type": "http request",
         "z": "0f058a7f547c3458",
         "d": true,
+        "g": "69a3c6c3661dff85",
         "name": "Llanwrtyd 30m Average Power",
         "method": "GET",
         "ret": "txt",
@@ -152,8 +196,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 810,
-        "y": 40,
+        "x": 1030,
+        "y": 80,
         "wires": [
             []
         ]
@@ -167,18 +211,19 @@
         "tosidebar": true,
         "console": false,
         "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
+        "complete": "payload",
+        "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1050,
-        "y": 420,
+        "x": 1510,
+        "y": 520,
         "wires": []
     },
     {
         "id": "e1d07ecec1d5ae7a",
         "type": "template",
         "z": "0f058a7f547c3458",
+        "g": "69a3c6c3661dff85",
         "name": "make url",
         "field": "url",
         "fieldType": "msg",
@@ -186,8 +231,8 @@
         "syntax": "mustache",
         "template": "http://{{AIMLAC_RSE_ADDR}}/sim/llanwrtyd-wells",
         "output": "str",
-        "x": 560,
-        "y": 80,
+        "x": 780,
+        "y": 120,
         "wires": [
             [
                 "4c8a4750891f7844",
@@ -199,6 +244,7 @@
         "id": "f35df1df4852048f",
         "type": "template",
         "z": "0f058a7f547c3458",
+        "g": "69a3c6c3661dff85",
         "name": "append destination",
         "field": "url",
         "fieldType": "msg",
@@ -206,8 +252,8 @@
         "syntax": "mustache",
         "template": "{{url}}/30m-average-power",
         "output": "str",
-        "x": 790,
-        "y": 80,
+        "x": 1010,
+        "y": 120,
         "wires": [
             [
                 "6fa52c2549c15f6c"
@@ -263,7 +309,7 @@
         "to": "",
         "reg": false,
         "x": 420,
-        "y": 200,
+        "y": 360,
         "wires": [
             [
                 "12e7d34356a8a186"
@@ -274,6 +320,7 @@
         "id": "307ab4e6f668b177",
         "type": "change",
         "z": "0f058a7f547c3458",
+        "g": "69a3c6c3661dff85",
         "name": "add ENV [RSE]",
         "rules": [
             {
@@ -289,8 +336,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 340,
-        "y": 80,
+        "x": 560,
+        "y": 120,
         "wires": [
             [
                 "e1d07ecec1d5ae7a"
@@ -301,28 +348,18 @@
         "id": "0d66c11f180e1295",
         "type": "comment",
         "z": "0f058a7f547c3458",
+        "g": "69a3c6c3661dff85",
         "name": "needs timestamp",
         "info": "",
-        "x": 580,
-        "y": 40,
+        "x": 800,
+        "y": 80,
         "wires": []
-    },
-    {
-        "id": "522fe73aeb87ccf7",
-        "type": "mysql",
-        "z": "0f058a7f547c3458",
-        "mydb": "a1c86bd095899ec8",
-        "name": "LLanwrytd DB",
-        "x": 1060,
-        "y": 220,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "f832e3d01d480950",
         "type": "function",
         "z": "0f058a7f547c3458",
+        "g": "69a3c6c3661dff85",
         "name": "assemble onsite insert (sanitized)",
         "func": "\nmsg.topic = \"INSERT INTO energy_onsite (\"\n        + \"`time`, `hq_power`, `hq_temperature`, `computing_center`, `solar`, `wind1`, `wind2`, `wind3`, `wind4`, `windA`, `windB`\"\n    + \") VALUES (\"\n        + \":timedate, :hq_power, :hq_temperature, :computing_center, :solar, :wind1, :wind2, :wind3, :wind4, :windA, :windB\"\n    + \");\";\n\nvar data = msg.payload.elements;\nvar payload = {};\n\npayload.solar = data[\"Llanwrtyd Wells - Solar Generator\"].power;\npayload.wind1 = data[\"Llanwrtyd Wells - Wind Generator 1\"].power;\npayload.wind2 = data[\"Llanwrtyd Wells - Wind Generator 2\"].power;\npayload.wind3 = data[\"Llanwrtyd Wells - Wind Generator 3\"].power;\npayload.wind4 = data[\"Llanwrtyd Wells - Wind Generator 4\"].power;\npayload.windA = data[\"Llanwrtyd Wells - Wind Generator A\"].power;\npayload.windB = data[\"Llanwrtyd Wells - Wind Generator B\"].power;\n\npayload.hq_power = data[\"AIMLAC HQ Llanwrtyd Wells\"].power;\npayload.hq_temperature = data[\"AIMLAC HQ Llanwrtyd Wells\"].temperature;\npayload.computing_center = data[\"Llanwrtyd Wells - Computing Centre\"].power;\n\npayload.timedate = msg.payload.timedate;\n\n// do sanitization\nObject.keys(payload)\n    .filter(k => k != \"timedate\" )\n    .forEach((k, i) => {\n        var val = payload[k];\n        if ( !Number.isFinite(val) ) {\n            throw Error(k + \" is not a number (\" + val + \")\");\n        }\n    });\n\nvar parsed_date = new Date(payload.timedate);\nif ( isNaN(parsed_date.valueOf()) ) {\n    throw Error(\"Invalid date \", msg.payload.timedate);\n}\n\npayload.timedate = parsed_date;\n\n// overwrite payload\nmsg.payload = payload;\n\nreturn msg;\n",
         "outputs": 1,
@@ -330,8 +367,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 760,
-        "y": 120,
+        "x": 980,
+        "y": 160,
         "wires": [
             [
                 "522fe73aeb87ccf7"
@@ -351,8 +388,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1030,
-        "y": 460,
+        "x": 1490,
+        "y": 560,
         "wires": []
     },
     {
@@ -361,13 +398,13 @@
         "z": "0f058a7f547c3458",
         "name": "fetch MetOffice",
         "props": [],
-        "repeat": "21600",
+        "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 190,
-        "y": 220,
+        "x": 140,
+        "y": 360,
         "wires": [
             [
                 "6d438a7777ef90fa"
@@ -389,8 +426,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 360,
-        "y": 480,
+        "x": 420,
+        "y": 660,
         "wires": [
             [
                 "fc28542c2b7cc484"
@@ -438,8 +475,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 360,
-        "y": 400,
+        "x": 420,
+        "y": 580,
         "wires": [
             [
                 "affbb4ebfeab8fed"
@@ -452,13 +489,13 @@
         "z": "0f058a7f547c3458",
         "name": "fetch openWeather",
         "props": [],
-        "repeat": "3600",
+        "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 140,
-        "y": 380,
+        "x": 130,
+        "y": 580,
         "wires": [
             [
                 "af6098234b0d4bd8"
@@ -477,8 +514,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 390,
-        "y": 440,
+        "x": 450,
+        "y": 620,
         "wires": [
             [
                 "f4f4a5afa8d10c57"
@@ -497,8 +534,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 570,
-        "y": 480,
+        "x": 630,
+        "y": 660,
         "wires": [
             [
                 "5c78d1c35893caaf"
@@ -517,8 +554,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 530,
-        "y": 540,
+        "x": 590,
+        "y": 720,
         "wires": [
             [
                 "522fe73aeb87ccf7"
@@ -531,13 +568,13 @@
         "z": "0f058a7f547c3458",
         "name": "fetch CO2",
         "props": [],
-        "repeat": "1800",
+        "repeat": "",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 110,
-        "y": 460,
+        "x": 160,
+        "y": 820,
         "wires": [
             [
                 "c0a79f25a32d9fba"
@@ -548,6 +585,7 @@
         "id": "c0a79f25a32d9fba",
         "type": "change",
         "z": "0f058a7f547c3458",
+        "g": "4e86ad10d01e7a69",
         "name": "add ENV [CO2]",
         "rules": [
             {
@@ -570,8 +608,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 240,
-        "y": 620,
+        "x": 440,
+        "y": 820,
         "wires": [
             [
                 "0f0a67995d4466cb"
@@ -590,8 +628,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 250,
-        "y": 780,
+        "x": 450,
+        "y": 940,
         "wires": [
             [
                 "7c4a746feef7e395"
@@ -610,8 +648,8 @@
         "syntax": "mustache",
         "template": "https://findthatpostcode.uk/points/{{latitude}},{{longitude}}.json",
         "output": "str",
-        "x": 240,
-        "y": 700,
+        "x": 440,
+        "y": 860,
         "wires": [
             [
                 "5d8439e5cea7949c"
@@ -633,8 +671,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 240,
-        "y": 740,
+        "x": 440,
+        "y": 900,
         "wires": [
             [
                 "6c4546f3e5619681"
@@ -653,8 +691,8 @@
         "syntax": "mustache",
         "template": "https://api.carbonintensity.org.uk/regional/postcode/{{postcode}}",
         "output": "str",
-        "x": 550,
-        "y": 640,
+        "x": 730,
+        "y": 820,
         "wires": [
             [
                 "5b2f17b252887589"
@@ -676,8 +714,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 560,
-        "y": 680,
+        "x": 740,
+        "y": 860,
         "wires": [
             [
                 "c740d05d4981138d"
@@ -696,8 +734,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 570,
-        "y": 720,
+        "x": 750,
+        "y": 900,
         "wires": [
             [
                 "20b610e49e95e971"
@@ -716,8 +754,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 570,
-        "y": 760,
+        "x": 750,
+        "y": 940,
         "wires": [
             [
                 "522fe73aeb87ccf7"
@@ -737,7 +775,7 @@
         "finalize": "",
         "libs": [],
         "x": 620,
-        "y": 200,
+        "y": 360,
         "wires": [
             [
                 "67b87407f16763d3"
@@ -760,7 +798,7 @@
         "authType": "",
         "senderr": false,
         "x": 420,
-        "y": 240,
+        "y": 400,
         "wires": [
             [
                 "be9abe3da5580fa2"
@@ -780,10 +818,12 @@
         "finalize": "",
         "libs": [],
         "x": 610,
-        "y": 240,
+        "y": 400,
         "wires": [
             [
-                "9ca09eb79f9ea5cc"
+                "9ca09eb79f9ea5cc",
+                "ee669a19c9f4527a",
+                "774949dcd02f25c9"
             ]
         ]
     },
@@ -800,11 +840,123 @@
         "finalize": "",
         "libs": [],
         "x": 550,
-        "y": 300,
+        "y": 460,
         "wires": [
             [
                 "522fe73aeb87ccf7"
             ]
+        ]
+    },
+    {
+        "id": "774949dcd02f25c9",
+        "type": "http request",
+        "z": "0f058a7f547c3458",
+        "g": "d98ee0125271d322",
+        "name": "SLIMJAB Predict Solar",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://aimlac-models:5000/power/predict-solar",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 940,
+        "y": 320,
+        "wires": [
+            [
+                "3d92c97f493bb373"
+            ]
+        ]
+    },
+    {
+        "id": "ee669a19c9f4527a",
+        "type": "http request",
+        "z": "0f058a7f547c3458",
+        "g": "d98ee0125271d322",
+        "name": "SLIMJAB Predict Wind",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://aimlac-models:5000/power/predict-wind",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 940,
+        "y": 280,
+        "wires": [
+            [
+                "3d92c97f493bb373"
+            ]
+        ]
+    },
+    {
+        "id": "3d92c97f493bb373",
+        "type": "join",
+        "z": "0f058a7f547c3458",
+        "g": "d98ee0125271d322",
+        "name": "",
+        "mode": "custom",
+        "build": "array",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1130,
+        "y": 300,
+        "wires": [
+            [
+                "36c1a732c8c8b7a4"
+            ]
+        ]
+    },
+    {
+        "id": "36c1a732c8c8b7a4",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "g": "d98ee0125271d322",
+        "name": "make_predictions_insert",
+        "func": "const formatTime = (dt) => {\n    let parsedDate = new Date(dt);\n    if ( isNaN(parsedDate.valueOf()) )\n        throw Error(`Not a valid time ${dt}`)\n    return parsedDate\n}\n\nconst columns = [\n    \"time\",\n    \"WindSpeed\",\n    \"WindPower\",\n    \"SolarPower\"\n]\n\nconst payload = msg.payload\n\nmsg = {}\n\nmsg.topic = \"INSERT INTO powerPrediction (\"\n  + columns.map(str => \"`\" + str + \"`\").join(\", \") + \") \"\n  + \"VALUES \" + \"(?)\" + \", (?)\".repeat(payload[0].length - 1)\n  + \" ON DUPLICATE KEY UPDATE \"\n  + columns.map(str => str + \"=VALUES(\" + str + \")\").join(\", \")\n  + \";\"\n\nmsg.payload = _.zip(...payload).map(\n    ([part1, part2]) => {\n        let row = {\n            ...part1, ...part2,\n            // parse date\n            time: formatTime(part1.time),\n        }\n        return _.map(columns, _.propertyOf(row))\n    }\n)\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "_",
+                "module": "lodash"
+            }
+        ],
+        "x": 1010,
+        "y": 380,
+        "wires": [
+            [
+                "522fe73aeb87ccf7"
+            ]
+        ]
+    },
+    {
+        "id": "522fe73aeb87ccf7",
+        "type": "mysql",
+        "z": "0f058a7f547c3458",
+        "mydb": "a1c86bd095899ec8",
+        "name": "LLanwrytd DB",
+        "x": 1520,
+        "y": 460,
+        "wires": [
+            []
         ]
     }
 ]
