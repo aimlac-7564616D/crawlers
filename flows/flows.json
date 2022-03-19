@@ -22,8 +22,8 @@
             "5d8439e5cea7949c",
             "c0a79f25a32d9fba"
         ],
-        "x": 334,
-        "y": 859,
+        "x": 314,
+        "y": 679,
         "w": 252,
         "h": 202
     },
@@ -42,8 +42,8 @@
             "c740d05d4981138d",
             "20b610e49e95e971"
         ],
-        "x": 594,
-        "y": 859,
+        "x": 614,
+        "y": 679,
         "w": 352,
         "h": 202
     },
@@ -62,8 +62,8 @@
             "fc28542c2b7cc484",
             "5c78d1c35893caaf"
         ],
-        "x": 334,
-        "y": 619,
+        "x": 314,
+        "y": 439,
         "w": 452,
         "h": 222
     },
@@ -83,7 +83,7 @@
             "9ca09eb79f9ea5cc"
         ],
         "x": 334,
-        "y": 399,
+        "y": 239,
         "w": 432,
         "h": 182
     },
@@ -124,13 +124,13 @@
             "36c1a732c8c8b7a4",
             "ea32b36d176f4077"
         ],
-        "x": 834,
-        "y": 299,
+        "x": 814,
+        "y": 239,
         "w": 432,
         "h": 202
     },
     {
-        "id": "75d9b27bf4b9e104",
+        "id": "b45564346620469a",
         "type": "group",
         "z": "0f058a7f547c3458",
         "name": "elexon DERSY",
@@ -138,7 +138,6 @@
             "label": true
         },
         "nodes": [
-            "e29f299fc09a3a0f",
             "9034c5ccd78ebdb3",
             "61e2ea876b176903",
             "a754fd4dfbd224e1",
@@ -146,9 +145,48 @@
             "c233d75ae2b66cb4"
         ],
         "x": 374,
-        "y": 1079,
+        "y": 899,
         "w": 492,
-        "h": 202
+        "h": 162
+    },
+    {
+        "id": "5929de991841b390",
+        "type": "group",
+        "z": "0f058a7f547c3458",
+        "name": "elexon B1620",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "0a44bcc0fcc8afe0",
+            "8b71c527328e847f",
+            "65621fd6e8d96c38",
+            "b33754e6d4541ae2",
+            "03c66500e812feac"
+        ],
+        "x": 494,
+        "y": 1079,
+        "w": 432,
+        "h": 162
+    },
+    {
+        "id": "3098027ef4ebbe3f",
+        "type": "group",
+        "z": "0f058a7f547c3458",
+        "name": "elexon B0620",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "143618b45c3be7e7",
+            "d9fa19e58778435f",
+            "be083ffbe96bbb0a",
+            "27f03b5dfe4e3727"
+        ],
+        "x": 554,
+        "y": 1259,
+        "w": 452,
+        "h": 122
     },
     {
         "id": "a1c86bd095899ec8",
@@ -331,7 +369,7 @@
         "to": "",
         "reg": false,
         "x": 440,
-        "y": 440,
+        "y": 280,
         "wires": [
             [
                 "12e7d34356a8a186"
@@ -425,8 +463,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 160,
-        "y": 440,
+        "x": 190,
+        "y": 280,
         "wires": [
             [
                 "6d438a7777ef90fa"
@@ -448,8 +486,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 440,
-        "y": 740,
+        "x": 420,
+        "y": 560,
         "wires": [
             [
                 "fc28542c2b7cc484"
@@ -497,8 +535,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 440,
-        "y": 660,
+        "x": 420,
+        "y": 480,
         "wires": [
             [
                 "affbb4ebfeab8fed"
@@ -517,7 +555,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 160,
-        "y": 660,
+        "y": 440,
         "wires": [
             [
                 "af6098234b0d4bd8"
@@ -536,8 +574,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 470,
-        "y": 700,
+        "x": 450,
+        "y": 520,
         "wires": [
             [
                 "f4f4a5afa8d10c57"
@@ -556,8 +594,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 650,
-        "y": 740,
+        "x": 630,
+        "y": 560,
         "wires": [
             [
                 "5c78d1c35893caaf"
@@ -576,8 +614,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 610,
-        "y": 800,
+        "x": 590,
+        "y": 620,
         "wires": [
             [
                 "522fe73aeb87ccf7"
@@ -630,8 +668,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 460,
-        "y": 900,
+        "x": 440,
+        "y": 720,
         "wires": [
             [
                 "0f0a67995d4466cb"
@@ -650,8 +688,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 470,
-        "y": 1020,
+        "x": 450,
+        "y": 840,
         "wires": [
             [
                 "7c4a746feef7e395"
@@ -670,8 +708,8 @@
         "syntax": "mustache",
         "template": "https://findthatpostcode.uk/points/{{latitude}},{{longitude}}.json",
         "output": "str",
-        "x": 460,
-        "y": 940,
+        "x": 440,
+        "y": 760,
         "wires": [
             [
                 "5d8439e5cea7949c"
@@ -693,8 +731,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 460,
-        "y": 980,
+        "x": 440,
+        "y": 800,
         "wires": [
             [
                 "6c4546f3e5619681"
@@ -713,8 +751,8 @@
         "syntax": "mustache",
         "template": "https://api.carbonintensity.org.uk/regional/postcode/{{postcode}}",
         "output": "str",
-        "x": 750,
-        "y": 900,
+        "x": 770,
+        "y": 720,
         "wires": [
             [
                 "5b2f17b252887589"
@@ -736,8 +774,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 760,
-        "y": 940,
+        "x": 780,
+        "y": 760,
         "wires": [
             [
                 "c740d05d4981138d"
@@ -756,8 +794,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 770,
-        "y": 980,
+        "x": 790,
+        "y": 800,
         "wires": [
             [
                 "20b610e49e95e971"
@@ -776,8 +814,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 770,
-        "y": 1020,
+        "x": 790,
+        "y": 840,
         "wires": [
             [
                 "522fe73aeb87ccf7"
@@ -797,7 +835,7 @@
         "finalize": "",
         "libs": [],
         "x": 640,
-        "y": 440,
+        "y": 280,
         "wires": [
             [
                 "67b87407f16763d3"
@@ -820,7 +858,7 @@
         "authType": "",
         "senderr": false,
         "x": 440,
-        "y": 480,
+        "y": 320,
         "wires": [
             [
                 "be9abe3da5580fa2"
@@ -840,7 +878,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 480,
+        "y": 320,
         "wires": [
             [
                 "9ca09eb79f9ea5cc",
@@ -863,7 +901,7 @@
         "finalize": "",
         "libs": [],
         "x": 570,
-        "y": 540,
+        "y": 380,
         "wires": [
             [
                 "522fe73aeb87ccf7"
@@ -885,8 +923,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 960,
-        "y": 380,
+        "x": 940,
+        "y": 320,
         "wires": [
             [
                 "3d92c97f493bb373"
@@ -908,8 +946,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 960,
-        "y": 340,
+        "x": 940,
+        "y": 280,
         "wires": [
             [
                 "3d92c97f493bb373"
@@ -937,8 +975,8 @@
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 1190,
-        "y": 420,
+        "x": 1170,
+        "y": 360,
         "wires": [
             [
                 "36c1a732c8c8b7a4"
@@ -962,8 +1000,8 @@
                 "module": "lodash"
             }
         ],
-        "x": 1070,
-        "y": 460,
+        "x": 1050,
+        "y": 400,
         "wires": [
             [
                 "522fe73aeb87ccf7"
@@ -997,8 +1035,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 970,
-        "y": 420,
+        "x": 950,
+        "y": 360,
         "wires": [
             [
                 "3d92c97f493bb373"
@@ -1017,7 +1055,7 @@
         "onceDelay": 0.1,
         "topic": "",
         "x": 140,
-        "y": 1120,
+        "y": 1020,
         "wires": [
             [
                 "e29f299fc09a3a0f"
@@ -1028,7 +1066,6 @@
         "id": "e29f299fc09a3a0f",
         "type": "change",
         "z": "0f058a7f547c3458",
-        "g": "75d9b27bf4b9e104",
         "name": "",
         "rules": [
             {
@@ -1044,10 +1081,11 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 520,
+        "x": 220,
         "y": 1120,
         "wires": [
             [
+                "43f2f89ac35eb61d",
                 "9034c5ccd78ebdb3"
             ]
         ]
@@ -1056,7 +1094,7 @@
         "id": "9034c5ccd78ebdb3",
         "type": "function",
         "z": "0f058a7f547c3458",
-        "g": "75d9b27bf4b9e104",
+        "g": "b45564346620469a",
         "name": "assemble DERSYSDATA request",
         "func": "function to_string(date) {\n    let dd = String(today.getDate()).padStart(2, '0');\n    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!\n    let yyyy = today.getFullYear();\n    return yyyy + \"-\" + mm + \"-\" + dd;\n}\n\nlet today = new Date();\nlet yesterday = (new Date()).setDate(today.getDate() - 1);\n\nlet url = \"https://api.bmreports.com/BMRS/DERSYSDATA/v1\"\n    + \"?APIKey=\" + msg.api_key\n    + \"&FromSettlementDate=\" + to_string(yesterday)\n    + \"&ToSettlementDate=\" + to_string(today)\n    + \"&ServiceType=xml\";\n\nmsg.url = url;\n\nreturn msg;",
         "outputs": 1,
@@ -1065,7 +1103,7 @@
         "finalize": "",
         "libs": [],
         "x": 530,
-        "y": 1160,
+        "y": 940,
         "wires": [
             [
                 "61e2ea876b176903"
@@ -1076,7 +1114,7 @@
         "id": "61e2ea876b176903",
         "type": "http request",
         "z": "0f058a7f547c3458",
-        "g": "75d9b27bf4b9e104",
+        "g": "b45564346620469a",
         "name": "Elexon BMRS",
         "method": "GET",
         "ret": "txt",
@@ -1088,7 +1126,7 @@
         "authType": "",
         "senderr": false,
         "x": 760,
-        "y": 1160,
+        "y": 940,
         "wires": [
             [
                 "a754fd4dfbd224e1"
@@ -1099,7 +1137,7 @@
         "id": "a754fd4dfbd224e1",
         "type": "function",
         "z": "0f058a7f547c3458",
-        "g": "75d9b27bf4b9e104",
+        "g": "b45564346620469a",
         "name": "strip all but payload",
         "func": "let stripped_message = {\n    payload: msg.payload\n}\nreturn stripped_message;",
         "outputs": 1,
@@ -1108,7 +1146,7 @@
         "finalize": "",
         "libs": [],
         "x": 510,
-        "y": 1200,
+        "y": 980,
         "wires": [
             [
                 "c233d75ae2b66cb4"
@@ -1119,7 +1157,7 @@
         "id": "5df76330af1d2460",
         "type": "function",
         "z": "0f058a7f547c3458",
-        "g": "75d9b27bf4b9e104",
+        "g": "b45564346620469a",
         "name": "make elexon insert (not sanitized)",
         "func": "let keys = [\n    // always the same:\n    //\"RecordType\",\n    \"settlementDate\",\n    \"settlementPeriod\",\n    \"systemSellPrice\",\n    \"systemBuyPrice\",\n    \"bSADDefault\",\n    \"priceDerivationCode\",\n    \"reserveScarcityPrice\",\n    \"indicativeNetImbalanceVolume\",\n    \"sellPriceAdjustment\",\n    \"buyPriceAdjustment\",\n    \"replacementPrice\",\n    \"replacementPriceCalculationVolume\",\n    \"totalSystemAcceptedOfferVolume\",\n    \"totalSystemAcceptedBidVolume\",\n    \"totalSystemTaggedAcceptedOfferVolume\",\n    \"totalSystemTaggedAcceptedBidVolume\",\n    \"totalSystemPricedAcceptedOfferVolume\",\n    \"totalSystemAdjustmentSellVolume\",\n    \"totalSystemAdjustmentBuyVolume\",\n    \"totalSystemTaggedAdjustmentSellVolume\",\n    \"totalSystemTaggedAdjustmentBuyVolume\"\n];\n\nfunction formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\ndata = msg.payload\n    .response\n    .responseBody[0]\n    .responseList[0]\n    .item;\n\nfunction buildPayload(data) {\n    let payload = [];\n    data.forEach(item => {\n        parsed = keys.map(k => v = item[k] == \"NULL\" ? 0.0 : item[k]);\n        parsed[0] = formatTime(parsed[0]);\n        payload.push(parsed);\n    });\n    return payload;\n}\n\nmsg.payload = buildPayload(data);\n\nmsg.topic = \"INSERT INTO elexonDERSYdata (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES\" + msg.payload.map(k=>\"(?)\").join(\", \")\n + \"ON DUPLICATE KEY UPDATE \"\n + keys\n    .filter(k=>k != \"settlementDate\" && k != \"settlementPeriod\")\n    .map(k=>k + \"=VALUES(\"+ k + \")\").join(\", \")\n + \";\";\n\nreturn msg;",
         "outputs": 1,
@@ -1128,7 +1166,7 @@
         "finalize": "",
         "libs": [],
         "x": 640,
-        "y": 1240,
+        "y": 1020,
         "wires": [
             [
                 "522fe73aeb87ccf7"
@@ -1139,16 +1177,218 @@
         "id": "c233d75ae2b66cb4",
         "type": "xml",
         "z": "0f058a7f547c3458",
-        "g": "75d9b27bf4b9e104",
+        "g": "b45564346620469a",
         "name": "",
         "property": "payload",
         "attr": "",
         "chr": "",
         "x": 670,
-        "y": 1200,
+        "y": 980,
         "wires": [
             [
                 "5df76330af1d2460"
+            ]
+        ]
+    },
+    {
+        "id": "43f2f89ac35eb61d",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "name": "assemble BMRS code request",
+        "func": "function to_string(date) {\n    let dd = String(today.getDate()).padStart(2, '0');\n    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!\n    let yyyy = today.getFullYear();\n    return yyyy + \"-\" + mm + \"-\" + dd;\n}\n\nlet today = new Date();\nlet yesterday = (new Date()).setDate(today.getDate() - 1);\n\nfunction deepcopy(msg) {\n    return JSON.parse(JSON.stringify(msg));\n}\n\nfunction make_msg_for(msg, code) {\n    let url = \"https://api.bmreports.com/BMRS/\"\n        + code\n        + \"/v1\"\n        + \"?APIKey=\" + msg.api_key\n        + \"&SettlementDate=\" + to_string(today)\n        + \"&Period=*\"\n        + \"&ServiceType=xml\";\n    \n    copy = deepcopy(msg);\n    copy.url = url;\n    return copy;\n}\n\n// Actual aggregated generation perType\nmsg1 = make_msg_for(msg, \"B1620\");\n\n// Day ahead total load forecast per bidding zone\nmsg2 = make_msg_for(msg, \"B0620\");\n\nreturn [msg1, msg2];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 1180,
+        "wires": [
+            [
+                "0a44bcc0fcc8afe0"
+            ],
+            [
+                "d9fa19e58778435f"
+            ]
+        ]
+    },
+    {
+        "id": "0a44bcc0fcc8afe0",
+        "type": "http request",
+        "z": "0f058a7f547c3458",
+        "g": "5929de991841b390",
+        "name": "Elexon BMRS",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 600,
+        "y": 1120,
+        "wires": [
+            [
+                "8b71c527328e847f"
+            ]
+        ]
+    },
+    {
+        "id": "8b71c527328e847f",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "g": "5929de991841b390",
+        "name": "strip all but payload",
+        "func": "let stripped_message = {\n    payload: msg.payload\n}\nreturn stripped_message;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 810,
+        "y": 1120,
+        "wires": [
+            [
+                "65621fd6e8d96c38"
+            ]
+        ]
+    },
+    {
+        "id": "65621fd6e8d96c38",
+        "type": "xml",
+        "z": "0f058a7f547c3458",
+        "g": "5929de991841b390",
+        "name": "",
+        "property": "payload",
+        "attr": "",
+        "chr": "",
+        "x": 590,
+        "y": 1160,
+        "wires": [
+            [
+                "03c66500e812feac"
+            ]
+        ]
+    },
+    {
+        "id": "143618b45c3be7e7",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "g": "3098027ef4ebbe3f",
+        "name": "make B0620 insert (not sanitized)",
+        "func": "let keys = [\n    // always the same:\n    //\"RecordType\",\n    \"settlementDate\",\n    \"settlementPeriod\",\n    \"quantity\",\n    //\"documentType\",\n    //\"businessType\",\n    //\"processType\",\n    //\"objectAggregation\",\n    //\"curveType\",\n    //\"resolution\",\n    //\"unitOfMeasure\",\n    \"activeFlag\",\n    //\"documentID\",\n    //\"documentRevNum\"\n];\n\nfunction formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\ndata = msg.payload\n    .response\n    .responseBody[0]\n    .responseList[0]\n    .item;\n\nfunction buildPayload(data) {\n    let payload = [];\n    data.forEach(item => {\n        parsed = keys.map(k => v = item[k] == \"NULL\" ? 0.0 : item[k]);\n        parsed[0] = formatTime(parsed[0]);\n        // parse period to a number\n        parsed[1] = parseInt(parsed[1], 10);\n        // convert quantitiy to a number\n        parsed[2] = parseInt(parsed[2], 10);\n        payload.push(parsed);\n    });\n    return payload;\n}\n\nmsg.payload = buildPayload(data);\n\nmsg.topic = \"INSERT INTO elexonB0620 (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES\" + msg.payload.map(k=>\"(?)\").join(\", \")\n + \"ON DUPLICATE KEY UPDATE \"\n + keys\n    .filter(k=>k != \"settlementDate\" && k != \"settlementPeriod\")\n    .map(k=>k + \"=VALUES(\"+ k + \")\").join(\", \")\n + \";\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 840,
+        "y": 1340,
+        "wires": [
+            [
+                "522fe73aeb87ccf7"
+            ]
+        ]
+    },
+    {
+        "id": "d9fa19e58778435f",
+        "type": "http request",
+        "z": "0f058a7f547c3458",
+        "g": "3098027ef4ebbe3f",
+        "name": "Elexon BMRS",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 660,
+        "y": 1300,
+        "wires": [
+            [
+                "be083ffbe96bbb0a"
+            ]
+        ]
+    },
+    {
+        "id": "be083ffbe96bbb0a",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "g": "3098027ef4ebbe3f",
+        "name": "strip all but payload",
+        "func": "let stripped_message = {\n    payload: msg.payload\n}\nreturn stripped_message;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 1300,
+        "wires": [
+            [
+                "27f03b5dfe4e3727"
+            ]
+        ]
+    },
+    {
+        "id": "27f03b5dfe4e3727",
+        "type": "xml",
+        "z": "0f058a7f547c3458",
+        "g": "3098027ef4ebbe3f",
+        "name": "",
+        "property": "payload",
+        "attr": "",
+        "chr": "",
+        "x": 630,
+        "y": 1340,
+        "wires": [
+            [
+                "143618b45c3be7e7"
+            ]
+        ]
+    },
+    {
+        "id": "b33754e6d4541ae2",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "g": "5929de991841b390",
+        "name": "make B1620 insert (not sanitized)",
+        "func": "function formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\npsrt_keys = msg.psrt_keys;\ndata = msg.payload;\n\nlet keys = ([\"settlementDate\", \"settlementPeriod\"]).concat(psrt_keys);\nlet table = [];\n\nObject.keys(data).forEach(k => {\n    // get the data for this date\n    let frame = data[k];\n    Object.keys(frame).forEach(period => {\n        // get the data for this date + period\n        let item = frame[period];\n        let row = (\n            [formatTime(k), parseInt(period, 10)]\n            // insert all of the different resources quantities\n        ).concat(psrt_keys.map(i=>item[i]));\n        table.push(row);\n    });\n});\n\nmsg.payload = table;\n\ndelete msg.psrt_keys;\n\nmsg.topic = \"INSERT INTO elexonB1620 (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES\" + msg.payload.map(k=>\"(?)\").join(\", \")\n + \"ON DUPLICATE KEY UPDATE \"\n + keys\n    .filter(k=>k != \"settlementDate\" && k != \"settlementPeriod\")\n    .map(k=>k + \"=VALUES(\"+ k + \")\").join(\", \")\n + \";\";\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 1200,
+        "wires": [
+            [
+                "522fe73aeb87ccf7"
+            ]
+        ]
+    },
+    {
+        "id": "03c66500e812feac",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "g": "5929de991841b390",
+        "name": "aggregate resource type",
+        "func": "// to camel case\nfunction camelize(str) {\n    let text = String(str).replace(/[\"\\-]/g, \"\");\n    return text.replace(/(?:^\\w|[A-Z]|\\b\\w|\\s+)/g, function(match, index) {\n        if (+match === 0) return \"\"; // or if (/\\s+/.test(match)) for white spaces\n        return index === 0 ? match.toLowerCase() : match.toUpperCase();\n    });\n}\n\nclass DefaultDict {\n  constructor(defaultInit) {\n    return new Proxy({}, {\n      get: (target, name) => name in target ?\n        target[name] :\n        (target[name] = typeof defaultInit === 'function' ?\n          defaultInit() :\n          defaultInit)\n    })\n  }\n}\n\n// aggregate data:\n// time -> period -> powerSystemResourceType -> quantity\nlet aggregate = new DefaultDict(\n    () => new DefaultDict(\n        // quantity aggregate\n        () => new DefaultDict(0.0)    \n    )\n);\n\ndata = msg.payload\n    .response\n    .responseBody[0]\n    .responseList[0]\n    .item;\n\nlet psrt_keys = [];\ndata.forEach(item => {\n    let psrt = camelize(item.powerSystemResourceType);\n    // keep a collection of the keys\n    // so assembling the database query is easier\n    if (! psrt_keys.includes(psrt)) {\n        psrt_keys.push(psrt);\n    }\n    aggregate[item.settlementDate][item.settlementPeriod][psrt]\n        += parseInt(item.quantity, 10);\n});\n\nmsg.payload = aggregate;\nmsg.psrt_keys = psrt_keys;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 790,
+        "y": 1160,
+        "wires": [
+            [
+                "b33754e6d4541ae2"
             ]
         ]
     }
