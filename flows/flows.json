@@ -22,8 +22,8 @@
             "5d8439e5cea7949c",
             "c0a79f25a32d9fba"
         ],
-        "x": 314,
-        "y": 779,
+        "x": 334,
+        "y": 859,
         "w": 252,
         "h": 202
     },
@@ -42,8 +42,8 @@
             "c740d05d4981138d",
             "20b610e49e95e971"
         ],
-        "x": 574,
-        "y": 779,
+        "x": 594,
+        "y": 859,
         "w": 352,
         "h": 202
     },
@@ -62,8 +62,8 @@
             "fc28542c2b7cc484",
             "5c78d1c35893caaf"
         ],
-        "x": 314,
-        "y": 539,
+        "x": 334,
+        "y": 619,
         "w": 452,
         "h": 222
     },
@@ -82,8 +82,8 @@
             "be9abe3da5580fa2",
             "9ca09eb79f9ea5cc"
         ],
-        "x": 314,
-        "y": 319,
+        "x": 334,
+        "y": 399,
         "w": 432,
         "h": 182
     },
@@ -121,12 +121,13 @@
             "774949dcd02f25c9",
             "ee669a19c9f4527a",
             "3d92c97f493bb373",
-            "36c1a732c8c8b7a4"
+            "36c1a732c8c8b7a4",
+            "ea32b36d176f4077"
         ],
-        "x": 814,
-        "y": 239,
-        "w": 392,
-        "h": 182
+        "x": 834,
+        "y": 299,
+        "w": 432,
+        "h": 202
     },
     {
         "id": "a1c86bd095899ec8",
@@ -215,8 +216,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1510,
-        "y": 520,
+        "x": 1530,
+        "y": 600,
         "wires": []
     },
     {
@@ -308,8 +309,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 420,
-        "y": 360,
+        "x": 440,
+        "y": 440,
         "wires": [
             [
                 "12e7d34356a8a186"
@@ -388,8 +389,8 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1490,
-        "y": 560,
+        "x": 1510,
+        "y": 640,
         "wires": []
     },
     {
@@ -403,8 +404,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 140,
-        "y": 360,
+        "x": 160,
+        "y": 440,
         "wires": [
             [
                 "6d438a7777ef90fa"
@@ -426,8 +427,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 420,
-        "y": 660,
+        "x": 440,
+        "y": 740,
         "wires": [
             [
                 "fc28542c2b7cc484"
@@ -475,8 +476,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 420,
-        "y": 580,
+        "x": 440,
+        "y": 660,
         "wires": [
             [
                 "affbb4ebfeab8fed"
@@ -494,8 +495,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 140,
-        "y": 580,
+        "x": 160,
+        "y": 660,
         "wires": [
             [
                 "af6098234b0d4bd8"
@@ -514,8 +515,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 450,
-        "y": 620,
+        "x": 470,
+        "y": 700,
         "wires": [
             [
                 "f4f4a5afa8d10c57"
@@ -534,8 +535,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 630,
-        "y": 660,
+        "x": 650,
+        "y": 740,
         "wires": [
             [
                 "5c78d1c35893caaf"
@@ -554,8 +555,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 590,
-        "y": 720,
+        "x": 610,
+        "y": 800,
         "wires": [
             [
                 "522fe73aeb87ccf7"
@@ -573,8 +574,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 170,
-        "y": 820,
+        "x": 190,
+        "y": 900,
         "wires": [
             [
                 "c0a79f25a32d9fba"
@@ -608,8 +609,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 440,
-        "y": 820,
+        "x": 460,
+        "y": 900,
         "wires": [
             [
                 "0f0a67995d4466cb"
@@ -628,8 +629,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 450,
-        "y": 940,
+        "x": 470,
+        "y": 1020,
         "wires": [
             [
                 "7c4a746feef7e395"
@@ -648,8 +649,8 @@
         "syntax": "mustache",
         "template": "https://findthatpostcode.uk/points/{{latitude}},{{longitude}}.json",
         "output": "str",
-        "x": 440,
-        "y": 860,
+        "x": 460,
+        "y": 940,
         "wires": [
             [
                 "5d8439e5cea7949c"
@@ -671,8 +672,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 440,
-        "y": 900,
+        "x": 460,
+        "y": 980,
         "wires": [
             [
                 "6c4546f3e5619681"
@@ -691,8 +692,8 @@
         "syntax": "mustache",
         "template": "https://api.carbonintensity.org.uk/regional/postcode/{{postcode}}",
         "output": "str",
-        "x": 730,
-        "y": 820,
+        "x": 750,
+        "y": 900,
         "wires": [
             [
                 "5b2f17b252887589"
@@ -714,8 +715,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 740,
-        "y": 860,
+        "x": 760,
+        "y": 940,
         "wires": [
             [
                 "c740d05d4981138d"
@@ -734,8 +735,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 750,
-        "y": 900,
+        "x": 770,
+        "y": 980,
         "wires": [
             [
                 "20b610e49e95e971"
@@ -754,8 +755,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 750,
-        "y": 940,
+        "x": 770,
+        "y": 1020,
         "wires": [
             [
                 "522fe73aeb87ccf7"
@@ -774,8 +775,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 620,
-        "y": 360,
+        "x": 640,
+        "y": 440,
         "wires": [
             [
                 "67b87407f16763d3"
@@ -797,8 +798,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 420,
-        "y": 400,
+        "x": 440,
+        "y": 480,
         "wires": [
             [
                 "be9abe3da5580fa2"
@@ -817,13 +818,14 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 610,
-        "y": 400,
+        "x": 630,
+        "y": 480,
         "wires": [
             [
                 "9ca09eb79f9ea5cc",
                 "ee669a19c9f4527a",
-                "774949dcd02f25c9"
+                "774949dcd02f25c9",
+                "ea32b36d176f4077"
             ]
         ]
     },
@@ -839,8 +841,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 550,
-        "y": 460,
+        "x": 570,
+        "y": 540,
         "wires": [
             [
                 "522fe73aeb87ccf7"
@@ -862,8 +864,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 940,
-        "y": 320,
+        "x": 960,
+        "y": 380,
         "wires": [
             [
                 "3d92c97f493bb373"
@@ -885,8 +887,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 940,
-        "y": 280,
+        "x": 960,
+        "y": 340,
         "wires": [
             [
                 "3d92c97f493bb373"
@@ -908,14 +910,14 @@
         "joinerType": "str",
         "accumulate": false,
         "timeout": "",
-        "count": "2",
+        "count": "3",
         "reduceRight": false,
         "reduceExp": "",
         "reduceInit": "",
         "reduceInitType": "",
         "reduceFixup": "",
-        "x": 1130,
-        "y": 300,
+        "x": 1190,
+        "y": 420,
         "wires": [
             [
                 "36c1a732c8c8b7a4"
@@ -928,7 +930,7 @@
         "z": "0f058a7f547c3458",
         "g": "d98ee0125271d322",
         "name": "make_predictions_insert",
-        "func": "const formatTime = (dt) => {\n    let parsedDate = new Date(dt);\n    if ( isNaN(parsedDate.valueOf()) )\n        throw Error(`Not a valid time ${dt}`)\n    return parsedDate\n}\n\nconst columns = [\n    \"time\",\n    \"WindSpeed\",\n    \"WindPower\",\n    \"SolarPower\"\n]\n\nconst payload = msg.payload\n\nmsg = {}\n\nmsg.topic = \"INSERT INTO powerPrediction (\"\n  + columns.map(str => \"`\" + str + \"`\").join(\", \") + \") \"\n  + \"VALUES \" + \"(?)\" + \", (?)\".repeat(payload[0].length - 1)\n  + \" ON DUPLICATE KEY UPDATE \"\n  + columns.map(str => str + \"=VALUES(\" + str + \")\").join(\", \")\n  + \";\"\n\nmsg.payload = _.zip(...payload).map(\n    ([part1, part2]) => {\n        let row = {\n            ...part1, ...part2,\n            // parse date\n            time: formatTime(part1.time),\n        }\n        return _.map(columns, _.propertyOf(row))\n    }\n)\n\nreturn msg",
+        "func": "const formatTime = (dt) => {\n    let parsedDate = new Date(dt);\n    if ( isNaN(parsedDate.valueOf()) )\n        throw Error(`Not a valid time ${dt}`)\n    return parsedDate\n}\n\nconst columns = [\n    \"time\",\n    \"WindSpeed\",\n    \"WindPower\",\n    \"SolarPower\",\n    \"HQPowerDemand\",\n    \"HQTemperature\"\n]\n\nconst payload = msg.payload\n\nmsg = {}\n\nmsg.topic = \"INSERT INTO powerPrediction (\"\n  + columns.map(str => \"`\" + str + \"`\").join(\", \") + \") \"\n  + \"VALUES \" + \"(?)\" + \", (?)\".repeat(payload[0].length - 1)\n  + \" ON DUPLICATE KEY UPDATE \"\n  + columns.map(str => str + \"=VALUES(\" + str + \")\").join(\", \")\n  + \";\"\n\nmsg.payload = _.zip(...payload).map(\n    parts => {\n        let row = _.assignIn(...parts)\n        row.time = formatTime(row.time)\n        return _.map(columns, _.propertyOf(row))\n    }\n)\n\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -939,8 +941,8 @@
                 "module": "lodash"
             }
         ],
-        "x": 1010,
-        "y": 380,
+        "x": 1070,
+        "y": 460,
         "wires": [
             [
                 "522fe73aeb87ccf7"
@@ -953,10 +955,33 @@
         "z": "0f058a7f547c3458",
         "mydb": "a1c86bd095899ec8",
         "name": "LLanwrytd DB",
-        "x": 1520,
-        "y": 460,
+        "x": 1540,
+        "y": 540,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "ea32b36d176f4077",
+        "type": "http request",
+        "z": "0f058a7f547c3458",
+        "g": "d98ee0125271d322",
+        "name": "SLIMJAB Predict Onsite",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://aimlac-models:5000/power/predict-onsite",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 970,
+        "y": 420,
+        "wires": [
+            [
+                "3d92c97f493bb373"
+            ]
         ]
     }
 ]
