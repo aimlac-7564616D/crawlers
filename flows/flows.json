@@ -130,6 +130,27 @@
         "h": 202
     },
     {
+        "id": "75d9b27bf4b9e104",
+        "type": "group",
+        "z": "0f058a7f547c3458",
+        "name": "elexon DERSY",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "e29f299fc09a3a0f",
+            "9034c5ccd78ebdb3",
+            "61e2ea876b176903",
+            "a754fd4dfbd224e1",
+            "5df76330af1d2460",
+            "c233d75ae2b66cb4"
+        ],
+        "x": 374,
+        "y": 1079,
+        "w": 492,
+        "h": 202
+    },
+    {
         "id": "a1c86bd095899ec8",
         "type": "MySQLdatabase",
         "name": "llanwrytd",
@@ -217,7 +238,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1530,
-        "y": 600,
+        "y": 740,
         "wires": []
     },
     {
@@ -390,7 +411,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 1510,
-        "y": 640,
+        "y": 780,
         "wires": []
     },
     {
@@ -956,7 +977,7 @@
         "mydb": "a1c86bd095899ec8",
         "name": "LLanwrytd DB",
         "x": 1540,
-        "y": 540,
+        "y": 700,
         "wires": [
             []
         ]
@@ -981,6 +1002,153 @@
         "wires": [
             [
                 "3d92c97f493bb373"
+            ]
+        ]
+    },
+    {
+        "id": "7450eb5f9cfc6bda",
+        "type": "inject",
+        "z": "0f058a7f547c3458",
+        "name": "fetch elexon",
+        "props": [],
+        "repeat": "",
+        "crontab": "00 01 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 140,
+        "y": 1120,
+        "wires": [
+            [
+                "e29f299fc09a3a0f"
+            ]
+        ]
+    },
+    {
+        "id": "e29f299fc09a3a0f",
+        "type": "change",
+        "z": "0f058a7f547c3458",
+        "g": "75d9b27bf4b9e104",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "api_key",
+                "pt": "msg",
+                "to": "ELEXON_API_KEY",
+                "tot": "env"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 1120,
+        "wires": [
+            [
+                "9034c5ccd78ebdb3"
+            ]
+        ]
+    },
+    {
+        "id": "9034c5ccd78ebdb3",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "g": "75d9b27bf4b9e104",
+        "name": "assemble DERSYSDATA request",
+        "func": "function to_string(date) {\n    let dd = String(today.getDate()).padStart(2, '0');\n    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!\n    let yyyy = today.getFullYear();\n    return yyyy + \"-\" + mm + \"-\" + dd;\n}\n\nlet today = new Date();\nlet yesterday = (new Date()).setDate(today.getDate() - 1);\n\nlet url = \"https://api.bmreports.com/BMRS/DERSYSDATA/v1\"\n    + \"?APIKey=\" + msg.api_key\n    + \"&FromSettlementDate=\" + to_string(yesterday)\n    + \"&ToSettlementDate=\" + to_string(today)\n    + \"&ServiceType=xml\";\n\nmsg.url = url;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 1160,
+        "wires": [
+            [
+                "61e2ea876b176903"
+            ]
+        ]
+    },
+    {
+        "id": "61e2ea876b176903",
+        "type": "http request",
+        "z": "0f058a7f547c3458",
+        "g": "75d9b27bf4b9e104",
+        "name": "Elexon BMRS",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 760,
+        "y": 1160,
+        "wires": [
+            [
+                "a754fd4dfbd224e1"
+            ]
+        ]
+    },
+    {
+        "id": "a754fd4dfbd224e1",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "g": "75d9b27bf4b9e104",
+        "name": "strip all but payload",
+        "func": "let stripped_message = {\n    payload: msg.payload\n}\nreturn stripped_message;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 1200,
+        "wires": [
+            [
+                "c233d75ae2b66cb4"
+            ]
+        ]
+    },
+    {
+        "id": "5df76330af1d2460",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "g": "75d9b27bf4b9e104",
+        "name": "make elexon insert (not sanitized)",
+        "func": "let keys = [\n    // always the same:\n    //\"RecordType\",\n    \"settlementDate\",\n    \"settlementPeriod\",\n    \"systemSellPrice\",\n    \"systemBuyPrice\",\n    \"bSADDefault\",\n    \"priceDerivationCode\",\n    \"reserveScarcityPrice\",\n    \"indicativeNetImbalanceVolume\",\n    \"sellPriceAdjustment\",\n    \"buyPriceAdjustment\",\n    \"replacementPrice\",\n    \"replacementPriceCalculationVolume\",\n    \"totalSystemAcceptedOfferVolume\",\n    \"totalSystemAcceptedBidVolume\",\n    \"totalSystemTaggedAcceptedOfferVolume\",\n    \"totalSystemTaggedAcceptedBidVolume\",\n    \"totalSystemPricedAcceptedOfferVolume\",\n    \"totalSystemAdjustmentSellVolume\",\n    \"totalSystemAdjustmentBuyVolume\",\n    \"totalSystemTaggedAdjustmentSellVolume\",\n    \"totalSystemTaggedAdjustmentBuyVolume\"\n];\n\nfunction formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\ndata = msg.payload\n    .response\n    .responseBody[0]\n    .responseList[0]\n    .item;\n\nfunction buildPayload(data) {\n    let payload = [];\n    data.forEach(item => {\n        parsed = keys.map(k => v = item[k] == \"NULL\" ? 0.0 : item[k]);\n        parsed[0] = formatTime(parsed[0]);\n        payload.push(parsed);\n    });\n    return payload;\n}\n\nmsg.payload = buildPayload(data);\n\nmsg.topic = \"INSERT INTO elexonDERSYdata (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES\" + msg.payload.map(k=>\"(?)\").join(\", \")\n + \"ON DUPLICATE KEY UPDATE \"\n + keys\n    .filter(k=>k != \"settlementDate\" && k != \"settlementPeriod\")\n    .map(k=>k + \"=VALUES(\"+ k + \")\").join(\", \")\n + \";\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 640,
+        "y": 1240,
+        "wires": [
+            [
+                "522fe73aeb87ccf7"
+            ]
+        ]
+    },
+    {
+        "id": "c233d75ae2b66cb4",
+        "type": "xml",
+        "z": "0f058a7f547c3458",
+        "g": "75d9b27bf4b9e104",
+        "name": "",
+        "property": "payload",
+        "attr": "",
+        "chr": "",
+        "x": 670,
+        "y": 1200,
+        "wires": [
+            [
+                "5df76330af1d2460"
             ]
         ]
     }
