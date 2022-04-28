@@ -22,9 +22,9 @@
             "5d8439e5cea7949c",
             "c0a79f25a32d9fba"
         ],
-        "x": 314,
+        "x": 324,
         "y": 679,
-        "w": 252,
+        "w": 232,
         "h": 202
     },
     {
@@ -144,9 +144,9 @@
             "5df76330af1d2460",
             "c233d75ae2b66cb4"
         ],
-        "x": 374,
+        "x": 364,
         "y": 899,
-        "w": 492,
+        "w": 502,
         "h": 162
     },
     {
@@ -187,6 +187,28 @@
         "y": 1259,
         "w": 452,
         "h": 122
+    },
+    {
+        "id": "49fd1b4068135e75",
+        "type": "group",
+        "z": "0f058a7f547c3458",
+        "name": "rse market data",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "ea20d22178447f65",
+            "386b66c192e744dd",
+            "250d27e9ccc4dd95",
+            "552524df2054a9e2",
+            "7f61e328d172381c",
+            "de3a0ae252f899f1",
+            "f3ba2d14b8d1dc0c"
+        ],
+        "x": 414,
+        "y": 1419,
+        "w": 632,
+        "h": 182
     },
     {
         "id": "a1c86bd095899ec8",
@@ -1009,18 +1031,6 @@
         ]
     },
     {
-        "id": "522fe73aeb87ccf7",
-        "type": "mysql",
-        "z": "0f058a7f547c3458",
-        "mydb": "a1c86bd095899ec8",
-        "name": "LLanwrytd DB",
-        "x": 1540,
-        "y": 700,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "ea32b36d176f4077",
         "type": "http request",
         "z": "0f058a7f547c3458",
@@ -1389,6 +1399,262 @@
         "wires": [
             [
                 "b33754e6d4541ae2"
+            ]
+        ]
+    },
+    {
+        "id": "522fe73aeb87ccf7",
+        "type": "mysql",
+        "z": "0f058a7f547c3458",
+        "mydb": "a1c86bd095899ec8",
+        "name": "LLanwrytd DB",
+        "x": 1540,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ea20d22178447f65",
+        "type": "split",
+        "z": "0f058a7f547c3458",
+        "g": "49fd1b4068135e75",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": "1",
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 650,
+        "y": 1460,
+        "wires": [
+            [
+                "386b66c192e744dd"
+            ]
+        ]
+    },
+    {
+        "id": "386b66c192e744dd",
+        "type": "change",
+        "z": "0f058a7f547c3458",
+        "g": "49fd1b4068135e75",
+        "name": "set url",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "url",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 790,
+        "y": 1460,
+        "wires": [
+            [
+                "250d27e9ccc4dd95"
+            ]
+        ]
+    },
+    {
+        "id": "250d27e9ccc4dd95",
+        "type": "http request",
+        "z": "0f058a7f547c3458",
+        "g": "49fd1b4068135e75",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 530,
+        "y": 1540,
+        "wires": [
+            [
+                "de3a0ae252f899f1"
+            ]
+        ]
+    },
+    {
+        "id": "552524df2054a9e2",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "g": "49fd1b4068135e75",
+        "name": "make urls",
+        "func": "let startDate = new Date()\nlet endDate = new Date()\n\nstartDate.setDate(startDate.getDate() - 1)\nendDate.setDate(endDate.getDate() + 1)\n\nconst formatDateString = (date) => {\n    let year = date.getFullYear()\n    let month = (date.getMonth() + 1).toString().padStart(2, \"0\")\n    let day = date.getDate().toString().padStart(2, \"0\")\n    return `${year}-${month}-${day}`\n}\n\nlet host = `http://${env.get(\"AIMLAC_RSE_ADDR\")}`\nlet param = `start_date=${formatDateString(startDate)}`\n            + `&end_date=${formatDateString(endDate)}`\n\n\nmsg.payload = [\n    `${host}/auction/market/clearout-prices?${param}`,\n    `${host}/auction/market/imbalance?${param}`\n]\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 1460,
+        "wires": [
+            [
+                "ea20d22178447f65"
+            ]
+        ]
+    },
+    {
+        "id": "7f61e328d172381c",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "g": "49fd1b4068135e75",
+        "name": "make clearout-prices insert",
+        "func": "// do sanitization\nconst formatTime = (t) => {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nconst sanitize = (v) => {\n    if (!Number.isFinite(v)) {\n        return null;\n    }\n    return v;\n}\n\nlet keys = [\n    \"settlementDate\",\n    \"settlementPeriod\",\n    \"clearoutPrice\",\n    \"clearoutVolume\"\n]\n\nmsg = {\n    payload: msg.payload\n}\n\nmsg.topic = \"INSERT INTO rseMarket (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES \" + msg.payload.map(k=>\"(?)\").join(\", \")\n + \" ON DUPLICATE KEY UPDATE \"\n + keys\n    .filter(k=>k != \"settlementDate\" && k != \"settlementPeriod\")\n    .map(k=>k + \"=VALUES(\"+ k + \")\").join(\", \")\n + \";\";\n \n msg.payload = msg.payload.map(data => [\n     formatTime(data.date),\n     sanitize(data.period) * 2 - 1,\n     sanitize(data.price),\n     sanitize(data.volume)\n])\n \n return msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 900,
+        "y": 1520,
+        "wires": [
+            [
+                "522fe73aeb87ccf7"
+            ]
+        ]
+    },
+    {
+        "id": "3bb9af5c90fb7d9f",
+        "type": "inject",
+        "z": "0f058a7f547c3458",
+        "name": "fetch RSE market",
+        "props": [],
+        "repeat": "",
+        "crontab": "00 12 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 190,
+        "y": 1460,
+        "wires": [
+            [
+                "552524df2054a9e2"
+            ]
+        ]
+    },
+    {
+        "id": "de3a0ae252f899f1",
+        "type": "switch",
+        "z": "0f058a7f547c3458",
+        "g": "49fd1b4068135e75",
+        "name": "",
+        "property": "url",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "cont",
+                "v": "clearout-prices",
+                "vt": "str"
+            },
+            {
+                "t": "cont",
+                "v": "imbalance",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 690,
+        "y": 1540,
+        "wires": [
+            [
+                "7f61e328d172381c"
+            ],
+            [
+                "f3ba2d14b8d1dc0c"
+            ]
+        ]
+    },
+    {
+        "id": "f3ba2d14b8d1dc0c",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "g": "49fd1b4068135e75",
+        "name": "make imbalance insert",
+        "func": "// do sanitization\nconst formatTime = (t) => {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nconst sanitize = (v) => {\n    if (!Number.isFinite(v)) {\n        return null;\n    }\n    return v;\n}\n\nlet keys = [\n    \"settlementDate\",\n    \"settlementPeriod\",\n    \"imbalancePrice\"\n]\n\nmsg = {\n    payload: msg.payload\n}\n\nmsg.topic = \"INSERT INTO rseMarket (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES \" + msg.payload.map(k=>\"(?)\").join(\", \")\n + \" ON DUPLICATE KEY UPDATE \"\n + keys\n    .filter(k=>k != \"settlementDate\" && k != \"settlementPeriod\")\n    .map(k=>k + \"=VALUES(\"+ k + \")\").join(\", \")\n + \";\";\n \n msg.payload = msg.payload.map(data => [\n     formatTime(data.date),\n     sanitize(data.period),\n     sanitize(data.price)\n])\n \n return msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 1560,
+        "wires": [
+            [
+                "522fe73aeb87ccf7"
+            ]
+        ]
+    },
+    {
+        "id": "94f9ce4c8ed99a2a",
+        "type": "inject",
+        "z": "0f058a7f547c3458",
+        "name": "place bid",
+        "props": [],
+        "repeat": "",
+        "crontab": "45 08 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 530,
+        "y": 1680,
+        "wires": [
+            [
+                "81d62c4d103308dd"
+            ]
+        ]
+    },
+    {
+        "id": "81d62c4d103308dd",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "name": "assemble bidding request",
+        "func": "msg.url = \"http://aimlac-models:5000/bid/set\"\nmsg.method = \"POST\"\nmsg.headers = {\n    \"Content-Type\": \"application/json\"\n}\nmsg.payload = {\n    \"bidder\": \"default\"\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 1680,
+        "wires": [
+            [
+                "e348ef772185c937"
+            ]
+        ]
+    },
+    {
+        "id": "e348ef772185c937",
+        "type": "http request",
+        "z": "0f058a7f547c3458",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 990,
+        "y": 1680,
+        "wires": [
+            [
+                "38e0c3e53e36792a"
             ]
         ]
     }
