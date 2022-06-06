@@ -1057,14 +1057,14 @@
         "id": "7450eb5f9cfc6bda",
         "type": "inject",
         "z": "0f058a7f547c3458",
-        "name": "fetch elexon",
+        "name": "fetch elexon DERSY",
         "props": [],
-        "repeat": "21600",
-        "crontab": "",
+        "repeat": "",
+        "crontab": "*/30 0-22 * * *",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 140,
+        "x": 160,
         "y": 1020,
         "wires": [
             [
@@ -1092,10 +1092,9 @@
         "to": "",
         "reg": false,
         "x": 220,
-        "y": 1120,
+        "y": 960,
         "wires": [
             [
-                "43f2f89ac35eb61d",
                 "9034c5ccd78ebdb3"
             ]
         ]
@@ -1212,7 +1211,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 310,
+        "x": 330,
         "y": 1180,
         "wires": [
             [
@@ -1656,6 +1655,52 @@
         "wires": [
             [
                 "38e0c3e53e36792a"
+            ]
+        ]
+    },
+    {
+        "id": "6b9c256a0462b227",
+        "type": "change",
+        "z": "0f058a7f547c3458",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "api_key",
+                "pt": "msg",
+                "to": "ELEXON_API_KEY",
+                "tot": "env"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 140,
+        "y": 1240,
+        "wires": [
+            [
+                "43f2f89ac35eb61d"
+            ]
+        ]
+    },
+    {
+        "id": "35a854daab5c5d09",
+        "type": "inject",
+        "z": "0f058a7f547c3458",
+        "name": "fetch elexon",
+        "props": [],
+        "repeat": "21600",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 120,
+        "y": 1080,
+        "wires": [
+            [
+                "6b9c256a0462b227"
             ]
         ]
     }
