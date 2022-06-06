@@ -1054,25 +1054,6 @@
         ]
     },
     {
-        "id": "7450eb5f9cfc6bda",
-        "type": "inject",
-        "z": "0f058a7f547c3458",
-        "name": "fetch elexon DERSY",
-        "props": [],
-        "repeat": "",
-        "crontab": "*/30 0-22 * * *",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "x": 160,
-        "y": 1020,
-        "wires": [
-            [
-                "e29f299fc09a3a0f"
-            ]
-        ]
-    },
-    {
         "id": "e29f299fc09a3a0f",
         "type": "change",
         "z": "0f058a7f547c3458",
@@ -1091,11 +1072,12 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 220,
-        "y": 960,
+        "x": 180,
+        "y": 1140,
         "wires": [
             [
-                "9034c5ccd78ebdb3"
+                "9034c5ccd78ebdb3",
+                "43f2f89ac35eb61d"
             ]
         ]
     },
@@ -1105,7 +1087,7 @@
         "z": "0f058a7f547c3458",
         "g": "b45564346620469a",
         "name": "assemble DERSYSDATA request",
-        "func": "function to_string(date) {\n    let dd = String(today.getDate()).padStart(2, '0');\n    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!\n    let yyyy = today.getFullYear();\n    return yyyy + \"-\" + mm + \"-\" + dd;\n}\n\nlet today = new Date();\nlet yesterday = (new Date()).setDate(today.getDate() - 1);\n\nlet url = \"https://api.bmreports.com/BMRS/DERSYSDATA/v1\"\n    + \"?APIKey=\" + msg.api_key\n    + \"&FromSettlementDate=\" + to_string(yesterday)\n    + \"&ToSettlementDate=\" + to_string(today)\n    + \"&ServiceType=xml\";\n\nmsg.url = url;\n\nreturn msg;",
+        "func": "function to_string(date) {\n    var dd = String(date.getDate()).padStart(2, '0');\n    var mm = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!\n    var yyyy = date.getFullYear();\n    return yyyy + \"-\" + mm + \"-\" + dd;\n}\n\nvar today = new Date();\n\nvar yesterday = new Date();\nyesterday.setDate(yesterday.getDate() - 2);\n\nvar url = \"https://api.bmreports.com/BMRS/DERSYSDATA/v1\"\n    + \"?APIKey=\" + msg.api_key\n    + \"&FromSettlementDate=\" + to_string(yesterday)\n    + \"&ToSettlementDate=\" + to_string(today)\n    + \"&ServiceType=xml\";\n\nmsg.url = url;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1212,7 +1194,7 @@
         "finalize": "",
         "libs": [],
         "x": 330,
-        "y": 1180,
+        "y": 1220,
         "wires": [
             [
                 "0a44bcc0fcc8afe0"
@@ -1659,40 +1641,13 @@
         ]
     },
     {
-        "id": "6b9c256a0462b227",
-        "type": "change",
-        "z": "0f058a7f547c3458",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "api_key",
-                "pt": "msg",
-                "to": "ELEXON_API_KEY",
-                "tot": "env"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 140,
-        "y": 1240,
-        "wires": [
-            [
-                "43f2f89ac35eb61d"
-            ]
-        ]
-    },
-    {
         "id": "35a854daab5c5d09",
         "type": "inject",
         "z": "0f058a7f547c3458",
         "name": "fetch elexon",
         "props": [],
-        "repeat": "21600",
-        "crontab": "",
+        "repeat": "",
+        "crontab": "00 01 * * *",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
@@ -1700,7 +1655,7 @@
         "y": 1080,
         "wires": [
             [
-                "6b9c256a0462b227"
+                "e29f299fc09a3a0f"
             ]
         ]
     }
