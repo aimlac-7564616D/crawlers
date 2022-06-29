@@ -211,14 +211,14 @@
         "h": 182
     },
     {
-        "id": "a1c86bd095899ec8",
-        "type": "MySQLdatabase",
-        "name": "llanwrytd",
-        "host": "aimlac-database",
-        "port": "3306",
-        "db": "llanwrytd",
-        "tz": "",
-        "charset": "UTF8"
+            "id": "a1c86bd095899ec8",
+            "type": "MySQLdatabase",
+            "name": "llanwrytd",
+            "host": "aimlac-database",
+            "port": "3306",
+            "db": "llanwrytd",
+            "tz": "",
+            "charset": "UTF8"
     },
     {
         "id": "4c8a4750891f7844",
@@ -840,7 +840,8 @@
         "y": 840,
         "wires": [
             [
-                "522fe73aeb87ccf7"
+                "522fe73aeb87ccf7",
+                "89b0136fe108b667"
             ]
         ]
     },
@@ -1656,6 +1657,47 @@
         "wires": [
             [
                 "e29f299fc09a3a0f"
+            ]
+        ]
+    },
+    {
+        "id": "89b0136fe108b667",
+        "type": "calculateCO2saved",
+        "z": "0f058a7f547c3458",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://aimlac-models:5000/co2/set",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 1050,
+        "y": 720,
+        "wires": [
+            [
+                "f77226f055477a63"
+            ]
+        ]
+    },
+    {
+        "id": "f77226f055477a63",
+        "type": "insertCO2saved",
+        "z": "0f058a7f547c3458",
+        "name": "",
+        "func": "const formatTime = (dt) => {\n    let parsedDate = new Date(dt);\n    if ( isNaN(parsedDate.valueOf()) )\n        throw Error(`Not a valid time ${dt}`)\n    return parsedDate\n}\n\nconst columns = [\n    \"time\",\n    \"co2saved\"\n]\n\nconst payload = msg.payload[0]\n\n\n\nmsg = {}\n\n\nmsg.topic = \"INSERT INTO carbon_dioxide_saved (\"\n        + \"`time`, `co2saved`\"\n    + \") VALUES (\"\n        + \":time, :co2saved\"\n    + \");\";\n\n// do sanitization\nObject.keys(payload)\n    .filter(k => k != \"time\" )\n    .forEach((k, i) => {\n        var val = payload[k];\n        if ( !Number.isFinite(val) ) {\n            throw Error(k + \" is not a number (\" + val + \")\");\n        }\n    });\n\nvar parsed_date = new Date(payload.time);\nif ( isNaN(parsed_date.valueOf()) ) {\n    throw Error(\"Invalid date \", msg.payload.time);\n}\n\npayload.time = parsed_date;\n\n// overwrite payload\nmsg.payload = payload;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1200,
+        "y": 720,
+        "wires": [
+            [
+                "522fe73aeb87ccf7"
             ]
         ]
     }
