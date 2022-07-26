@@ -205,10 +205,27 @@
             "de3a0ae252f899f1",
             "f3ba2d14b8d1dc0c"
         ],
-        "x": 414,
-        "y": 1419,
+        "x": 434,
+        "y": 1499,
         "w": 632,
         "h": 182
+    },
+    {
+        "id": "1e43472b3f6cdc78",
+        "type": "group",
+        "z": "0f058a7f547c3458",
+        "name": "SLIMJaB  Price Prediction",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "c9c45f6e23c4b8db",
+            "a56ae5efee999589"
+        ],
+        "x": 574,
+        "y": 1399,
+        "w": 472,
+        "h": 82
     },
     {
         "id": "a1c86bd095899ec8",
@@ -1408,8 +1425,8 @@
         "arraySpltType": "len",
         "stream": false,
         "addname": "",
-        "x": 650,
-        "y": 1460,
+        "x": 670,
+        "y": 1540,
         "wires": [
             [
                 "386b66c192e744dd"
@@ -1436,8 +1453,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 790,
-        "y": 1460,
+        "x": 810,
+        "y": 1540,
         "wires": [
             [
                 "250d27e9ccc4dd95"
@@ -1459,8 +1476,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 530,
-        "y": 1540,
+        "x": 550,
+        "y": 1620,
         "wires": [
             [
                 "de3a0ae252f899f1"
@@ -1479,8 +1496,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 500,
-        "y": 1460,
+        "x": 520,
+        "y": 1540,
         "wires": [
             [
                 "ea20d22178447f65"
@@ -1499,8 +1516,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 900,
-        "y": 1520,
+        "x": 920,
+        "y": 1600,
         "wires": [
             [
                 "522fe73aeb87ccf7"
@@ -1518,8 +1535,8 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 190,
-        "y": 1460,
+        "x": 230,
+        "y": 1540,
         "wires": [
             [
                 "552524df2054a9e2"
@@ -1549,8 +1566,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 2,
-        "x": 690,
-        "y": 1540,
+        "x": 710,
+        "y": 1620,
         "wires": [
             [
                 "7f61e328d172381c"
@@ -1572,8 +1589,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 920,
-        "y": 1560,
+        "x": 940,
+        "y": 1640,
         "wires": [
             [
                 "522fe73aeb87ccf7"
@@ -1587,12 +1604,12 @@
         "name": "place bid",
         "props": [],
         "repeat": "",
-        "crontab": "45 08 * * *",
+        "crontab": "30 03 * * *",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 530,
-        "y": 1680,
+        "x": 540,
+        "y": 1760,
         "wires": [
             [
                 "81d62c4d103308dd"
@@ -1610,8 +1627,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 770,
-        "y": 1680,
+        "x": 780,
+        "y": 1760,
         "wires": [
             [
                 "e348ef772185c937"
@@ -1632,8 +1649,8 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 990,
-        "y": 1680,
+        "x": 1000,
+        "y": 1760,
         "wires": [
             [
                 "38e0c3e53e36792a"
@@ -1647,7 +1664,7 @@
         "name": "fetch elexon",
         "props": [],
         "repeat": "",
-        "crontab": "00 01 * * *",
+        "crontab": "00 03 * * *",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
@@ -1655,7 +1672,51 @@
         "y": 1080,
         "wires": [
             [
-                "e29f299fc09a3a0f"
+                "e29f299fc09a3a0f",
+                "c9c45f6e23c4b8db"
+            ]
+        ]
+    },
+    {
+        "id": "c9c45f6e23c4b8db",
+        "type": "http request",
+        "z": "0f058a7f547c3458",
+        "g": "1e43472b3f6cdc78",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://aimlac-models:5000/price/predict-price",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 670,
+        "y": 1440,
+        "wires": [
+            [
+                "a56ae5efee999589"
+            ]
+        ]
+    },
+    {
+        "id": "a56ae5efee999589",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "g": "1e43472b3f6cdc78",
+        "name": "make_predictions_insert",
+        "func": "const formatTime = (dt) => {\n    let parsedDate = new Date(dt);\n    if ( isNaN(parsedDate.valueOf()) )\n        throw Error(`Not a valid time ${dt}`)\n    return parsedDate\n}\n\nconst columns = [\n    \"time\",\n    \"price\"\n]\n\nconst payload = msg.payload\n\nmsg = {}\n\nmsg.topic = \"INSERT INTO pricePrediction (\"\n  + columns.map(str => \"`\" + str + \"`\").join(\", \") + \") \"\n  + \"VALUES \" + \"(?)\" + \", (?)\".repeat(payload.length - 1)\n  + \" ON DUPLICATE KEY UPDATE \"\n  + columns.map(str => str + \"=VALUES(\" + str + \")\").join(\", \")\n  + \";\"\n\nmsg.payload = payload.map(data => [\n    formatTime(data.time), data.price\n])\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 910,
+        "y": 1440,
+        "wires": [
+            [
+                "522fe73aeb87ccf7"
             ]
         ]
     }
