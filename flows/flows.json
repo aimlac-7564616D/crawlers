@@ -1707,7 +1707,7 @@
         "z": "0f058a7f547c3458",
         "g": "1e43472b3f6cdc78",
         "name": "make_predictions_insert",
-        "func": "const formatTime = (dt) => {\n    let parsedDate = new Date(dt);\n    if ( isNaN(parsedDate.valueOf()) )\n        throw Error(`Not a valid time ${dt}`)\n    return parsedDate\n}\n\nconst columns = [\n    \"time\",\n    \"price\"\n]\n\nconst payload = msg.payload\n\nmsg = {}\n\nmsg.topic = \"INSERT INTO pricePrediction (\"\n  + columns.map(str => \"`\" + str + \"`\").join(\", \") + \") \"\n  + \"VALUES \" + \"(?)\" + \", (?)\".repeat(payload.length - 1)\n  + \" ON DUPLICATE KEY UPDATE \"\n  + columns.map(str => str + \"=VALUES(\" + str + \")\").join(\", \")\n  + \";\"\n\nmsg.payload = payload.map(data => [\n    formatTime(data.time), data.price\n])\n\nreturn msg",
+        "func": "const formatTime = (dt) => {\n    let parsedDate = new Date(dt);\n    if ( isNaN(parsedDate.valueOf()) )\n        throw Error(`Not a valid time ${dt}`)\n    return parsedDate\n}\n\nconst columns = [\n    \"time\",\n    \"price\"\n]\n\nconst payload = msg.payload\n\nmsg = {}\n\ntry {\n    msg.topic = \"INSERT INTO pricePrediction (\"\n      + columns.map(str => \"`\" + str + \"`\").join(\", \") + \") \"\n      + \"VALUES \" + \"(?)\" + \", (?)\".repeat(payload.length - 1)\n      + \" ON DUPLICATE KEY UPDATE \"\n      + columns.map(str => str + \"=VALUES(\" + str + \")\").join(\", \")\n      + \";\"\n    \n    msg.payload = payload.map(data => [\n        formatTime(data.time), data.price\n    ])\n    \n    return msg\n} catch (error) {\n    return {topic: \"SELECT 1;\", payload: {}}\n}",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
