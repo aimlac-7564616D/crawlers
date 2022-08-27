@@ -8,19 +8,35 @@
         "env": []
     },
     {
-        "id": "4e86ad10d01e7a69",
+        "id": "034191611f502241",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "41efd0c335674981",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "286d18d6ca53faf7",
         "type": "group",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "get postcode",
         "style": {
             "stroke": "#d1d1d1",
             "label": true
         },
         "nodes": [
-            "6c4546f3e5619681",
-            "0f0a67995d4466cb",
-            "5d8439e5cea7949c",
-            "c0a79f25a32d9fba"
+            "fc807377bb8b1261",
+            "dd984ef51058f4b8",
+            "d89f7bfce63ec593",
+            "f05d252014a14da8"
         ],
         "x": 314,
         "y": 679,
@@ -28,19 +44,19 @@
         "h": 202
     },
     {
-        "id": "a8dd6a9bd1b5b7e7",
+        "id": "60cc3d0fc0589906",
         "type": "group",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "query co2 data",
         "style": {
             "label": true,
             "stroke": "#d1d1d1"
         },
         "nodes": [
-            "7c4a746feef7e395",
-            "5b2f17b252887589",
-            "c740d05d4981138d",
-            "20b610e49e95e971"
+            "29c7a734cf779ba6",
+            "b38591e91048886b",
+            "561c3d1db08a9eee",
+            "56d1c2bf0b4b0c8b"
         ],
         "x": 614,
         "y": 679,
@@ -48,19 +64,19 @@
         "h": 202
     },
     {
-        "id": "7ea522c95e2a8526",
+        "id": "383517d3593c4462",
         "type": "group",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "Open Weather Map",
         "style": {
             "label": true
         },
         "nodes": [
-            "af6098234b0d4bd8",
-            "affbb4ebfeab8fed",
-            "f4f4a5afa8d10c57",
-            "fc28542c2b7cc484",
-            "5c78d1c35893caaf"
+            "9bcb90ead09b4e17",
+            "6cfee572ec80409c",
+            "4e9d3afb56f90305",
+            "8079f55531a39d92",
+            "45bb37d930728718"
         ],
         "x": 314,
         "y": 439,
@@ -68,19 +84,19 @@
         "h": 222
     },
     {
-        "id": "fa442aa2167cc59e",
+        "id": "301454ba5f8b69c6",
         "type": "group",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "Met Office",
         "style": {
             "label": true
         },
         "nodes": [
-            "6d438a7777ef90fa",
-            "12e7d34356a8a186",
-            "67b87407f16763d3",
-            "be9abe3da5580fa2",
-            "9ca09eb79f9ea5cc"
+            "60980e89ea9bcfa2",
+            "86dce4587f537dc5",
+            "1b14e8944872d3bd",
+            "af4a05c086fff45c",
+            "e095e9be7c46b4d1"
         ],
         "x": 334,
         "y": 239,
@@ -88,21 +104,21 @@
         "h": 182
     },
     {
-        "id": "69a3c6c3661dff85",
+        "id": "f10e786ea3228617",
         "type": "group",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "RSE",
         "style": {
             "label": true
         },
         "nodes": [
-            "4c8a4750891f7844",
-            "6fa52c2549c15f6c",
-            "e1d07ecec1d5ae7a",
-            "f35df1df4852048f",
-            "307ab4e6f668b177",
-            "0d66c11f180e1295",
-            "f832e3d01d480950"
+            "63a00b74a57e51c1",
+            "c95d3b1c0bd5be2c",
+            "704b4376dccc1cdc",
+            "b08f14b46fd79d6e",
+            "db6552e860a41559",
+            "604d200bc9ec2044",
+            "daf5ce5827f10fa0"
         ],
         "x": 454,
         "y": 39,
@@ -110,19 +126,19 @@
         "h": 162
     },
     {
-        "id": "d98ee0125271d322",
+        "id": "de3ca48ba0467e38",
         "type": "group",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "SLIMJAB Solar & Wind Power Predictions",
         "style": {
             "label": true
         },
         "nodes": [
-            "774949dcd02f25c9",
-            "ee669a19c9f4527a",
-            "3d92c97f493bb373",
-            "36c1a732c8c8b7a4",
-            "ea32b36d176f4077"
+            "14e9066473542cf7",
+            "c7377789b13b2617",
+            "e118c5c9d1963b6b",
+            "2d41fd167df8b7f8",
+            "055f799e3ee4baaf"
         ],
         "x": 814,
         "y": 239,
@@ -130,19 +146,19 @@
         "h": 202
     },
     {
-        "id": "b45564346620469a",
+        "id": "451de0b60f30a017",
         "type": "group",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "elexon DERSY",
         "style": {
             "label": true
         },
         "nodes": [
-            "9034c5ccd78ebdb3",
-            "61e2ea876b176903",
-            "a754fd4dfbd224e1",
-            "5df76330af1d2460",
-            "c233d75ae2b66cb4"
+            "f14be92741d47d3f",
+            "b535743cbf53aeee",
+            "aaa2f743cd03ab41",
+            "d0672dbd8577b0a0",
+            "5ce37c996f8be3b4"
         ],
         "x": 374,
         "y": 899,
@@ -150,19 +166,19 @@
         "h": 162
     },
     {
-        "id": "5929de991841b390",
+        "id": "59101f8bda45ee05",
         "type": "group",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "elexon B1620",
         "style": {
             "label": true
         },
         "nodes": [
-            "0a44bcc0fcc8afe0",
-            "8b71c527328e847f",
-            "65621fd6e8d96c38",
-            "b33754e6d4541ae2",
-            "03c66500e812feac"
+            "360f5eb08bc78624",
+            "e3b8279b1d1931f5",
+            "b1522bca7938df32",
+            "3b2b022345cea635",
+            "87b60729bba7901e"
         ],
         "x": 494,
         "y": 1079,
@@ -170,18 +186,18 @@
         "h": 162
     },
     {
-        "id": "3098027ef4ebbe3f",
+        "id": "4a02678af8a8f82d",
         "type": "group",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "elexon B0620",
         "style": {
             "label": true
         },
         "nodes": [
-            "143618b45c3be7e7",
-            "d9fa19e58778435f",
-            "be083ffbe96bbb0a",
-            "27f03b5dfe4e3727"
+            "31c16149e6bf119a",
+            "ae0ab5e063239ec3",
+            "1f7b72513a3d5c1d",
+            "e991ff1c92974ab9"
         ],
         "x": 554,
         "y": 1259,
@@ -189,21 +205,21 @@
         "h": 122
     },
     {
-        "id": "49fd1b4068135e75",
+        "id": "109427101203db3b",
         "type": "group",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "rse market data",
         "style": {
             "label": true
         },
         "nodes": [
-            "ea20d22178447f65",
-            "386b66c192e744dd",
-            "250d27e9ccc4dd95",
-            "552524df2054a9e2",
-            "7f61e328d172381c",
-            "de3a0ae252f899f1",
-            "f3ba2d14b8d1dc0c"
+            "706862024e9862c1",
+            "5d5bd7850877bb8c",
+            "e568e1c03163a8bb",
+            "d7f8e55bab0f51fa",
+            "7494caf36e80f674",
+            "b0d0d92ca5809d46",
+            "eb1d5be025b20f15"
         ],
         "x": 414,
         "y": 1419,
@@ -221,10 +237,10 @@
         "charset": "UTF8"
     },
     {
-        "id": "4c8a4750891f7844",
+        "id": "63a00b74a57e51c1",
         "type": "http request",
-        "z": "0f058a7f547c3458",
-        "g": "69a3c6c3661dff85",
+        "z": "41efd0c335674981",
+        "g": "f10e786ea3228617",
         "name": "Llanwrtyd Power",
         "method": "GET",
         "ret": "obj",
@@ -239,14 +255,14 @@
         "y": 160,
         "wires": [
             [
-                "f832e3d01d480950"
+                "daf5ce5827f10fa0"
             ]
         ]
     },
     {
-        "id": "b6c8d13a7ff9da14",
+        "id": "e81d35d24659427b",
         "type": "inject",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "fetch RSE",
         "props": [],
         "repeat": "1800",
@@ -258,16 +274,16 @@
         "y": 120,
         "wires": [
             [
-                "307ab4e6f668b177"
+                "db6552e860a41559"
             ]
         ]
     },
     {
-        "id": "6fa52c2549c15f6c",
+        "id": "c95d3b1c0bd5be2c",
         "type": "http request",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "d": true,
-        "g": "69a3c6c3661dff85",
+        "g": "f10e786ea3228617",
         "name": "Llanwrtyd 30m Average Power",
         "method": "GET",
         "ret": "txt",
@@ -285,9 +301,9 @@
         ]
     },
     {
-        "id": "38e0c3e53e36792a",
+        "id": "650629a32d8e0fb5",
         "type": "debug",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "internal log",
         "active": true,
         "tosidebar": true,
@@ -302,10 +318,10 @@
         "wires": []
     },
     {
-        "id": "e1d07ecec1d5ae7a",
+        "id": "704b4376dccc1cdc",
         "type": "template",
-        "z": "0f058a7f547c3458",
-        "g": "69a3c6c3661dff85",
+        "z": "41efd0c335674981",
+        "g": "f10e786ea3228617",
         "name": "make url",
         "field": "url",
         "fieldType": "msg",
@@ -317,16 +333,16 @@
         "y": 120,
         "wires": [
             [
-                "4c8a4750891f7844",
-                "f35df1df4852048f"
+                "63a00b74a57e51c1",
+                "b08f14b46fd79d6e"
             ]
         ]
     },
     {
-        "id": "f35df1df4852048f",
+        "id": "b08f14b46fd79d6e",
         "type": "template",
-        "z": "0f058a7f547c3458",
-        "g": "69a3c6c3661dff85",
+        "z": "41efd0c335674981",
+        "g": "f10e786ea3228617",
         "name": "append destination",
         "field": "url",
         "fieldType": "msg",
@@ -338,15 +354,15 @@
         "y": 120,
         "wires": [
             [
-                "6fa52c2549c15f6c"
+                "c95d3b1c0bd5be2c"
             ]
         ]
     },
     {
-        "id": "6d438a7777ef90fa",
+        "id": "60980e89ea9bcfa2",
         "type": "change",
-        "z": "0f058a7f547c3458",
-        "g": "fa442aa2167cc59e",
+        "z": "41efd0c335674981",
+        "g": "301454ba5f8b69c6",
         "name": "add ENV [MET]",
         "rules": [
             {
@@ -394,15 +410,15 @@
         "y": 280,
         "wires": [
             [
-                "12e7d34356a8a186"
+                "86dce4587f537dc5"
             ]
         ]
     },
     {
-        "id": "307ab4e6f668b177",
+        "id": "db6552e860a41559",
         "type": "change",
-        "z": "0f058a7f547c3458",
-        "g": "69a3c6c3661dff85",
+        "z": "41efd0c335674981",
+        "g": "f10e786ea3228617",
         "name": "add ENV [RSE]",
         "rules": [
             {
@@ -422,15 +438,15 @@
         "y": 120,
         "wires": [
             [
-                "e1d07ecec1d5ae7a"
+                "704b4376dccc1cdc"
             ]
         ]
     },
     {
-        "id": "0d66c11f180e1295",
+        "id": "604d200bc9ec2044",
         "type": "comment",
-        "z": "0f058a7f547c3458",
-        "g": "69a3c6c3661dff85",
+        "z": "41efd0c335674981",
+        "g": "f10e786ea3228617",
         "name": "needs timestamp",
         "info": "",
         "x": 800,
@@ -438,10 +454,10 @@
         "wires": []
     },
     {
-        "id": "f832e3d01d480950",
+        "id": "daf5ce5827f10fa0",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "69a3c6c3661dff85",
+        "z": "41efd0c335674981",
+        "g": "f10e786ea3228617",
         "name": "assemble onsite insert (sanitized)",
         "func": "\nmsg.topic = \"INSERT INTO energy_onsite (\"\n        + \"`time`, `hq_power`, `hq_temperature`, `computing_center`, `solar`, `wind1`, `wind2`, `wind3`, `wind4`, `windA`, `windB`\"\n    + \") VALUES (\"\n        + \":timedate, :hq_power, :hq_temperature, :computing_center, :solar, :wind1, :wind2, :wind3, :wind4, :windA, :windB\"\n    + \");\";\n\nvar data = msg.payload.elements;\nvar payload = {};\n\npayload.solar = data[\"Llanwrtyd Wells - Solar Generator\"].power;\npayload.wind1 = data[\"Llanwrtyd Wells - Wind Generator 1\"].power;\npayload.wind2 = data[\"Llanwrtyd Wells - Wind Generator 2\"].power;\npayload.wind3 = data[\"Llanwrtyd Wells - Wind Generator 3\"].power;\npayload.wind4 = data[\"Llanwrtyd Wells - Wind Generator 4\"].power;\npayload.windA = data[\"Llanwrtyd Wells - Wind Generator A\"].power;\npayload.windB = data[\"Llanwrtyd Wells - Wind Generator B\"].power;\n\npayload.hq_power = data[\"AIMLAC HQ Llanwrtyd Wells\"].power;\npayload.hq_temperature = data[\"AIMLAC HQ Llanwrtyd Wells\"].temperature;\npayload.computing_center = data[\"Llanwrtyd Wells - Computing Centre\"].power;\n\npayload.timedate = msg.payload.timedate;\n\n// do sanitization\nObject.keys(payload)\n    .filter(k => k != \"timedate\" )\n    .forEach((k, i) => {\n        var val = payload[k];\n        if ( !Number.isFinite(val) ) {\n            throw Error(k + \" is not a number (\" + val + \")\");\n        }\n    });\n\nvar parsed_date = new Date(payload.timedate);\nif ( isNaN(parsed_date.valueOf()) ) {\n    throw Error(\"Invalid date \", msg.payload.timedate);\n}\n\npayload.timedate = parsed_date;\n\n// overwrite payload\nmsg.payload = payload;\n\nreturn msg;\n",
         "outputs": 1,
@@ -453,14 +469,14 @@
         "y": 160,
         "wires": [
             [
-                "522fe73aeb87ccf7"
+                "2d4d5719948141ed"
             ]
         ]
     },
     {
-        "id": "7f1845d3f45f7bdb",
+        "id": "266f8a59dd662b3b",
         "type": "debug",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "log",
         "active": true,
         "tosidebar": false,
@@ -475,9 +491,9 @@
         "wires": []
     },
     {
-        "id": "725fb307c65c8a17",
+        "id": "3b494bc551a1e62d",
         "type": "inject",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "fetch MetOffice",
         "props": [],
         "repeat": "21600",
@@ -489,15 +505,15 @@
         "y": 280,
         "wires": [
             [
-                "6d438a7777ef90fa"
+                "60980e89ea9bcfa2"
             ]
         ]
     },
     {
-        "id": "f4f4a5afa8d10c57",
+        "id": "4e9d3afb56f90305",
         "type": "http request",
-        "z": "0f058a7f547c3458",
-        "g": "7ea522c95e2a8526",
+        "z": "41efd0c335674981",
+        "g": "383517d3593c4462",
         "name": "OWM Weather",
         "method": "GET",
         "ret": "obj",
@@ -512,15 +528,15 @@
         "y": 560,
         "wires": [
             [
-                "fc28542c2b7cc484"
+                "8079f55531a39d92"
             ]
         ]
     },
     {
-        "id": "af6098234b0d4bd8",
+        "id": "9bcb90ead09b4e17",
         "type": "change",
-        "z": "0f058a7f547c3458",
-        "g": "7ea522c95e2a8526",
+        "z": "41efd0c335674981",
+        "g": "383517d3593c4462",
         "name": "add ENV [OWM]",
         "rules": [
             {
@@ -561,14 +577,14 @@
         "y": 480,
         "wires": [
             [
-                "affbb4ebfeab8fed"
+                "6cfee572ec80409c"
             ]
         ]
     },
     {
-        "id": "41a2ad85c2f644d4",
+        "id": "f6da56f7942bb1b7",
         "type": "inject",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "fetch openWeather",
         "props": [],
         "repeat": "3600",
@@ -580,15 +596,15 @@
         "y": 440,
         "wires": [
             [
-                "af6098234b0d4bd8"
+                "9bcb90ead09b4e17"
             ]
         ]
     },
     {
-        "id": "affbb4ebfeab8fed",
+        "id": "6cfee572ec80409c",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "7ea522c95e2a8526",
+        "z": "41efd0c335674981",
+        "g": "383517d3593c4462",
         "name": "assemble owm request",
         "func": "\nlet url = \"api.openweathermap.org/data/2.5/weather\"\n    + \"?lat=\" + msg.latitude\n    + \"&lon=\" + msg.longitude\n    + \"&appid=\" + msg.api_key;\n\nmsg.url = url;\n\nreturn msg;",
         "outputs": 1,
@@ -600,15 +616,15 @@
         "y": 520,
         "wires": [
             [
-                "f4f4a5afa8d10c57"
+                "4e9d3afb56f90305"
             ]
         ]
     },
     {
-        "id": "fc28542c2b7cc484",
+        "id": "8079f55531a39d92",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "7ea522c95e2a8526",
+        "z": "41efd0c335674981",
+        "g": "383517d3593c4462",
         "name": "strip all but payload",
         "func": "let stripped_message = {\n    payload: msg.payload\n}\nreturn stripped_message;",
         "outputs": 1,
@@ -620,15 +636,15 @@
         "y": 560,
         "wires": [
             [
-                "5c78d1c35893caaf"
+                "45bb37d930728718"
             ]
         ]
     },
     {
-        "id": "5c78d1c35893caaf",
+        "id": "45bb37d930728718",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "7ea522c95e2a8526",
+        "z": "41efd0c335674981",
+        "g": "383517d3593c4462",
         "name": "make openweather insert (sanitized)",
         "func": "let keys = [\n    \"time\",\n    \"temperature\",\n    \"temperature_min\",\n    \"temperature_max\",\n    \"pressure\",\n    \"humidity\",\n    \"visibility\",\n    \"wind_speed\",\n    \"wind_deg\",\n    \"wind_gust\",\n    \"clouds\"\n];\n\ndata = msg.payload;\n\n// do sanitization\nfunction formatTime(t) {\n    // convert unix seconds to milis\n    var parsed_date = new Date(t * 1000);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nfunction sanitize(v) {\n    if (!Number.isFinite(v)) {\n        return null;\n    }\n    return v;\n}\n\nfunction buildPayload(data) {\n    let payload = [formatTime(data.dt)];\n    \n    payload.push(sanitize(data.main.temp));\n    payload.push(sanitize(data.main.temp_min));\n    payload.push(sanitize(data.main.temp_max));\n    payload.push(sanitize(data.main.pressure));\n    payload.push(sanitize(data.main.humidity));\n    payload.push(sanitize(data[\"visibility\"]));\n    payload.push(sanitize(data.wind.speed));\n    payload.push(sanitize(data.wind.deg));\n    payload.push(sanitize(data.wind.gust));\n    payload.push(sanitize(data.clouds[\"all\"]));\n    \n    return payload;\n}\n\nmsg.payload = buildPayload(data);\n\nmsg.topic = \"INSERT INTO openweather_data (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES(\" + msg.payload.map(k=>\"?\").join(\", \") + \") ;\"\n ;\n\nreturn msg;",
         "outputs": 1,
@@ -640,14 +656,14 @@
         "y": 620,
         "wires": [
             [
-                "522fe73aeb87ccf7"
+                "2d4d5719948141ed"
             ]
         ]
     },
     {
-        "id": "87f5753b77cb5821",
+        "id": "aee55ea055733990",
         "type": "inject",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "fetch CO2",
         "props": [],
         "repeat": "1800",
@@ -659,15 +675,15 @@
         "y": 900,
         "wires": [
             [
-                "c0a79f25a32d9fba"
+                "f05d252014a14da8"
             ]
         ]
     },
     {
-        "id": "c0a79f25a32d9fba",
+        "id": "f05d252014a14da8",
         "type": "change",
-        "z": "0f058a7f547c3458",
-        "g": "4e86ad10d01e7a69",
+        "z": "41efd0c335674981",
+        "g": "286d18d6ca53faf7",
         "name": "add ENV [CO2]",
         "rules": [
             {
@@ -694,15 +710,15 @@
         "y": 720,
         "wires": [
             [
-                "0f0a67995d4466cb"
+                "dd984ef51058f4b8"
             ]
         ]
     },
     {
-        "id": "6c4546f3e5619681",
+        "id": "fc807377bb8b1261",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "4e86ad10d01e7a69",
+        "z": "41efd0c335674981",
+        "g": "286d18d6ca53faf7",
         "name": "extract postcode",
         "func": "let postcode = msg.payload\n.data\n.relationships\n.nearest_postcode\n.data\n.id\n.split(\" \")[0];\n\n// clean-up\nreturn {\n    postcode: postcode\n};",
         "outputs": 1,
@@ -714,15 +730,15 @@
         "y": 840,
         "wires": [
             [
-                "7c4a746feef7e395"
+                "29c7a734cf779ba6"
             ]
         ]
     },
     {
-        "id": "0f0a67995d4466cb",
+        "id": "dd984ef51058f4b8",
         "type": "template",
-        "z": "0f058a7f547c3458",
-        "g": "4e86ad10d01e7a69",
+        "z": "41efd0c335674981",
+        "g": "286d18d6ca53faf7",
         "name": "postcode API",
         "field": "url",
         "fieldType": "msg",
@@ -734,15 +750,15 @@
         "y": 760,
         "wires": [
             [
-                "5d8439e5cea7949c"
+                "d89f7bfce63ec593"
             ]
         ]
     },
     {
-        "id": "5d8439e5cea7949c",
+        "id": "d89f7bfce63ec593",
         "type": "http request",
-        "z": "0f058a7f547c3458",
-        "g": "4e86ad10d01e7a69",
+        "z": "41efd0c335674981",
+        "g": "286d18d6ca53faf7",
         "name": "findthatpostcode.uk",
         "method": "GET",
         "ret": "obj",
@@ -757,15 +773,15 @@
         "y": 800,
         "wires": [
             [
-                "6c4546f3e5619681"
+                "fc807377bb8b1261"
             ]
         ]
     },
     {
-        "id": "7c4a746feef7e395",
+        "id": "29c7a734cf779ba6",
         "type": "template",
-        "z": "0f058a7f547c3458",
-        "g": "a8dd6a9bd1b5b7e7",
+        "z": "41efd0c335674981",
+        "g": "60cc3d0fc0589906",
         "name": "carbonintensity API",
         "field": "url",
         "fieldType": "msg",
@@ -777,15 +793,15 @@
         "y": 720,
         "wires": [
             [
-                "5b2f17b252887589"
+                "b38591e91048886b"
             ]
         ]
     },
     {
-        "id": "5b2f17b252887589",
+        "id": "b38591e91048886b",
         "type": "http request",
-        "z": "0f058a7f547c3458",
-        "g": "a8dd6a9bd1b5b7e7",
+        "z": "41efd0c335674981",
+        "g": "60cc3d0fc0589906",
         "name": "CO2 API",
         "method": "GET",
         "ret": "obj",
@@ -800,15 +816,15 @@
         "y": 760,
         "wires": [
             [
-                "c740d05d4981138d"
+                "561c3d1db08a9eee"
             ]
         ]
     },
     {
-        "id": "c740d05d4981138d",
+        "id": "561c3d1db08a9eee",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "a8dd6a9bd1b5b7e7",
+        "z": "41efd0c335674981",
+        "g": "60cc3d0fc0589906",
         "name": "strip all but payload",
         "func": "let stripped_message = {\n    payload: msg.payload\n}\nreturn stripped_message;",
         "outputs": 1,
@@ -820,17 +836,17 @@
         "y": 800,
         "wires": [
             [
-                "20b610e49e95e971"
+                "56d1c2bf0b4b0c8b"
             ]
         ]
     },
     {
-        "id": "20b610e49e95e971",
+        "id": "56d1c2bf0b4b0c8b",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "a8dd6a9bd1b5b7e7",
+        "z": "41efd0c335674981",
+        "g": "60cc3d0fc0589906",
         "name": "make carbon_dioxide insert (sanitized)",
-        "func": "// do sanitization\nfunction formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nlet data = msg.payload.data[0];\n\nmsg.payload = [\n    formatTime(data.data[0].to),\n    data.data[0].intensity.forecast,\n    data.data[0].intensity.index,\n    data.shortname,\n];\n\nlet keys = [\n    \"time\",\n    \"intensity\",\n    \"indicator\",\n    \"location\",\n];\ndata.data[0].generationmix.forEach((v, i) => {\n   keys.push(`fuel_${v.fuel}`);\n   msg.payload.push(v.perc);\n});\n\nmsg.topic = `INSERT INTO carbon_dioxide\n(\\`${keys.join(\"\\`, \\`\")}\\`)\nVALUES (${keys.map(() => \"?\").join(\", \")})`;\n\nreturn msg;",
+        "func": "// do sanitization\nfunction formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nlet data = msg.payload.data[0];\n\nmsg.payload = [\n    formatTime(data.data[0].to),\n    data.data[0].intensity.forecast,\n    data.data[0].intensity.index,\n    data.shortname,\n];\n\nlet keys = [\n    \"time\",\n    \"intensity\",\n    \"indicator\",\n    \"location\",\n];\ndata.data[0].generationmix.forEach((v, i) => {\n   keys.push(`fuel_${v.fuel}`);\n   msg.payload.push(v.perc);\n});\n\nmsg.topic = `INSERT INTO carbon_dioxide\n(\\`${keys.join(\"\\`, \\`\")}\\`)\nVALUES (${keys.map(() => \"?\").join(\", \")})\nON DUPLICATE KEY UPDATE\n${keys.map(k => k + \"=VALUES(\" + k +\")\").join(\",\")};`;\n\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -840,15 +856,16 @@
         "y": 840,
         "wires": [
             [
-                "522fe73aeb87ccf7"
+                "2d4d5719948141ed",
+                "0a9ec95216811926"
             ]
         ]
     },
     {
-        "id": "12e7d34356a8a186",
+        "id": "86dce4587f537dc5",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "fa442aa2167cc59e",
+        "z": "41efd0c335674981",
+        "g": "301454ba5f8b69c6",
         "name": "assemble met request",
         "func": "let headers = {\n    \"X-IBM-Client-Id\": msg.api_key,\n    \"X-IBM-Client-Secret\": msg.secret_key,\n    \"accept\": \"application/json\"\n};\n\nlet url = \"https://rgw.5878-e94b1c46.eu-gb.apiconnect.appdomain.cloud\"\n+ \"/metoffice/production/v0/forecasts/point/hourly\"\n+ \"?excludeParameterMetadata=\"+msg.noParamNames\n+ \"&includeLocationName=true\"\n+ \"&latitude=\"+msg.latitude+\"&longitude=\"+msg.longitude;\n\nmsg.url = url;\nmsg.headers = headers;\n\nreturn msg;",
         "outputs": 1,
@@ -860,15 +877,15 @@
         "y": 280,
         "wires": [
             [
-                "67b87407f16763d3"
+                "1b14e8944872d3bd"
             ]
         ]
     },
     {
-        "id": "67b87407f16763d3",
+        "id": "1b14e8944872d3bd",
         "type": "http request",
-        "z": "0f058a7f547c3458",
-        "g": "fa442aa2167cc59e",
+        "z": "41efd0c335674981",
+        "g": "301454ba5f8b69c6",
         "name": "MetOffice Spot",
         "method": "GET",
         "ret": "obj",
@@ -883,15 +900,15 @@
         "y": 320,
         "wires": [
             [
-                "be9abe3da5580fa2"
+                "af4a05c086fff45c"
             ]
         ]
     },
     {
-        "id": "be9abe3da5580fa2",
+        "id": "af4a05c086fff45c",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "fa442aa2167cc59e",
+        "z": "41efd0c335674981",
+        "g": "301454ba5f8b69c6",
         "name": "strip all but payload",
         "func": "let stripped_message = {\n    payload: msg.payload\n}\nreturn stripped_message;",
         "outputs": 1,
@@ -903,18 +920,18 @@
         "y": 320,
         "wires": [
             [
-                "9ca09eb79f9ea5cc",
-                "ee669a19c9f4527a",
-                "774949dcd02f25c9",
-                "ea32b36d176f4077"
+                "e095e9be7c46b4d1",
+                "c7377789b13b2617",
+                "14e9066473542cf7",
+                "055f799e3ee4baaf"
             ]
         ]
     },
     {
-        "id": "9ca09eb79f9ea5cc",
+        "id": "e095e9be7c46b4d1",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "fa442aa2167cc59e",
+        "z": "41efd0c335674981",
+        "g": "301454ba5f8b69c6",
         "name": "make metoffice_spot insert (sanitized)",
         "func": "let keys = [\n    \"time\",\n    \"screenTemperature\",\n    \"maxScreenAirTemp\",\n    \"minScreenAirTemp\",\n    \"screenDewPointTemperature\",\n    \"feelsLikeTemperature\",\n    \"windSpeed10m\",\n    \"windDirectionFrom10m\",\n    \"windGustSpeed10m\",\n    \"max10mWindGust\",\n    \"visibility\",\n    \"screenRelativeHumidity\",\n    \"mslp\",\n    \"uvIndex\",\n    \"significantWeatherCode\",\n    \"precipitationRate\",\n    \"totalPrecipAmount\",\n    \"totalSnowAmount\",\n    \"probOfPrecipitation\"\n];\n\ndata = msg.payload.features[0].properties.timeSeries;\n\n// do sanitization\nfunction formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nfunction buildPayload(item) {\n    let payload = [formatTime(item.time)];\n    keys.filter(k => k != \"time\")\n        .forEach((k, i) => {\n            let val = item[k];\n            if (!Number.isFinite(val)) {\n                //throw Error(k + \" is not a number (\" + val + \")\");\n                val = null;\n            }\n            payload.push(val);\n        }\n    );\n    \n    return payload;\n}\n\nmsg.payload = data.map(item => buildPayload(item));\n\nmsg.topic = \"INSERT INTO metoffice_spot (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES \" + msg.payload.map(k=>\"(?)\").join(\", \")\n + \"ON DUPLICATE KEY UPDATE \"\n + keys\n    .filter(k=>k != \"time\")\n    .map(k=>k + \"=VALUES(\"+ k + \")\").join(\", \")\n + \";\";\n\nreturn msg;",
         "outputs": 1,
@@ -926,15 +943,15 @@
         "y": 380,
         "wires": [
             [
-                "522fe73aeb87ccf7"
+                "2d4d5719948141ed"
             ]
         ]
     },
     {
-        "id": "774949dcd02f25c9",
+        "id": "14e9066473542cf7",
         "type": "http request",
-        "z": "0f058a7f547c3458",
-        "g": "d98ee0125271d322",
+        "z": "41efd0c335674981",
+        "g": "de3ca48ba0467e38",
         "name": "SLIMJAB Predict Solar",
         "method": "POST",
         "ret": "obj",
@@ -949,15 +966,15 @@
         "y": 320,
         "wires": [
             [
-                "3d92c97f493bb373"
+                "e118c5c9d1963b6b"
             ]
         ]
     },
     {
-        "id": "ee669a19c9f4527a",
+        "id": "c7377789b13b2617",
         "type": "http request",
-        "z": "0f058a7f547c3458",
-        "g": "d98ee0125271d322",
+        "z": "41efd0c335674981",
+        "g": "de3ca48ba0467e38",
         "name": "SLIMJAB Predict Wind",
         "method": "POST",
         "ret": "obj",
@@ -972,15 +989,15 @@
         "y": 280,
         "wires": [
             [
-                "3d92c97f493bb373"
+                "e118c5c9d1963b6b"
             ]
         ]
     },
     {
-        "id": "3d92c97f493bb373",
+        "id": "e118c5c9d1963b6b",
         "type": "join",
-        "z": "0f058a7f547c3458",
-        "g": "d98ee0125271d322",
+        "z": "41efd0c335674981",
+        "g": "de3ca48ba0467e38",
         "name": "",
         "mode": "custom",
         "build": "array",
@@ -1001,15 +1018,15 @@
         "y": 360,
         "wires": [
             [
-                "36c1a732c8c8b7a4"
+                "2d41fd167df8b7f8"
             ]
         ]
     },
     {
-        "id": "36c1a732c8c8b7a4",
+        "id": "2d41fd167df8b7f8",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "d98ee0125271d322",
+        "z": "41efd0c335674981",
+        "g": "de3ca48ba0467e38",
         "name": "make_predictions_insert",
         "func": "const formatTime = (dt) => {\n    let parsedDate = new Date(dt);\n    if ( isNaN(parsedDate.valueOf()) )\n        throw Error(`Not a valid time ${dt}`)\n    return parsedDate\n}\n\nconst columns = [\n    \"time\",\n    \"WindSpeed\",\n    \"WindPower\",\n    \"SolarPower\",\n    \"HQPowerDemand\",\n    \"HQTemperature\"\n]\n\nconst payload = msg.payload\n\nmsg = {}\n\nmsg.topic = \"INSERT INTO powerPrediction (\"\n  + columns.map(str => \"`\" + str + \"`\").join(\", \") + \") \"\n  + \"VALUES \" + \"(?)\" + \", (?)\".repeat(payload[0].length - 1)\n  + \" ON DUPLICATE KEY UPDATE \"\n  + columns.map(str => str + \"=VALUES(\" + str + \")\").join(\", \")\n  + \";\"\n\nmsg.payload = _.zip(...payload).map(\n    parts => {\n        let row = _.assignIn(...parts)\n        row.time = formatTime(row.time)\n        return _.map(columns, _.propertyOf(row))\n    }\n)\n\nreturn msg",
         "outputs": 1,
@@ -1026,15 +1043,15 @@
         "y": 400,
         "wires": [
             [
-                "522fe73aeb87ccf7"
+                "2d4d5719948141ed"
             ]
         ]
     },
     {
-        "id": "ea32b36d176f4077",
+        "id": "055f799e3ee4baaf",
         "type": "http request",
-        "z": "0f058a7f547c3458",
-        "g": "d98ee0125271d322",
+        "z": "41efd0c335674981",
+        "g": "de3ca48ba0467e38",
         "name": "SLIMJAB Predict Onsite",
         "method": "POST",
         "ret": "obj",
@@ -1049,14 +1066,14 @@
         "y": 360,
         "wires": [
             [
-                "3d92c97f493bb373"
+                "e118c5c9d1963b6b"
             ]
         ]
     },
     {
-        "id": "e29f299fc09a3a0f",
+        "id": "41a4f8e299131a47",
         "type": "change",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "",
         "rules": [
             {
@@ -1076,16 +1093,16 @@
         "y": 1140,
         "wires": [
             [
-                "9034c5ccd78ebdb3",
-                "43f2f89ac35eb61d"
+                "f14be92741d47d3f",
+                "a844eb19130b02ca"
             ]
         ]
     },
     {
-        "id": "9034c5ccd78ebdb3",
+        "id": "f14be92741d47d3f",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "b45564346620469a",
+        "z": "41efd0c335674981",
+        "g": "451de0b60f30a017",
         "name": "assemble DERSYSDATA request",
         "func": "function to_string(date) {\n    var dd = String(date.getDate()).padStart(2, '0');\n    var mm = String(date.getMonth() + 1).padStart(2, '0'); //January is 0!\n    var yyyy = date.getFullYear();\n    return yyyy + \"-\" + mm + \"-\" + dd;\n}\n\nvar today = new Date();\n\nvar yesterday = new Date();\nyesterday.setDate(yesterday.getDate() - 2);\n\nvar url = \"https://api.bmreports.com/BMRS/DERSYSDATA/v1\"\n    + \"?APIKey=\" + msg.api_key\n    + \"&FromSettlementDate=\" + to_string(yesterday)\n    + \"&ToSettlementDate=\" + to_string(today)\n    + \"&ServiceType=xml\";\n\nmsg.url = url;\n\nreturn msg;",
         "outputs": 1,
@@ -1097,15 +1114,15 @@
         "y": 940,
         "wires": [
             [
-                "61e2ea876b176903"
+                "b535743cbf53aeee"
             ]
         ]
     },
     {
-        "id": "61e2ea876b176903",
+        "id": "b535743cbf53aeee",
         "type": "http request",
-        "z": "0f058a7f547c3458",
-        "g": "b45564346620469a",
+        "z": "41efd0c335674981",
+        "g": "451de0b60f30a017",
         "name": "Elexon BMRS",
         "method": "GET",
         "ret": "txt",
@@ -1120,15 +1137,15 @@
         "y": 940,
         "wires": [
             [
-                "a754fd4dfbd224e1"
+                "aaa2f743cd03ab41"
             ]
         ]
     },
     {
-        "id": "a754fd4dfbd224e1",
+        "id": "aaa2f743cd03ab41",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "b45564346620469a",
+        "z": "41efd0c335674981",
+        "g": "451de0b60f30a017",
         "name": "strip all but payload",
         "func": "let stripped_message = {\n    payload: msg.payload\n}\nreturn stripped_message;",
         "outputs": 1,
@@ -1140,15 +1157,15 @@
         "y": 980,
         "wires": [
             [
-                "c233d75ae2b66cb4"
+                "5ce37c996f8be3b4"
             ]
         ]
     },
     {
-        "id": "5df76330af1d2460",
+        "id": "d0672dbd8577b0a0",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "b45564346620469a",
+        "z": "41efd0c335674981",
+        "g": "451de0b60f30a017",
         "name": "make elexon insert (not sanitized)",
         "func": "let keys = [\n    // always the same:\n    //\"RecordType\",\n    \"settlementDate\",\n    \"settlementPeriod\",\n    \"systemSellPrice\",\n    \"systemBuyPrice\",\n    \"bSADDefault\",\n    \"priceDerivationCode\",\n    \"reserveScarcityPrice\",\n    \"indicativeNetImbalanceVolume\",\n    \"sellPriceAdjustment\",\n    \"buyPriceAdjustment\",\n    \"replacementPrice\",\n    \"replacementPriceCalculationVolume\",\n    \"totalSystemAcceptedOfferVolume\",\n    \"totalSystemAcceptedBidVolume\",\n    \"totalSystemTaggedAcceptedOfferVolume\",\n    \"totalSystemTaggedAcceptedBidVolume\",\n    \"totalSystemPricedAcceptedOfferVolume\",\n    \"totalSystemAdjustmentSellVolume\",\n    \"totalSystemAdjustmentBuyVolume\",\n    \"totalSystemTaggedAdjustmentSellVolume\",\n    \"totalSystemTaggedAdjustmentBuyVolume\"\n];\n\nfunction formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\ndata = msg.payload\n    .response\n    .responseBody[0]\n    .responseList[0]\n    .item;\n\nfunction buildPayload(data) {\n    let payload = [];\n    data.forEach(item => {\n        parsed = keys.map(k => v = item[k] == \"NULL\" ? 0.0 : item[k]);\n        parsed[0] = formatTime(parsed[0]);\n        payload.push(parsed);\n    });\n    return payload;\n}\n\nmsg.payload = buildPayload(data);\n\nmsg.topic = \"INSERT INTO elexonDERSYdata (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES\" + msg.payload.map(k=>\"(?)\").join(\", \")\n + \"ON DUPLICATE KEY UPDATE \"\n + keys\n    .filter(k=>k != \"settlementDate\" && k != \"settlementPeriod\")\n    .map(k=>k + \"=VALUES(\"+ k + \")\").join(\", \")\n + \";\";\n\nreturn msg;",
         "outputs": 1,
@@ -1160,15 +1177,15 @@
         "y": 1020,
         "wires": [
             [
-                "522fe73aeb87ccf7"
+                "2d4d5719948141ed"
             ]
         ]
     },
     {
-        "id": "c233d75ae2b66cb4",
+        "id": "5ce37c996f8be3b4",
         "type": "xml",
-        "z": "0f058a7f547c3458",
-        "g": "b45564346620469a",
+        "z": "41efd0c335674981",
+        "g": "451de0b60f30a017",
         "name": "",
         "property": "payload",
         "attr": "",
@@ -1177,15 +1194,15 @@
         "y": 980,
         "wires": [
             [
-                "5df76330af1d2460",
-                "38e0c3e53e36792a"
+                "d0672dbd8577b0a0",
+                "650629a32d8e0fb5"
             ]
         ]
     },
     {
-        "id": "43f2f89ac35eb61d",
+        "id": "a844eb19130b02ca",
         "type": "function",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "assemble BMRS code request",
         "func": "function to_string(date) {\n    let dd = String(today.getDate()).padStart(2, '0');\n    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!\n    let yyyy = today.getFullYear();\n    return yyyy + \"-\" + mm + \"-\" + dd;\n}\n\nlet today = new Date();\nlet yesterday = (new Date()).setDate(today.getDate() - 1);\n\nfunction deepcopy(msg) {\n    return JSON.parse(JSON.stringify(msg));\n}\n\nfunction make_msg_for(msg, code) {\n    let url = \"https://api.bmreports.com/BMRS/\"\n        + code\n        + \"/v1\"\n        + \"?APIKey=\" + msg.api_key\n        + \"&SettlementDate=\" + to_string(today)\n        + \"&Period=*\"\n        + \"&ServiceType=xml\";\n    \n    copy = deepcopy(msg);\n    copy.url = url;\n    return copy;\n}\n\n// Actual aggregated generation perType\nmsg1 = make_msg_for(msg, \"B1620\");\n\n// Day ahead total load forecast per bidding zone\nmsg2 = make_msg_for(msg, \"B0620\");\n\nreturn [msg1, msg2];",
         "outputs": 2,
@@ -1197,18 +1214,18 @@
         "y": 1220,
         "wires": [
             [
-                "0a44bcc0fcc8afe0"
+                "360f5eb08bc78624"
             ],
             [
-                "d9fa19e58778435f"
+                "ae0ab5e063239ec3"
             ]
         ]
     },
     {
-        "id": "0a44bcc0fcc8afe0",
+        "id": "360f5eb08bc78624",
         "type": "http request",
-        "z": "0f058a7f547c3458",
-        "g": "5929de991841b390",
+        "z": "41efd0c335674981",
+        "g": "59101f8bda45ee05",
         "name": "Elexon BMRS",
         "method": "GET",
         "ret": "txt",
@@ -1223,15 +1240,15 @@
         "y": 1120,
         "wires": [
             [
-                "8b71c527328e847f"
+                "e3b8279b1d1931f5"
             ]
         ]
     },
     {
-        "id": "8b71c527328e847f",
+        "id": "e3b8279b1d1931f5",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "5929de991841b390",
+        "z": "41efd0c335674981",
+        "g": "59101f8bda45ee05",
         "name": "strip all but payload",
         "func": "let stripped_message = {\n    payload: msg.payload\n}\nreturn stripped_message;",
         "outputs": 1,
@@ -1243,15 +1260,15 @@
         "y": 1120,
         "wires": [
             [
-                "65621fd6e8d96c38"
+                "b1522bca7938df32"
             ]
         ]
     },
     {
-        "id": "65621fd6e8d96c38",
+        "id": "b1522bca7938df32",
         "type": "xml",
-        "z": "0f058a7f547c3458",
-        "g": "5929de991841b390",
+        "z": "41efd0c335674981",
+        "g": "59101f8bda45ee05",
         "name": "",
         "property": "payload",
         "attr": "",
@@ -1260,15 +1277,15 @@
         "y": 1160,
         "wires": [
             [
-                "03c66500e812feac"
+                "87b60729bba7901e"
             ]
         ]
     },
     {
-        "id": "143618b45c3be7e7",
+        "id": "31c16149e6bf119a",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "3098027ef4ebbe3f",
+        "z": "41efd0c335674981",
+        "g": "4a02678af8a8f82d",
         "name": "make B0620 insert (not sanitized)",
         "func": "let keys = [\n    // always the same:\n    //\"RecordType\",\n    \"settlementDate\",\n    \"settlementPeriod\",\n    \"quantity\",\n    //\"documentType\",\n    //\"businessType\",\n    //\"processType\",\n    //\"objectAggregation\",\n    //\"curveType\",\n    //\"resolution\",\n    //\"unitOfMeasure\",\n    \"activeFlag\",\n    //\"documentID\",\n    //\"documentRevNum\"\n];\n\nfunction formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\ndata = msg.payload\n    .response\n    .responseBody[0]\n    .responseList[0]\n    .item;\n\nfunction buildPayload(data) {\n    let payload = [];\n    data.forEach(item => {\n        parsed = keys.map(k => v = item[k] == \"NULL\" ? 0.0 : item[k]);\n        parsed[0] = formatTime(parsed[0]);\n        // parse period to a number\n        parsed[1] = parseInt(parsed[1], 10);\n        // convert quantitiy to a number\n        parsed[2] = parseInt(parsed[2], 10);\n        payload.push(parsed);\n    });\n    return payload;\n}\n\nmsg.payload = buildPayload(data);\n\nmsg.topic = \"INSERT INTO elexonB0620 (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES\" + msg.payload.map(k=>\"(?)\").join(\", \")\n + \"ON DUPLICATE KEY UPDATE \"\n + keys\n    .filter(k=>k != \"settlementDate\" && k != \"settlementPeriod\")\n    .map(k=>k + \"=VALUES(\"+ k + \")\").join(\", \")\n + \";\";\n\nreturn msg;",
         "outputs": 1,
@@ -1280,15 +1297,15 @@
         "y": 1340,
         "wires": [
             [
-                "522fe73aeb87ccf7"
+                "2d4d5719948141ed"
             ]
         ]
     },
     {
-        "id": "d9fa19e58778435f",
+        "id": "ae0ab5e063239ec3",
         "type": "http request",
-        "z": "0f058a7f547c3458",
-        "g": "3098027ef4ebbe3f",
+        "z": "41efd0c335674981",
+        "g": "4a02678af8a8f82d",
         "name": "Elexon BMRS",
         "method": "GET",
         "ret": "txt",
@@ -1303,15 +1320,15 @@
         "y": 1300,
         "wires": [
             [
-                "be083ffbe96bbb0a"
+                "1f7b72513a3d5c1d"
             ]
         ]
     },
     {
-        "id": "be083ffbe96bbb0a",
+        "id": "1f7b72513a3d5c1d",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "3098027ef4ebbe3f",
+        "z": "41efd0c335674981",
+        "g": "4a02678af8a8f82d",
         "name": "strip all but payload",
         "func": "let stripped_message = {\n    payload: msg.payload\n}\nreturn stripped_message;",
         "outputs": 1,
@@ -1323,15 +1340,15 @@
         "y": 1300,
         "wires": [
             [
-                "27f03b5dfe4e3727"
+                "e991ff1c92974ab9"
             ]
         ]
     },
     {
-        "id": "27f03b5dfe4e3727",
+        "id": "e991ff1c92974ab9",
         "type": "xml",
-        "z": "0f058a7f547c3458",
-        "g": "3098027ef4ebbe3f",
+        "z": "41efd0c335674981",
+        "g": "4a02678af8a8f82d",
         "name": "",
         "property": "payload",
         "attr": "",
@@ -1340,15 +1357,15 @@
         "y": 1340,
         "wires": [
             [
-                "143618b45c3be7e7"
+                "31c16149e6bf119a"
             ]
         ]
     },
     {
-        "id": "b33754e6d4541ae2",
+        "id": "3b2b022345cea635",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "5929de991841b390",
+        "z": "41efd0c335674981",
+        "g": "59101f8bda45ee05",
         "name": "make B1620 insert (not sanitized)",
         "func": "function formatTime(t) {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\npsrt_keys = msg.psrt_keys;\ndata = msg.payload;\n\nlet keys = ([\"settlementDate\", \"settlementPeriod\"]).concat(psrt_keys);\nlet table = [];\n\nObject.keys(data).forEach(k => {\n    // get the data for this date\n    let frame = data[k];\n    Object.keys(frame).forEach(period => {\n        // get the data for this date + period\n        let item = frame[period];\n        let row = (\n            [formatTime(k), parseInt(period, 10)]\n            // insert all of the different resources quantities\n        ).concat(psrt_keys.map(i=>item[i]));\n        table.push(row);\n    });\n});\n\nmsg.payload = table;\n\ndelete msg.psrt_keys;\n\nmsg.topic = \"INSERT INTO elexonB1620 (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES\" + msg.payload.map(k=>\"(?)\").join(\", \")\n + \"ON DUPLICATE KEY UPDATE \"\n + keys\n    .filter(k=>k != \"settlementDate\" && k != \"settlementPeriod\")\n    .map(k=>k + \"=VALUES(\"+ k + \")\").join(\", \")\n + \";\";\n\n\nreturn msg;",
         "outputs": 1,
@@ -1360,15 +1377,15 @@
         "y": 1200,
         "wires": [
             [
-                "522fe73aeb87ccf7"
+                "2d4d5719948141ed"
             ]
         ]
     },
     {
-        "id": "03c66500e812feac",
+        "id": "87b60729bba7901e",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "5929de991841b390",
+        "z": "41efd0c335674981",
+        "g": "59101f8bda45ee05",
         "name": "aggregate resource type",
         "func": "// to camel case\nfunction camelize(str) {\n    let text = String(str).replace(/[\"\\-]/g, \"\");\n    return text.replace(/(?:^\\w|[A-Z]|\\b\\w|\\s+)/g, function(match, index) {\n        if (+match === 0) return \"\"; // or if (/\\s+/.test(match)) for white spaces\n        return index === 0 ? match.toLowerCase() : match.toUpperCase();\n    });\n}\n\nclass DefaultDict {\n  constructor(defaultInit) {\n    return new Proxy({}, {\n      get: (target, name) => name in target ?\n        target[name] :\n        (target[name] = typeof defaultInit === 'function' ?\n          defaultInit() :\n          defaultInit)\n    })\n  }\n}\n\n// aggregate data:\n// time -> period -> powerSystemResourceType -> quantity\nlet aggregate = new DefaultDict(\n    () => new DefaultDict(\n        // quantity aggregate\n        () => new DefaultDict(0.0)    \n    )\n);\n\ndata = msg.payload\n    .response\n    .responseBody[0]\n    .responseList[0]\n    .item;\n\nlet psrt_keys = [];\ndata.forEach(item => {\n    let psrt = camelize(item.powerSystemResourceType);\n    // keep a collection of the keys\n    // so assembling the database query is easier\n    if (! psrt_keys.includes(psrt)) {\n        psrt_keys.push(psrt);\n    }\n    aggregate[item.settlementDate][item.settlementPeriod][psrt]\n        += parseInt(item.quantity, 10);\n});\n\nmsg.payload = aggregate;\nmsg.psrt_keys = psrt_keys;\n\nreturn msg;",
         "outputs": 1,
@@ -1380,14 +1397,14 @@
         "y": 1160,
         "wires": [
             [
-                "b33754e6d4541ae2"
+                "3b2b022345cea635"
             ]
         ]
     },
     {
-        "id": "522fe73aeb87ccf7",
+        "id": "2d4d5719948141ed",
         "type": "mysql",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "mydb": "a1c86bd095899ec8",
         "name": "LLanwrytd DB",
         "x": 1540,
@@ -1397,10 +1414,10 @@
         ]
     },
     {
-        "id": "ea20d22178447f65",
+        "id": "706862024e9862c1",
         "type": "split",
-        "z": "0f058a7f547c3458",
-        "g": "49fd1b4068135e75",
+        "z": "41efd0c335674981",
+        "g": "109427101203db3b",
         "name": "",
         "splt": "\\n",
         "spltType": "str",
@@ -1412,15 +1429,15 @@
         "y": 1460,
         "wires": [
             [
-                "386b66c192e744dd"
+                "5d5bd7850877bb8c"
             ]
         ]
     },
     {
-        "id": "386b66c192e744dd",
+        "id": "5d5bd7850877bb8c",
         "type": "change",
-        "z": "0f058a7f547c3458",
-        "g": "49fd1b4068135e75",
+        "z": "41efd0c335674981",
+        "g": "109427101203db3b",
         "name": "set url",
         "rules": [
             {
@@ -1440,15 +1457,15 @@
         "y": 1460,
         "wires": [
             [
-                "250d27e9ccc4dd95"
+                "e568e1c03163a8bb"
             ]
         ]
     },
     {
-        "id": "250d27e9ccc4dd95",
+        "id": "e568e1c03163a8bb",
         "type": "http request",
-        "z": "0f058a7f547c3458",
-        "g": "49fd1b4068135e75",
+        "z": "41efd0c335674981",
+        "g": "109427101203db3b",
         "name": "",
         "method": "GET",
         "ret": "obj",
@@ -1463,15 +1480,15 @@
         "y": 1540,
         "wires": [
             [
-                "de3a0ae252f899f1"
+                "b0d0d92ca5809d46"
             ]
         ]
     },
     {
-        "id": "552524df2054a9e2",
+        "id": "d7f8e55bab0f51fa",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "49fd1b4068135e75",
+        "z": "41efd0c335674981",
+        "g": "109427101203db3b",
         "name": "make urls",
         "func": "let startDate = new Date()\nlet endDate = new Date()\n\nstartDate.setDate(startDate.getDate() - 1)\nendDate.setDate(endDate.getDate() + 1)\n\nconst formatDateString = (date) => {\n    let year = date.getFullYear()\n    let month = (date.getMonth() + 1).toString().padStart(2, \"0\")\n    let day = date.getDate().toString().padStart(2, \"0\")\n    return `${year}-${month}-${day}`\n}\n\nlet host = `http://${env.get(\"AIMLAC_RSE_ADDR\")}`\nlet param = `start_date=${formatDateString(startDate)}`\n            + `&end_date=${formatDateString(endDate)}`\n\n\nmsg.payload = [\n    `${host}/auction/market/clearout-prices?${param}`,\n    `${host}/auction/market/imbalance?${param}`\n]\n\nreturn msg;",
         "outputs": 1,
@@ -1483,15 +1500,15 @@
         "y": 1460,
         "wires": [
             [
-                "ea20d22178447f65"
+                "706862024e9862c1"
             ]
         ]
     },
     {
-        "id": "7f61e328d172381c",
+        "id": "7494caf36e80f674",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "49fd1b4068135e75",
+        "z": "41efd0c335674981",
+        "g": "109427101203db3b",
         "name": "make clearout-prices insert",
         "func": "// do sanitization\nconst formatTime = (t) => {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nconst sanitize = (v) => {\n    if (!Number.isFinite(v)) {\n        return null;\n    }\n    return v;\n}\n\nlet keys = [\n    \"settlementDate\",\n    \"settlementPeriod\",\n    \"clearoutPrice\",\n    \"clearoutVolume\"\n]\n\nmsg = {\n    payload: msg.payload\n}\n\nmsg.topic = \"INSERT INTO rseMarket (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES \" + msg.payload.map(k=>\"(?)\").join(\", \")\n + \" ON DUPLICATE KEY UPDATE \"\n + keys\n    .filter(k=>k != \"settlementDate\" && k != \"settlementPeriod\")\n    .map(k=>k + \"=VALUES(\"+ k + \")\").join(\", \")\n + \";\";\n \n msg.payload = msg.payload.map(data => [\n     formatTime(data.date),\n     sanitize(data.period) * 2 - 1,\n     sanitize(data.price),\n     sanitize(data.volume)\n])\n \n return msg",
         "outputs": 1,
@@ -1503,14 +1520,14 @@
         "y": 1520,
         "wires": [
             [
-                "522fe73aeb87ccf7"
+                "2d4d5719948141ed"
             ]
         ]
     },
     {
-        "id": "3bb9af5c90fb7d9f",
+        "id": "ce717993f602ab1f",
         "type": "inject",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "fetch RSE market",
         "props": [],
         "repeat": "",
@@ -1522,15 +1539,15 @@
         "y": 1460,
         "wires": [
             [
-                "552524df2054a9e2"
+                "d7f8e55bab0f51fa"
             ]
         ]
     },
     {
-        "id": "de3a0ae252f899f1",
+        "id": "b0d0d92ca5809d46",
         "type": "switch",
-        "z": "0f058a7f547c3458",
-        "g": "49fd1b4068135e75",
+        "z": "41efd0c335674981",
+        "g": "109427101203db3b",
         "name": "",
         "property": "url",
         "propertyType": "msg",
@@ -1553,18 +1570,18 @@
         "y": 1540,
         "wires": [
             [
-                "7f61e328d172381c"
+                "7494caf36e80f674"
             ],
             [
-                "f3ba2d14b8d1dc0c"
+                "eb1d5be025b20f15"
             ]
         ]
     },
     {
-        "id": "f3ba2d14b8d1dc0c",
+        "id": "eb1d5be025b20f15",
         "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "49fd1b4068135e75",
+        "z": "41efd0c335674981",
+        "g": "109427101203db3b",
         "name": "make imbalance insert",
         "func": "// do sanitization\nconst formatTime = (t) => {\n    var parsed_date = new Date(t);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Not a valid time \" + t);\n    }\n    return parsed_date;\n}\n\nconst sanitize = (v) => {\n    if (!Number.isFinite(v)) {\n        return null;\n    }\n    return v;\n}\n\nlet keys = [\n    \"settlementDate\",\n    \"settlementPeriod\",\n    \"imbalancePrice\"\n]\n\nmsg = {\n    payload: msg.payload\n}\n\nmsg.topic = \"INSERT INTO rseMarket (\"\n + \"`\" + keys.join(\"`, `\") + \"`) \"\n + \"VALUES \" + msg.payload.map(k=>\"(?)\").join(\", \")\n + \" ON DUPLICATE KEY UPDATE \"\n + keys\n    .filter(k=>k != \"settlementDate\" && k != \"settlementPeriod\")\n    .map(k=>k + \"=VALUES(\"+ k + \")\").join(\", \")\n + \";\";\n \n msg.payload = msg.payload.map(data => [\n     formatTime(data.date),\n     sanitize(data.period),\n     sanitize(data.price)\n])\n \n return msg",
         "outputs": 1,
@@ -1576,14 +1593,14 @@
         "y": 1560,
         "wires": [
             [
-                "522fe73aeb87ccf7"
+                "2d4d5719948141ed"
             ]
         ]
     },
     {
-        "id": "94f9ce4c8ed99a2a",
+        "id": "93534d676abdef97",
         "type": "inject",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "place bid",
         "props": [],
         "repeat": "",
@@ -1595,14 +1612,14 @@
         "y": 1680,
         "wires": [
             [
-                "81d62c4d103308dd"
+                "14fafb67ec97e32b"
             ]
         ]
     },
     {
-        "id": "81d62c4d103308dd",
+        "id": "14fafb67ec97e32b",
         "type": "function",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "assemble bidding request",
         "func": "msg.url = \"http://aimlac-models:5000/bid/set\"\nmsg.method = \"POST\"\nmsg.headers = {\n    \"Content-Type\": \"application/json\"\n}\nmsg.payload = {\n    \"bidder\": \"default\"\n}\n\nreturn msg;",
         "outputs": 1,
@@ -1614,14 +1631,14 @@
         "y": 1680,
         "wires": [
             [
-                "e348ef772185c937"
+                "f00fd63a84834fc9"
             ]
         ]
     },
     {
-        "id": "e348ef772185c937",
+        "id": "f00fd63a84834fc9",
         "type": "http request",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "",
         "method": "POST",
         "ret": "obj",
@@ -1636,14 +1653,14 @@
         "y": 1680,
         "wires": [
             [
-                "38e0c3e53e36792a"
+                "650629a32d8e0fb5"
             ]
         ]
     },
     {
-        "id": "35a854daab5c5d09",
+        "id": "53616078bf906c44",
         "type": "inject",
-        "z": "0f058a7f547c3458",
+        "z": "41efd0c335674981",
         "name": "fetch elexon",
         "props": [],
         "repeat": "",
@@ -1655,7 +1672,48 @@
         "y": 1080,
         "wires": [
             [
-                "e29f299fc09a3a0f"
+                "41a4f8e299131a47"
+            ]
+        ]
+    },
+    {
+        "id": "0a9ec95216811926",
+        "type": "http request",
+        "z": "41efd0c335674981",
+        "name": "calculateCO2saved",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://aimlac-models:5000/co2/set",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 1050,
+        "y": 720,
+        "wires": [
+            [
+                "3e923a993e64d619"
+            ]
+        ]
+    },
+    {
+        "id": "3e923a993e64d619",
+        "type": "function",
+        "z": "41efd0c335674981",
+        "name": "insertCO2saved",
+        "func": "const formatTime = (dt) => {\n    let parsedDate = new Date(dt);\n    if ( isNaN(parsedDate.valueOf()) )\n        throw Error(`Not a valid time ${dt}`)\n    return parsedDate\n}\nconst payload = msg.payload[0]\n\nif ( payload.time.length === 0 ) {\n    return {\n        topic: \"SELECT 1;\",\n        payload: null\n    }\n}\nelse {\n    // do sanitization\n    const co2saved = payload.co2saved[0]\n    if ( !Number.isFinite(co2saved) ) {\n        throw Error(\"co2saved is not a number (\" + co2saved + \")\");\n    }\n    const parsed_date = formatTime(payload.time[0]);\n    if ( isNaN(parsed_date.valueOf()) ) {\n        throw Error(\"Invalid date \", payload.time[0]);\n    }\n    return {\n        topic: \"INSERT INTO carbon_dioxide_saved (\"\n            + \"`time`, `co2saved`\"\n            + \") VALUES (\"\n            + \":time, :co2saved\"\n            + \") ON DUPLICATE KEY UPDATE \"\n            + \"time=VALUES(time), co2saved=VALUES(co2saved);\",\n        payload: {\n            time: parsed_date,\n            co2saved: co2saved\n        }\n    }\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1200,
+        "y": 720,
+        "wires": [
+            [
+                "2d4d5719948141ed"
             ]
         ]
     }
