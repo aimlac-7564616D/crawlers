@@ -480,7 +480,7 @@
         "z": "0f058a7f547c3458",
         "name": "log",
         "active": true,
-        "tosidebar": false,
+        "tosidebar": true,
         "console": true,
         "tostatus": false,
         "complete": "payload",
@@ -1654,7 +1654,7 @@
         "y": 1760,
         "wires": [
             [
-                "38e0c3e53e36792a"
+                "7f1845d3f45f7bdb"
             ]
         ]
     },
