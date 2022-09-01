@@ -1747,5 +1747,26 @@
                 "522fe73aeb87ccf7"
             ]
         ]
+    },
+    {
+        "id": "65609d1a3afdc2e2",
+        "type": "inject",
+        "z": "0f058a7f547c3458",
+        "name": "bidding preparations",
+        "props": [],
+        "repeat": "",
+        "crontab": "00 03 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 100,
+        "y": 1000,
+        "wires": [
+            [
+                "552524df2054a9e2",
+                "307ab4e6f668b177",
+                "6d438a7777ef90fa"
+            ]
+        ]
     }
 ]
