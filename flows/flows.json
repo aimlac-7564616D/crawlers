@@ -206,26 +206,9 @@
             "f3ba2d14b8d1dc0c"
         ],
         "x": 434,
-        "y": 1499,
+        "y": 1419,
         "w": 632,
         "h": 182
-    },
-    {
-        "id": "1e43472b3f6cdc78",
-        "type": "group",
-        "z": "0f058a7f547c3458",
-        "name": "SLIMJaB  Price Prediction",
-        "style": {
-            "label": true
-        },
-        "nodes": [
-            "c9c45f6e23c4b8db",
-            "a56ae5efee999589"
-        ],
-        "x": 574,
-        "y": 1399,
-        "w": 472,
-        "h": 82
     },
     {
         "id": "a1c86bd095899ec8",
@@ -460,7 +443,7 @@
         "z": "0f058a7f547c3458",
         "g": "69a3c6c3661dff85",
         "name": "assemble onsite insert (sanitized)",
-        "func": "\nmsg.topic = \"INSERT INTO energy_onsite (\"\n        + \"`time`, `hq_power`, `hq_temperature`, `computing_center`, `solar`, `wind1`, `wind2`, `wind3`, `wind4`, `windA`, `windB`\"\n    + \") VALUES (\"\n        + \":timedate, :hq_power, :hq_temperature, :computing_center, :solar, :wind1, :wind2, :wind3, :wind4, :windA, :windB\"\n    + \");\";\n\nvar data = msg.payload.elements;\nvar payload = {};\n\npayload.solar = data[\"Llanwrtyd Wells - Solar Generator\"].power;\npayload.wind1 = data[\"Llanwrtyd Wells - Wind Generator 1\"].power;\npayload.wind2 = data[\"Llanwrtyd Wells - Wind Generator 2\"].power;\npayload.wind3 = data[\"Llanwrtyd Wells - Wind Generator 3\"].power;\npayload.wind4 = data[\"Llanwrtyd Wells - Wind Generator 4\"].power;\npayload.windA = data[\"Llanwrtyd Wells - Wind Generator A\"].power;\npayload.windB = data[\"Llanwrtyd Wells - Wind Generator B\"].power;\n\npayload.hq_power = data[\"AIMLAC HQ Llanwrtyd Wells\"].power;\npayload.hq_temperature = data[\"AIMLAC HQ Llanwrtyd Wells\"].temperature;\npayload.computing_center = data[\"Llanwrtyd Wells - Computing Centre\"].power;\n\npayload.timedate = msg.payload.timedate;\n\n// do sanitization\nObject.keys(payload)\n    .filter(k => k != \"timedate\" )\n    .forEach((k, i) => {\n        var val = payload[k];\n        if ( !Number.isFinite(val) ) {\n            throw Error(k + \" is not a number (\" + val + \")\");\n        }\n    });\n\nvar parsed_date = new Date(payload.timedate);\nif ( isNaN(parsed_date.valueOf()) ) {\n    throw Error(\"Invalid date \", msg.payload.timedate);\n}\n\npayload.timedate = parsed_date;\n\n// overwrite payload\nmsg.payload = payload;\n\nreturn msg;\n",
+        "func": "\nmsg.topic = \"INSERT INTO energy_onsite (\"\n        + \"`time`, `hq_power`, `hq_temperature`, `computing_center`, `solar`, `wind1`, `wind2`, `wind3`, `wind4`, `windA`, `windB`\"\n    + \") VALUES (\"\n        + \":timedate, :hq_power, :hq_temperature, :computing_center, :solar, :wind1, :wind2, :wind3, :wind4, :windA, :windB\"\n    + \") ON DUPLICATE KEY UPDATE \"\n    + \"time=VALUES(time), hq_power=VALUES(hq_power), hq_temperature=VALUES(hq_temperature), computing_center=VALUES(computing_center), \"\n    + \"solar=VALUES(solar), wind1=VALUES(wind1), wind2=VALUES(wind2), wind3=VALUES(wind3), wind4=VALUES(wind4), windA=VALUES(windA), \"\n    + \"windB=VALUES(windB);\";\n\nvar data = msg.payload.elements;\nvar payload = {};\n\npayload.solar = data[\"Llanwrtyd Wells - Solar Generator\"].power;\npayload.wind1 = data[\"Llanwrtyd Wells - Wind Generator 1\"].power;\npayload.wind2 = data[\"Llanwrtyd Wells - Wind Generator 2\"].power;\npayload.wind3 = data[\"Llanwrtyd Wells - Wind Generator 3\"].power;\npayload.wind4 = data[\"Llanwrtyd Wells - Wind Generator 4\"].power;\npayload.windA = data[\"Llanwrtyd Wells - Wind Generator A\"].power;\npayload.windB = data[\"Llanwrtyd Wells - Wind Generator B\"].power;\n\npayload.hq_power = data[\"AIMLAC HQ Llanwrtyd Wells\"].power;\npayload.hq_temperature = data[\"AIMLAC HQ Llanwrtyd Wells\"].temperature;\npayload.computing_center = data[\"Llanwrtyd Wells - Computing Centre\"].power;\n\npayload.timedate = msg.payload.timedate;\n\n// do sanitization\nObject.keys(payload)\n    .filter(k => k != \"timedate\" )\n    .forEach((k, i) => {\n        var val = payload[k];\n        if ( !Number.isFinite(val) ) {\n            throw Error(k + \" is not a number (\" + val + \")\");\n        }\n    });\n\nvar parsed_date = new Date(payload.timedate);\nif ( isNaN(parsed_date.valueOf()) ) {\n    throw Error(\"Invalid date \", msg.payload.timedate);\n}\n\npayload.timedate = parsed_date;\n\n// overwrite payload\nmsg.payload = payload;\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1427,7 +1410,7 @@
         "stream": false,
         "addname": "",
         "x": 670,
-        "y": 1540,
+        "y": 1460,
         "wires": [
             [
                 "386b66c192e744dd"
@@ -1455,7 +1438,7 @@
         "to": "",
         "reg": false,
         "x": 810,
-        "y": 1540,
+        "y": 1460,
         "wires": [
             [
                 "250d27e9ccc4dd95"
@@ -1478,7 +1461,7 @@
         "authType": "",
         "senderr": false,
         "x": 550,
-        "y": 1620,
+        "y": 1540,
         "wires": [
             [
                 "de3a0ae252f899f1"
@@ -1498,7 +1481,7 @@
         "finalize": "",
         "libs": [],
         "x": 520,
-        "y": 1540,
+        "y": 1460,
         "wires": [
             [
                 "ea20d22178447f65"
@@ -1518,7 +1501,7 @@
         "finalize": "",
         "libs": [],
         "x": 920,
-        "y": 1600,
+        "y": 1520,
         "wires": [
             [
                 "522fe73aeb87ccf7"
@@ -1532,12 +1515,12 @@
         "name": "fetch RSE market",
         "props": [],
         "repeat": "",
-        "crontab": "00 12 * * *",
+        "crontab": "30 12 * * *",
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
         "x": 230,
-        "y": 1540,
+        "y": 1460,
         "wires": [
             [
                 "552524df2054a9e2"
@@ -1568,10 +1551,11 @@
         "repair": false,
         "outputs": 2,
         "x": 710,
-        "y": 1620,
+        "y": 1540,
         "wires": [
             [
-                "7f61e328d172381c"
+                "7f61e328d172381c",
+                "3261ebb398304238"
             ],
             [
                 "f3ba2d14b8d1dc0c"
@@ -1591,7 +1575,7 @@
         "finalize": "",
         "libs": [],
         "x": 940,
-        "y": 1640,
+        "y": 1560,
         "wires": [
             [
                 "522fe73aeb87ccf7"
@@ -1609,7 +1593,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
-        "x": 540,
+        "x": 520,
         "y": 1760,
         "wires": [
             [
@@ -1628,7 +1612,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 780,
+        "x": 760,
         "y": 1760,
         "wires": [
             [
@@ -1650,7 +1634,7 @@
         "proxy": "",
         "authType": "",
         "senderr": false,
-        "x": 1000,
+        "x": 980,
         "y": 1760,
         "wires": [
             [
@@ -1673,51 +1657,7 @@
         "y": 1080,
         "wires": [
             [
-                "e29f299fc09a3a0f",
-                "c9c45f6e23c4b8db"
-            ]
-        ]
-    },
-    {
-        "id": "c9c45f6e23c4b8db",
-        "type": "http request",
-        "z": "0f058a7f547c3458",
-        "g": "1e43472b3f6cdc78",
-        "name": "",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "http://aimlac-models:5000/price/predict-price",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "authType": "",
-        "senderr": false,
-        "x": 670,
-        "y": 1440,
-        "wires": [
-            [
-                "a56ae5efee999589"
-            ]
-        ]
-    },
-    {
-        "id": "a56ae5efee999589",
-        "type": "function",
-        "z": "0f058a7f547c3458",
-        "g": "1e43472b3f6cdc78",
-        "name": "make_predictions_insert",
-        "func": "const formatTime = (dt) => {\n    let parsedDate = new Date(dt);\n    if ( isNaN(parsedDate.valueOf()) )\n        throw Error(`Not a valid time ${dt}`)\n    return parsedDate\n}\n\nconst columns = [\n    \"time\",\n    \"price\"\n]\n\nconst payload = msg.payload\n\nmsg = {}\n\ntry {\n    msg.topic = \"INSERT INTO pricePrediction (\"\n      + columns.map(str => \"`\" + str + \"`\").join(\", \") + \") \"\n      + \"VALUES \" + \"(?)\" + \", (?)\".repeat(payload.length - 1)\n      + \" ON DUPLICATE KEY UPDATE \"\n      + columns.map(str => str + \"=VALUES(\" + str + \")\").join(\", \")\n      + \";\"\n    \n    msg.payload = payload.map(data => [\n        formatTime(data.time), data.price\n    ])\n    \n    return msg\n} catch (error) {\n    return {topic: \"SELECT 1;\", payload: {}}\n}",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 910,
-        "y": 1440,
-        "wires": [
-            [
-                "522fe73aeb87ccf7"
+                "e29f299fc09a3a0f"
             ]
         ]
     },
@@ -1759,6 +1699,73 @@
         "wires": [
             [
                 "522fe73aeb87ccf7"
+            ]
+        ]
+    },
+    {
+        "id": "3261ebb398304238",
+        "type": "http request",
+        "z": "0f058a7f547c3458",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://aimlac-models:5000/price/predict-price",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 890,
+        "y": 1640,
+        "wires": [
+            [
+                "5ed42d3879c2ad97"
+            ]
+        ]
+    },
+    {
+        "id": "5ed42d3879c2ad97",
+        "type": "function",
+        "z": "0f058a7f547c3458",
+        "name": "make predictions insert",
+        "func": "const formatTime = (dt) => {\n    let parsedDate = new Date(dt);\n    if ( isNaN(parsedDate.valueOf()) )\n        throw Error(`Not a valid time ${dt}`)\n    return parsedDate\n}\n\nconst payload = msg.payload\n\nmsg = {}\nmsg.topic = \"INSERT INTO pricePrediction (`time`, `price`) \"\n  + \"VALUES (?)\" + \", (?)\".repeat(payload.length - 1)\n  + \"ON DUPLICATE KEY UPDATE \"\n  + \"time=VALUES(time), price=VALUES(price);\"\n\nmsg.payload = payload.map(row => [\n    formatTime(row.time), row.price\n])\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [
+            {
+                "var": "_",
+                "module": "lodash"
+            }
+        ],
+        "x": 930,
+        "y": 1680,
+        "wires": [
+            [
+                "522fe73aeb87ccf7"
+            ]
+        ]
+    },
+    {
+        "id": "65609d1a3afdc2e2",
+        "type": "inject",
+        "z": "0f058a7f547c3458",
+        "name": "bidding preparations",
+        "props": [],
+        "repeat": "",
+        "crontab": "00 03 * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 100,
+        "y": 1000,
+        "wires": [
+            [
+                "552524df2054a9e2",
+                "307ab4e6f668b177",
+                "6d438a7777ef90fa"
             ]
         ]
     }
